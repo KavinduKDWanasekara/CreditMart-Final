@@ -1,0 +1,79 @@
+#applyContract {
+  display: flex;
+  width: 85%;
+  padding-left: 11rem;
+}
+
+#logoImg {
+  width: 150px;
+}
+
+tr td {
+  width: 15rem;
+  font-size: 26px;
+}
+
+.head {
+  margin-left: 2%;
+}
+
+#contrTable {
+  margin: 10% 2%;
+}
+
+#summTable {
+  margin: 20% 2%;
+}
+
+#summTable tr td strong {
+  padding-left: 45%;
+}
+#companyDet {
+  border-right: solid 1px black;
+}
+
+#applyContract,
+#CompDetForm {
+  margin: 2% 2% 0 0;
+}
+
+#CompDetForm {
+  margin: 2% 2% 5% 2%;
+}
+
+.formData {
+  width: 40%;
+  height: 45px;
+  margin-left: 5%;
+  padding-left: 15px;
+  border-radius: 8px;
+  outline: none;
+  border: solid 1px gray;
+  font-size: 20px;
+}
+
+textarea.formData {
+  height: auto;
+}
+
+#quantity {
+  width: 80%;
+}
+
+.formbtn {
+  width: 150px;
+  height: 45px;
+  margin-top: 7px;
+  margin-left: 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+#contract {
+  margin-left: 23%;
+  background-color: #4391a5;
+  color: white;
+}
