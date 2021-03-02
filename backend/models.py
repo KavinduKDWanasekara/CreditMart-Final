@@ -4,7 +4,7 @@ from django.db import models
 class Company(models.Model):
     company_name = models.CharField(max_length=225)
     email = models.CharField(max_length=225)
-    contact_number = models.IntegerField(max_length=10)
+    contact_number = models.IntegerField()
 
     def __str__(self):
         return self.company_name
@@ -21,6 +21,6 @@ class FinancialDetails(models.Model):
     total_equity_shareholders = models.FloatField(max_length=255)
     total_debt = models.FloatField(max_length=255)
     interest_expenses = models.FloatField(max_length=255)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE())
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
 
