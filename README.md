@@ -1,7 +1,7 @@
 # CreditMart-Final
 
 The Credit Mart App is a financial application used to rate companies based on their financial statement.
-The application is a Django & React Full Stak Web Appliation.
+This is a Django & React Full Stack Web Appliation.
 
 ## Requirements 
 
