@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Profile() {
+export default function AboutUs() {
   return (
   
       <main className="profile-page">
@@ -25,7 +25,7 @@ export default function Profile() {
                         className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button"
                       >
-                        Call
+                        Page Develouper
                       </button>
                     </div>
                   </div>
@@ -53,7 +53,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className="text-center mt-8">
-                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
+                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
                     Credit Mart
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
