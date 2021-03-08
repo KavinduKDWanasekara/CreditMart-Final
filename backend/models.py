@@ -21,6 +21,6 @@ class FinancialDetails(models.Model):
     total_equity_shareholders = models.FloatField(max_length=255)
     total_debt = models.FloatField(max_length=255)
     interest_expenses = models.FloatField(max_length=255)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE())
+    # company = models.ForeignKey(Company, on_delete=models.CASCADE())
 
 

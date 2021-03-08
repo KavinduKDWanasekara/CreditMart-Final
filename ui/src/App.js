@@ -1,6 +1,7 @@
 // import './App.css';
 // import WelcomePage from './pages/WelcomePage';
-import ContractPage from './pages/ContractPage';
+// import ContractPage from './pages/ContractPage';
+import Register from './components/auth/Register';
 
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
     <div className="App">
       {/* <h1>HEllo</h1> */}
       {/* <WelcomePage/> */}
-      <ContractPage/>
+      <Register/>
+      {/* <ContractPage/> */}
 
     </div>
   );
