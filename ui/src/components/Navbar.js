@@ -39,9 +39,7 @@ render() {
             <MDBNavItem>
               <MDBNavLink to="/Contract"><strong>Contract</strong></MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/About"><strong>About</strong></MDBNavLink>
-            </MDBNavItem>
+
 
 
           </MDBNavbarNav>

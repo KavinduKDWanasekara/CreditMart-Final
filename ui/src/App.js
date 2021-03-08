@@ -2,13 +2,11 @@
 
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 
-import WelcomePage from './pages/WelcomePage';
 import ContractPage from './pages/ContractPage';
 import MyProfile from './pages/MyProfile';
 import AboutUs from './pages/AboutUs';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import Navbar from "./components/Navbar";
 import ExplorePage from "./pages/ExplorePage";
 function App() {
 
@@ -32,6 +30,7 @@ function App() {
           <Route path="/Explore" component={ExplorePage} />
         </Switch>
       </Router>
+
     </div>
   );
 }

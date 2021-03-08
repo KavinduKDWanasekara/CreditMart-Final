@@ -37,8 +37,8 @@ render() {
           </MDBNavbarNav>
 
           <MDBNavbarNav right>
-          <MDBBtn className="rounded-2xl p-2 h-12">Login</MDBBtn>
-          <MDBBtn className="rounded-2xl p-2 h-12">Signup</MDBBtn>
+          <MDBBtn className="rounded-2xl w-24 p-2 h-12">Login</MDBBtn>
+          <MDBBtn className="rounded-2xl w-24 p-2 h-12">Signup</MDBBtn>
 
 
             {/* <MDBNavItem >
