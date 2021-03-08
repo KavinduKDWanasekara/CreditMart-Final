@@ -4,6 +4,7 @@ import ContractPage from './pages/ContractPage';
 import AboutUs from './pages/AboutUs';
 import ProfilePage from './pages/ProfilePage';
 import Home from './pages/Home';
+
 function App() {
   return (
     <div className="App">

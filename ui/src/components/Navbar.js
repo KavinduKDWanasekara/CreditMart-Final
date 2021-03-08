@@ -19,7 +19,7 @@ toggleCollapse = () => {
 render() {
   return (
     <Router>
-      <MDBNavbar color="indigo" dark expand="md">
+      <MDBNavbar color="green" dark expand="md">
         <MDBNavbarBrand>
             <img src="logo.png" alt="CREDIT MART" id="logo" className="m-0"/>
         </MDBNavbarBrand>
