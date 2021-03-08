@@ -1,14 +1,14 @@
 import React from "react";
 
 
-import Navbar from './../components/Navbar';
+import NavbarWelcomePage from './../components/NavbarWelcomePage';
 
 import Footer from './../components/Footer';
 
 export default function Home() {
   return (
     <>
-<Navbar/>
+<NavbarWelcomePage/>
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div

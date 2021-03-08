@@ -18,41 +18,36 @@ toggleCollapse = () => {
 
 render() {
   return (
-    <Router>
-      <MDBNavbar color="indigo" dark expand="md">
+    // <Router >
+      <MDBNavbar color="grey" light expand="md" >
         <MDBNavbarBrand>
             <img src="logo.png" alt="CREDIT MART" id="logo" className="m-0"/>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          
-        <MDBNavbarNav left>
-            <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem>
-          </MDBNavbarNav>
 
           <MDBNavbarNav right>
-            <MDBNavItem >
-              <MDBNavLink to="#">Home </MDBNavLink> 
+
+            <MDBNavItem>
+              <MDBNavLink to="/Profile"><strong>My Profile</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Contract</MDBNavLink>
+              <MDBNavLink to="/Dashboard"><strong>My Dashboard</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">About</MDBNavLink>
+              <MDBNavLink to="/Explore"><strong>Explore</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">My Profile</MDBNavLink>
+              <MDBNavLink to="/Contract"><strong>Contract</strong></MDBNavLink>
             </MDBNavItem>
+            <MDBNavItem>
+              <MDBNavLink to="/About"><strong>About</strong></MDBNavLink>
+            </MDBNavItem>
+
+
           </MDBNavbarNav>
-                  </MDBCollapse>
+                  {/* </MDBCollapse> */}
       </MDBNavbar>
-    </Router>
+    // </Router>
     );
   }
 }
