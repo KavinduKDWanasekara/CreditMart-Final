@@ -10,6 +10,9 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Navbar from "./components/Navbar";
 import ExplorePage from "./pages/ExplorePage";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+
 function App() {
 
   return (
@@ -30,6 +33,8 @@ function App() {
           <Route path="/Dashboard" component={Dashboard} />
           <Route path="/Contract" component={ContractPage} />
           <Route path="/Explore" component={ExplorePage} />
+          <Route path="/Login" component={Login} />
+          <Route path="/Register" component={Register} />
         </Switch>
       </Router>
     </div>
