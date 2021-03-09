@@ -5,7 +5,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBIcon } f
 class FormsPage extends React.Component {
   state = {
     fname: "",
-    lname: "",
+    // lname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -28,24 +28,38 @@ class FormsPage extends React.Component {
 
   render() {
     return (
-      <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <MDBCard>
-            <MDBCardBody>
+      <div className="container mx-auto px-4 h-full">
+      <div className="flex content-center items-center justify-center h-full">
+        <div className="w-full lg:w-6/12 px-4">
+          <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
+            <div className="rounded-t mb-0 px-6 py-6">
       <div>
         <form
           className="needs-validation"
           onSubmit={this.submitHandler}
           noValidate
         >
-          <p className="h4 text-center py-4">Sign up</p>
+      <h6 className="text-gray-600 text-sm font-bold">                 Sign up with
+                  </h6>
    
+                  <div className="btn-wrapper text-center">               
+               <button
+                 className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+                 type="button"
+               >
+                 {/* <img
+                   alt="..."
+                   className="w-5 mr-1"
+                   src={require("assets/img/google.svg")}
+                 /> */}
+                 Google
+               </button>
+             </div>
               <label
                 htmlFor="defaultFormRegisterNameEx"
                 className="grey-text"
               >
-                First name
+                Username
               </label>
               <input
                 value={this.state.fname}
@@ -54,12 +68,12 @@ class FormsPage extends React.Component {
                 type="text"
                 id="defaultFormRegisterNameEx"
                 className="form-control"
-                placeholder="First name"
+                placeholder="Username"
                 required
               />
               <div className="valid-feedback">Looks good!</div>         
             
-              <label
+              {/* <label
                 htmlFor="defaultFormRegisterEmailEx2"
                 className="grey-text"
               >
@@ -75,7 +89,7 @@ class FormsPage extends React.Component {
                 placeholder="Last name"
                 required
               />
-              <div className="valid-feedback">Looks good!</div>
+              <div className="valid-feedback">Looks good!</div> */}
         
               <label
                 htmlFor="defaultFormRegisterConfirmEx3"
@@ -107,7 +121,7 @@ class FormsPage extends React.Component {
               <input
                 value={this.state.password}
                 onChange={this.changeHandler}
-                type="text"
+                type="password"
                 id="defaultFormRegisterPasswordEx4"
                 className="form-control"
                 name="password"
@@ -128,7 +142,7 @@ class FormsPage extends React.Component {
               <input
                 value={this.state.confirmPassword}
                 onChange={this.changeHandler}
-                type="text"
+                type="password"
                 id="defaultFormRegisterPasswordEx4"
                 className="form-control"
                 name="confirmPassword"
@@ -183,11 +197,11 @@ class FormsPage extends React.Component {
           </div>
         </form>     
       </div>
-      </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+      </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
