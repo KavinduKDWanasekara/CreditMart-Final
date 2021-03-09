@@ -62,7 +62,7 @@ class FormsPage extends React.Component {
                     noValidate
                   >
                      <div className="text-center mb-3">
-                    <h3 className="text-gray-600 text-lg font-bold">                 Sign up with
+                    <h3 className="text-gray-600 text-lg font-bold">                   Sign in with
                   </h3>
                   </div>
                   
@@ -97,44 +97,7 @@ class FormsPage extends React.Component {
                     />
                     <div className="valid-feedback">Looks good!</div>
 
-                    {/* <label
-                htmlFor="defaultFormRegisterEmailEx2"
-                className="grey-text"
-              >
-                Last name
-              </label>
-              <input
-                value={this.state.lname}
-                name="lname"
-                onChange={this.changeHandler}
-                type="text"
-                id="defaultFormRegisterEmailEx2"
-                className="form-control"
-                placeholder="Last name"
-                required
-              />
-              <div className="valid-feedback">Looks good!</div> */}
-
-                    <label
-                      htmlFor="defaultFormRegisterConfirmEx3"
-                      className="black-text"
-                    >
-                      Email
-              </label>
-                    <input
-                      value={this.state.email}
-                      onChange={this.changeHandler}
-                      type="email"
-                      id="defaultFormRegisterConfirmEx3"
-                      className="form-control"
-                      name="email"
-                      placeholder="Your Email address"
-                      required
-                    />
-                    {/* <small id="emailHelp" className="form-text text-muted">
-                We'll never share your email with anyone else.
-              </small> */}
-
+                 
 
                     <label
                       htmlFor="defaultFormRegisterPasswordEx4"
@@ -152,76 +115,16 @@ class FormsPage extends React.Component {
                       placeholder="Password"
                       required
                     />
-                    {/* <div className="invalid-feedback">
-                Please provide a valid city.
-              </div>               */}
-                    {/* <div className="valid-feedback">Looks good!</div>          */}
+             
 
-                    <label
-                      htmlFor="defaultFormRegisterPasswordEx4"
-                      className="black-text"
-                    >
-                      Confirm Password
-              </label>
-                    <input
-                      value={this.state.confirmPassword}
-                      onChange={this.changeHandler}
-                      type="password"
-                      id="defaultFormRegisterPasswordEx4"
-                      className="form-control"
-                      name="confirmPassword"
-                      placeholder="Confirm Password"
-                      required
-                    />
-                    {/* <div className="invalid-feedback">
-                Please provide a valid state.
-              </div>
-              <div className="valid-feedback">Looks good!</div> */}
-
-                    {/* <label
-                htmlFor="defaultFormRegisterPasswordEx4"
-                className="grey-text"
-              >
-                Zip
-              </label>
-              <input
-                value={this.state.zip}
-                onChange={this.changeHandler}
-                type="text"
-                id="defaultFormRegisterPasswordEx4"
-                className="form-control"
-                name="zip"
-                placeholder="Zip"
-                required
-              /> */}
-                    {/* <div className="invalid-feedback">
-                Please provide a valid zip.
-              </div> */}
-                    {/* <div className="valid-feedback"></div> */}
-
-                    <div className="custom-control custom-checkbox pl-3">
-                      <input
-                        className="custom-control-input"
-                        type="checkbox"
-                        value=""
-                        id="invalidCheck"
-                        required
-                      />
-                      <label className="custom-control-label" htmlFor="invalidCheck">
-                        Agree to terms and conditions
-              </label>
-                      <div className="invalid-feedback">
-                        You must agree before submitting.
-              </div>
-                    </div>
                     <div className="text-center py-4 mt-3">
                       <MDBBtn color="primary" rounded type="submit">
-                        Submit
+                        Login
           </MDBBtn>
 
           <div className="w-1/2 text-left text-size">
                 {/* <Link to="/auth/register" className="text-gray-300"> */}
-                  <small>Or Log In</small>
+                  <small>Create new account</small>
                 {/* </Link> */}
                 </div>
                     </div>
