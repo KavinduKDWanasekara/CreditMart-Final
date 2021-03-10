@@ -4,7 +4,7 @@ MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggle
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
 import './Navbar.css';
-
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
 
 class Navbar extends Component {
@@ -18,7 +18,7 @@ toggleCollapse = () => {
 
 render() {
   return (
-    <Router >
+  
       <MDBNavbar color="grey" light expand="md" className="mb-4">
         <MDBNavbarBrand>
             <img src="logo.png" alt="CREDIT MART" id="logo" className="m-0"/>
@@ -37,8 +37,8 @@ render() {
           </MDBNavbarNav>
 
           <MDBNavbarNav right>
-          <MDBBtn className="rounded-2xl w-24 p-2 h-12">Login</MDBBtn>
-          <MDBBtn className="rounded-2xl w-24 p-2 h-12">Signup</MDBBtn>
+          <Link  to="/Login"><MDBBtn className="rounded-2xl p-2 h-12">Login</MDBBtn></Link>
+          <Link  to="/Register"><MDBBtn className="rounded-2xl p-2 h-12" >Signup</MDBBtn></Link>
 
 
             {/* <MDBNavItem >
@@ -56,7 +56,7 @@ render() {
           </MDBNavbarNav>
                   </MDBCollapse>
       </MDBNavbar>
-    </Router>
+
     );
   }
 }

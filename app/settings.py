@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'frontend.apps.FrontendConfig',
-    'backend.apps.BackendConfig'
+    'backend.apps.BackendConfig',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'ui/build/static'),
 ]
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     )
+# }

@@ -28,12 +28,11 @@ export default function Home() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                    Your story starts with us.
+                    We ensure your credibility .
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                    This is a simple example of a Landing Page you can build
-                    using Notus React. It features multiple CSS components based
-                    on the Tailwind CSS design system.
+                  Credit Mart is an application which encourages in credit businesses.
+                  which we manage the credit limit of the company 
                   </p>
                 </div>
               </div>
@@ -69,10 +68,10 @@ export default function Home() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                       <i className="fas fa-award"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Awarded Agency</h6>
+                    <h6 className="text-xl font-semibold">Find the Best</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Divide details about your product or agency work into
-                      parts. A paragraph describing a feature will be enough.
+                      you will be able to finf the best compaines 
+                      with the best credibility you can do your transaction with
                     </p>
                   </div>
                 </div>
@@ -84,10 +83,10 @@ export default function Home() {
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
                       <i className="fas fa-retweet"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Free Revisions</h6>
+                    <h6 className="text-xl font-semibold">Contract</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Keep you user engaged by providing meaningful information.
-                      Remember that by this time, the user is curious.
+                      Find the compaines and ask for quoation for the 
+                      the credit transaction.
                     </p>
                   </div>
                 </div>
@@ -101,8 +100,8 @@ export default function Home() {
                     </div>
                     <h6 className="text-xl font-semibold">Verified Company</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Write a few lines about each one. A paragraph describing a
-                      feature will be enough. Keep you user engaged!
+                      We only have Verified companies who share their the
+                      financial data with Us !
                     </p>
                   </div>
                 </div>
@@ -118,15 +117,13 @@ export default function Home() {
                   Working with us is a pleasure
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Don't let your uses guess by attaching tooltips and popoves to
-                  any element. Just make sure you enable them first via
-                  JavaScript.
+                  Don't let compaines get on bad debt and 
+                  ensure to give the bestcredit limit and also the 
+                  platform for business to meet
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-                  The kit comes with three pre-built pages to help you get
-                  started faster. You can change the text and images and you're
-                  good to go. Just make sure you enable them first via
-                  JavaScript.
+                Fitch Ratings provides forward-looking credit opinions, as indicated by its ratings, 
+                that reflect its expectations of credit behavior over a range of scenarios
                 </p>
                 
               </div>
@@ -151,12 +148,11 @@ export default function Home() {
                       ></polygon>
                     </svg>
                     <h4 className="text-xl font-bold text-white">
-                      Top Notch Services
+                      Credit Ratings
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                      The Arctic Ocean freezes every winter and much of the
-                      sea-ice then thaws every summer, and that process will
-                      continue whatever happens.
+                    A credit rating agency is a company that assigns credit ratings, which rate a debtor's 
+                    ability to pay back debt by making timely principal and interest payments and the likelihood of default.
                     </p>
                   </blockquote>
                 </div>
@@ -200,11 +196,11 @@ export default function Home() {
                   <div className="text-blue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-blue-300">
                     <i className="fas fa-rocket text-xl"></i>
                   </div>
-                  <h3 className="text-3xl font-semibold">A growing company</h3>
+                  <h3 className="text-3xl font-semibold">A growing System</h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                    The extension comes with three pre-built pages to help you
-                    get started faster. You can change the text and images and
-                    you're good to go.
+                  Rating agencies assess the credit risk of specific debt securities and the borrowing 
+                  entities. In the bond market, a rating agency provides an independent evaluation 
+                  of the creditworthiness of debt securities issued by governments and corporations
                   </p>
                   <ul className="list-none mt-6">
                     <li className="py-2">
@@ -216,7 +212,7 @@ export default function Home() {
                         </div>
                         <div>
                           <h4 className="text-gray-600">
-                            Carefully crafted components
+                            Carefully System
                           </h4>
                         </div>
                       </div>
@@ -230,7 +226,7 @@ export default function Home() {
                         </div>
                         <div>
                           <h4 className="text-gray-600">
-                            Amazing page examples
+                            Amazing compaines
                           </h4>
                         </div>
                       </div>
@@ -243,7 +239,7 @@ export default function Home() {
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-gray-600">Dynamic components</h4>
+                          <h4 className="text-gray-600">Contract</h4>
                         </div>
                       </div>
                     </li>
@@ -260,9 +256,9 @@ export default function Home() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">Here are our heroes</h2>
                 <p className="text-lg leading-relaxed m-4 text-gray-600">
-                  According to the National Oceanic and Atmospheric
-                  Administration, Ted, Scambos, NSIDClead scentist, puts the
-                  potentially record maximum.
+                  According to the Credit mart we as a team have 
+                  Adminstered , and also we have created the UI using react and 
+                  Also used Tailwind css. used Django for backend develoupent
                 </p>
               </div>
             </div>
@@ -271,11 +267,46 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("")}
+                    src={("static/images/safraz.JPG")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Ryan Tompson</h5>
+                    <h5 className="text-xl font-bold">Safraz Nazar</h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                    &#10062;<strong>Leader</strong>  &#10062;
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-twitter"></i>
+                      </button>
+                      <button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button>
+                      <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-dribbble"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src={("static/images/baasith.jpeg")}
+                    className="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">Abdul Baasith</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                       Web Developer
                     </p>
@@ -306,11 +337,46 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("")}
+                    src={("static/images/ashfaq.jpeg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Romina Hadid</h5>
+                    <h5 className="text-xl font-bold">Ashfaaq</h5>
+                    <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                      Web Developer
+                    </p>
+                    <div className="mt-6">
+                      <button
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-twitter"></i>
+                      </button>
+                      <button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button>
+                      <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-dribbble"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                <div className="px-6">
+                  <img
+                    alt="..."
+                    src={("static/images/kavindu.png")}
+                    className="shadow-lg rounded-full mx-auto max-w-120-px"
+                  />
+                  <div className="pt-6 text-center">
+                    <h5 className="text-xl font-bold">Kavindu</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                       Marketing Specialist
                     </p>
@@ -335,13 +401,13 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("")}
+                    src={("static/images/oshan.jpg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Alexa Smith</h5>
+                    <h5 className="text-xl font-bold">Oshan</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      UI/UX Designer
+                      Scientist
                     </p>
                     <div className="mt-6">
                       <button
@@ -370,13 +436,13 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("")}
+                    src={("static/images/navindu.jpg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Jenna Kardi</h5>
+                    <h5 className="text-xl font-bold">Navindu</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Founder and CEO
+                    Web Developer
                     </p>
                     <div className="mt-6">
                       <button
