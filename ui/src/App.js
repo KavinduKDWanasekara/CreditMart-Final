@@ -2,6 +2,7 @@
 // import WelcomePage from './pages/WelcomePage';
 // import ContractPage from './pages/ContractPage';
 import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/Contract" component={ContractPage} />
           <Route path="/Explore" component={ExplorePage} />
           <Route path="/register" component={Register} />
+          <Route path="/Login" component={Login} />
         </Switch>
       </Router>
     </div>
