@@ -13,6 +13,7 @@ export default function Dashboard() {
   return (
     <>
     <Navbar/>
+    <div className="mt-32">
       <div className="flex flex-wrap m-5">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardLineChart />
@@ -28,6 +29,7 @@ export default function Dashboard() {
         <div className="w-full xl:w-4/12 px-4">
           <CardSocialTraffic />
         </div>
+      </div>
       </div>
       <Footer/>
     </>
