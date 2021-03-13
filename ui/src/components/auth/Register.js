@@ -78,17 +78,10 @@ class Register extends Component {
   // width:'100%' 
   
 }}>
-
-<div className="container mx-auto px- h-full">
-        <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full lg:w-6/12 px-4">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
-              <div className="rounded-t mb-0 px-6 py-6">
-
-              <div className="text-center mb-3">
-                    <h3 className="text-gray-600 text-3xl font-bold tracking-widest ">  Sign Up
-                  </h3>
-                  </div>
+<div class="bg-grey-lighter min-h-screen flex flex-col">
+<div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 class="mb-8 text-3xl text-center">Sign up</h1>
 
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
@@ -123,17 +116,14 @@ class Register extends Component {
                     <FormFeedback>{errors.confirmPassword}</FormFeedback>
                 </FormGroup>
                 <div className="text-center ">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
+                <button class="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
                 </div>
 
             </Form>
             </div>
             </div>
             </div>
-          </div>
-        </div>
-      
-            </div>
+           </div>
             </section>
         );
     }
