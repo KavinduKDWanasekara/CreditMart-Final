@@ -31,13 +31,13 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Profile" component={MyProfile} />
-          <Route path="/About" component={AboutUs} />
-          <Route path="/Dashboard" component={Dashboard} />
-          <Route path="/Contract" component={ContractPage} />
-          <Route path="/Explore" component={ExplorePage} />
+          <Route path="/profile" component={MyProfile} />
+          <Route path="/about" component={AboutUs} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/contract" component={ContractPage} />
+          <Route path="/explore" component={ExplorePage} />
           <Route path="/register" component={Register} />
-          <Route path="/Login" component={Login} />
+          <Route path="/login" component={Login} />
         </Switch>
       </Router>
     </div>
