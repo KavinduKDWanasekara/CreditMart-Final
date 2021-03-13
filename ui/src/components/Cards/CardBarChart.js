@@ -3,6 +3,22 @@ import Chart from "chart.js";
 
 export default function CardBarChart() {
   React.useEffect(() => {
+    fetch(
+      'https://jsonplaceholder.typicode.com/posts',
+      {
+        method: "GET",
+        headers: new Headers({
+          Accept: "application/vnd.github.vloak-preview"
+        })
+      })
+    .then(res => res.json())
+    .then(response => {
+      // setCommitHistory(response.items);
+      // setIsLoading(false);
+      console.log(response[6]);
+    })
+    .catch(console.error());
+  
     let config = {
       type: "bar",
       data: {
@@ -98,6 +114,8 @@ export default function CardBarChart() {
     let ctx = document.getElementById("bar-chart").getContext("2d");
     window.myBar = new Chart(ctx, config);
   }, []);
+
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">

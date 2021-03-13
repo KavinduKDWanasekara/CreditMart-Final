@@ -6,7 +6,7 @@ const ExplorePage = () => {
     return (
         <div>
             <Navbar/>
-            <div className="mt-32 ">
+            <div className="">
             <h1>EXPLORE PAGE</h1>
             <MDBCol className="text-center md=6">
                 <MDBFormInline className="md-form inline-flex min-w-200px">
