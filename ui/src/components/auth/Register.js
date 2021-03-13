@@ -1,4 +1,3 @@
-
   
 import React, { Component } from 'react';
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
@@ -130,4 +129,3 @@ class Register extends Component {
 }
 
 export default Register;
-
