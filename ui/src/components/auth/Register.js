@@ -86,7 +86,7 @@ class Register extends Component {
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
                 <label
-                      for="userName"
+                      htmlFor="userName"
                       className="text-gray-600 text-md tracking-wide"
                     >
                       Username
@@ -98,19 +98,19 @@ class Register extends Component {
                
 
                 <FormGroup>
-                    <Label for="email" className="text-gray-600 text-md tracking-wide ">Email</Label>
+                    <Label htmlFor="email" className="text-gray-600 text-md tracking-wide ">Email</Label>
                     <Input id="email" value={data.email} invalid={errors.email ? true : false} name="email" onChange={this.handleChange}  />
                     <FormFeedback>{errors.email}</FormFeedback>
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="password">Password</Label>
+                    <Label htmlFor="password">Password</Label>
                     <Input id="password" value={data.password} type="password" name="password" invalid={errors.password ? true : false} onChange={this.handleChange} />
                     <FormFeedback>{errors.password}</FormFeedback>
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="confirmPassword">Confirm Password</Label>
+                    <Label htmlFor="confirmPassword">Confirm Password</Label>
                     <Input id="confirmPassword" value={data.confirmPassword} type="password" name="confirmPassword" invalid={errors.confirmPassword ? true : false} onChange={this.handleChange}
                      />
                     <FormFeedback>{errors.confirmPassword}</FormFeedback>
