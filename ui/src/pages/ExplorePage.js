@@ -6,16 +6,18 @@ const ExplorePage = () => {
     return (
         <div>
             <Navbar/>
+            <div className="">
             <h1>EXPLORE PAGE</h1>
-            <MDBCol>
-                <MDBFormInline className="md-form mx-0">
+            <MDBCol className="text-center md=6">
+                <MDBFormInline className="md-form inline-flex min-w-200px">
                     <MDBIcon icon="search" />
-                    <input className="form-control ml-3 w-50" type="text" placeholder="Search" aria-label="Search"/>
-                    <MDBBtn color="blue" type="submit" className="mr-auto rounded-3xl p-2 h-9">
+                    <input className="form-control ml-3 " type="text" placeholder="Search" aria-label="Search"/>
+                    <MDBBtn color="blue" type="submit" className="rounded-3xl p-2 h-9">
                         Search
                     </MDBBtn>
                 </MDBFormInline>
             </MDBCol>
+            </div>
         </div>
     )
 }

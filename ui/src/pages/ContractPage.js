@@ -6,7 +6,8 @@ const ContractPage = () => {
     return (
         <div>
             <Navbar/>
-            <div id="applyContract">
+            <div className="">
+            <div id="applyContract"> 
                 <div id="companyDet">
                     <h1 className="head">Contract</h1>
                     <hr/>
@@ -50,6 +51,7 @@ const ContractPage = () => {
                         Cancel
                   </button>
                 </form>
+            </div>
             </div>
             <Footer/>
         </div>

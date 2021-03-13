@@ -3,6 +3,21 @@ import Chart from "chart.js";
 
 export default function CardLineChart() {
   React.useEffect(() => {
+    fetch(
+      'https://jsonplaceholder.typicode.com/posts',
+      {
+        method: "GET",
+        headers: new Headers({
+          Accept: "application/vnd.github.vloak-preview"
+        })
+      })
+    .then(res => res.json())
+    .then(response => {
+      // setCommitHistory(response.items);
+      // setIsLoading(false);
+      console.log(response[2]);
+    })
+    .catch(console.error());
     var config = {
       type: "line",
       data: {
