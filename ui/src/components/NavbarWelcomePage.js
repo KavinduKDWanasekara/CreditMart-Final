@@ -19,9 +19,9 @@ toggleCollapse = () => {
 render() {
   return (
   
-      <MDBNavbar color="cyan" light expand="md" className="fixed w-full top-0 z-10 mb-40">
+      <MDBNavbar color="#626c7d" light expand="md" className="w-full top-0 z-10">
         <MDBNavbarBrand>
-            <img src="static/images/logo1.png" alt="CREDIT MART" id="logo" className="m-0 h-60 w-20"/>
+            <img src="static/images/logo1.png" alt="CREDIT MART" id="logo" className="m-0 w-20"/>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -37,8 +37,8 @@ render() {
           </MDBNavbarNav>
 
           <MDBNavbarNav right>
-          <Link  to="/Login"><MDBBtn className="rounded-2xl p-2 h-12">Login</MDBBtn></Link>
-          <Link  to="/Register"><MDBBtn className="rounded-2xl p-2 h-12" >Signup</MDBBtn></Link>
+          <Link  to="/Login"><MDBBtn className="rounded-2xl p-2 w-24 h-12">Login</MDBBtn></Link>
+          <Link  to="/Register"><MDBBtn className="rounded-2xl p-2 w-24 h-12" >Signup</MDBBtn></Link>
 
 
             {/* <MDBNavItem >
