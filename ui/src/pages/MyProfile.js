@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar"
+import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
 
 export default function MyProfile() {
   return (
@@ -62,7 +63,7 @@ export default function MyProfile() {
                     Credit Mart
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
+                    <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>
                     Los Angeles, California ,US
                   </div>
                   <div className="mb-2 text-gray-700 mt-2">
@@ -102,6 +103,7 @@ export default function MyProfile() {
             </div>
           </div>
         </section>
+        <ProfileAddInfo/>
       </main>
 
  

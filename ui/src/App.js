@@ -1,9 +1,3 @@
-// import './App.css';
-// import WelcomePage from './pages/WelcomePage';
-// import ContractPage from './pages/ContractPage';
-import Register from './components/auth/Register';
-import Login from './components/auth/Login';
-
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 
 
