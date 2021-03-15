@@ -15,7 +15,7 @@ class Register extends Component {
 
     getInitialState = () => ({
         data: {
-            userName: '',
+            username: '',
             email: '',
             password: '',
             confirmPassword: ''
@@ -40,7 +40,7 @@ class Register extends Component {
         const { data } = this.state;
         let errors = {};
 
-        if (data.userName === '') errors.userName = 'User Name can not be blank.';
+        if (data.username === '') errors.username = 'User Name can not be blank.';
        
         if (!isEmail(data.email)) errors.email = 'Email must be valid.';
         if (data.email === '') errors.email = 'Email can not be blank.';
@@ -61,16 +61,16 @@ class Register extends Component {
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
-			.post(`user/create/`, {
-				email: data.userName,
-				user_name: data.email,
+			.post(`api/users/`, {
+				username: data.username,
+				email: data.email,
 				password: data.password
 			})
 			.then((res) => {
 				this.props.history.push('/login');
 				console.log(res);
 				console.log(res.data);
-			});
+			}).catch(err => console.log("api Erorr: ", err.response )+alert(err.request.response));
             //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());
@@ -99,13 +99,13 @@ class Register extends Component {
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
                 <label
-                      htmlFor="userName"
+                      htmlFor="username"
                       className="text-gray-600 text-md tracking-wide"
                     >
                       Username
               </label>
-                    <Input id="userName" value={data.userName} invalid={errors.userName ? true : false} name="userName" onChange={this.handleChange} />
-                    <FormFeedback>{errors.userName}</FormFeedback>
+                    <Input id="username" value={data.username} invalid={errors.username ? true : false} name="username" onChange={this.handleChange} />
+                    <FormFeedback>{errors.username}</FormFeedback>
                 </FormGroup>
 
                
