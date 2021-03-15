@@ -58,7 +58,6 @@ class Dashboard extends React.Component{
       </div>
       </div>
       <Footer/>
-      console.log(persons);
     </>
     );
   }
