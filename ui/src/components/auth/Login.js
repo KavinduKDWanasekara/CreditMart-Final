@@ -94,6 +94,7 @@ class Login extends Component {
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
 
+
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
                 <label
