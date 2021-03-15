@@ -20,15 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1>HEllo</h1> */}
-      {/* <WelcomePage/> */}
-      {/* <Register/> */}
-      {/* <ContractPage/> */}
-      {/* <ContractPage/> */}
-{/* < AboutUs /> */}
-{/* <ProfilePage /> */}
-
-    {/* <Dashboard/> */}
+     
 
       <Router>
         <Switch>
