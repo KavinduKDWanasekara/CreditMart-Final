@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { isEmail } from 'validator';
+import axiosInstance from '../../axios';
 
 class Register extends Component {
 
@@ -51,6 +52,7 @@ class Register extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+     
 
         const { data } = this.state;
 
@@ -58,6 +60,17 @@ class Register extends Component {
 
         if (Object.keys(errors).length === 0) {
             console.log(data);
+            axiosInstance
+			.post(`user/create/`, {
+				email: data.userName,
+				user_name: data.email,
+				password: data.password
+			})
+			.then((res) => {
+				this.props.history.push('/login');
+				console.log(res);
+				console.log(res.data);
+			});
             //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());

@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { isEmail } from 'validator';
+import axiosInstance from '../../axios';
+
 
 class Login extends Component {
 
@@ -54,19 +56,20 @@ class Login extends Component {
         const errors = this.validate();
 
         if (Object.keys(errors).length === 0) {
-          fetch('http://127.0.0.1:8000/', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(this.state.credentials)
-          })
-          .then( data => data.json())
-          .then(
-            data => {
-              console.log(data.token)
-            }
-          )
-          .catch( error => console.error(error))
-            this.props.history.push('/dashboard');
+            console.log("sent data intial : ",data)
+            axiosInstance
+			.post(`token/`, {
+				email: data.userName,
+				password: data.password,
+			})
+			.then((res) => {
+				localStorage.setItem('token', res.data.access);
+				axiosInstance.defaults.headers['Authorization'] =
+					'Token ' + localStorage.getItem('access_token');
+                this.props.history.push('/dashboard');
+				console.log(res);
+				console.log(res.data);
+			});
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
