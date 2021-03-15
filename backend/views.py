@@ -39,3 +39,17 @@ class Logout(APIView):
             print(ex)
             content = {"message": "Token does not exist"}
             return Response(content)
+
+class Profile(APIView):
+
+    def get(self, request):
+        token_var = request.headers.get('Authorization')
+        try:
+            token = Token.objects.get(key=token_var[6:])
+            user = token.user
+            company_name = request.data["company_name"]
+        except Token.DoesNotExist as ex:
+            print(ex)
+            return Response({
+                "message": "invalid token"
+            })

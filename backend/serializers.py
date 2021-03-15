@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ["company_name", "contact_number", "company_address"]
+        fields = ["company_name", "contact_number", "location", "business_type", "description"]
 
 
 class TokenSerializer(serializers.ModelSerializer):
