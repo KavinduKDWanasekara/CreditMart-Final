@@ -62,11 +62,11 @@ def getProbabilityOfDefault(current_assets, current_liabilities, working_capital
 #                                                  indicator10, indicator11, indicator12, indicator13, indicator14,
 #                                                  indicator15, indicator16, indicator17, indicator18, indicator19]]))
 
-    prediction = PD_Model.predict([[indicator01, indicator02, indicator02, indicator03, indicator04,
+    prediction = PD_Model.predict_proba([[indicator01, indicator02, indicator02, indicator03, indicator04,
                                                      indicator05, indicator06, indicator07, indicator08, indicator09,
                                                      indicator10, indicator11, indicator12, indicator13, indicator14,
                                                      indicator15, indicator16, indicator17, indicator18, indicator19]])
-    
+
     return prediction
 
 
