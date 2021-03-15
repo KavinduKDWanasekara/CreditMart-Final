@@ -6,9 +6,8 @@ import { isEmail } from 'validator';
 
 class Register extends Component {
 
-    constructor(props) {
+    constructor(props){
         super(props);
-
         this.state = this.getInitialState();
     }
 

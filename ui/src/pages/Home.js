@@ -302,7 +302,7 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("static/images/baasith.jpeg")}
+                    src={("static/images/baasith.jpg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
@@ -372,7 +372,7 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("static/images/kavindu.png")}
+                    src={("static/images/kavindu.jpg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">
