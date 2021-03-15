@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar'
 import CardExplorePage from "../components/Cards/CardExplorePage";
 
 import { MDBCol, MDBFormInline, MDBIcon, MDBBtn  } from "mdbreact";
-import Test from '../components/Cards/Test';
 import Footer from '../components/Footer';
 
 const ExplorePage = () => {
@@ -11,7 +10,6 @@ const ExplorePage = () => {
         <div>
             <Navbar/>
             <div>
-            <h1>EXPLORE PAGE</h1>
             <MDBCol>
                 <MDBFormInline className="md-form flex justify-center">
                     <MDBIcon icon="search" />
@@ -33,7 +31,6 @@ const ExplorePage = () => {
                 <CardExplorePage/>
                 <CardExplorePage/>
 
-                {/* <Test/> */}
                 </div>
         </div>
         <Footer/>

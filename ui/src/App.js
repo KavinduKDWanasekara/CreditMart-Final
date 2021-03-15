@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import ExplorePage from "./pages/ExplorePage";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import './index.css';
 
 function App() {
 
