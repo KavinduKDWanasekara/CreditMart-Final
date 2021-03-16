@@ -1,3 +1,4 @@
+
 import { data } from 'autoprefixer';
 import React, { Component } from 'react'
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
@@ -526,3 +527,5 @@ export class ProfileAddInfo extends Component {
 }
 
 export default ProfileAddInfo
+
+
