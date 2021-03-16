@@ -6,33 +6,68 @@ import { Form } from "reactstrap";
 
 class MyProfileEditForm extends Component{
 
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      company_name:"",
-      contact_number:"",
-      location:"",
-      business_type:"",
-      description:""
-    }
-  }
-  changeHandler = (e) => {
-    this.setState ({[e.target.name]: e.target.value})
+  constructor(props){
+    super(props);
+    this.state = this.getInitialState();
 }
 
-  submitHandler = (e) => {
-    e.preventDefault()
-    console.log(this.state)
+getInitialState = () => ({
+    data: {
+        companyname: '',
+        location: '',
+        businesstype: '',
+        contact: '',
+        description:''
+    },
+    errors: {}
+});
+
+
+handleChange = (e) => {
+  this.setState({
+      data: {
+          ...this.state.data,
+          [e.target.name]: e.target.value
+      },
+      errors: {
+          ...this.state.errors,
+          [e.target.name]: ''
+      }
+  });
 }
-  
+
+validate = () => {
+  const { data } = this.state;
+  let errors = {};
+
+  if (data.companyname === '') errors.userName = 'Company Name can not be blank.';
+
+  if (data.email === '') errors.email = 'Email can not be blank.';
+  if (data.password === '') errors.password = 'Password must be valid.';
+  if (data.confirmPassword !== data.password) errors.confirmPassword = 'Passwords must match.';
+
+  return errors;
+}
+
+handleSubmit = (e) => {
+  e.preventDefault();
+
+  const { data } = this.state;
+
+  const errors = this.validate();
+
+  if (Object.keys(errors).length === 0) {
+      console.log(data);
+      //Call an api here
+      //Resetting the form
+      this.setState(this.getInitialState());
+  } else {
+      this.setState({ errors });
+  }
+}
   render(){
-    const {company_name,
-      contact_number,
-      location,
-      business_type,
-      description} = this.state;
-    // const MyProfileEditForm = () => {
+
+   
     return(
       <MDBContainer >
       <MDBRow >
@@ -49,19 +84,20 @@ class MyProfileEditForm extends Component{
               
               <MDBInput
                 label="Your Company Name"
-                // id = "cName"
-                value={company_name}
-                onChange={this.changeHandler}
-                name = "company_name"
+                id = "companyname"
+                invalid={errors.companyname ? true : false}
+                value={this.companyname}
+                onChange={this.handleChange}
+                name = "companyname"
                 type="text"
                 
-                
               />
+              <h1>{errors.companyname}</h1>
               <MDBInput
                 label="Your Location"
-                // id = "cLocation"
-                value={location}
-                onChange={this.changeHandler}
+                id = "location"
+                value={this.location}
+                onChange={this.handleChange}
                 name="location"
                 type="text"
                 
@@ -69,78 +105,55 @@ class MyProfileEditForm extends Component{
               />
               <MDBInput
                 label="Bussiness Type"
-                // id = "business_type"
-                value={business_type}
-                onChange={this.changeHandler}
-                name="business_type"
+                id = "businesstype"
+                value={this.businesstype}
+                onChange={this.handleChange}
+                name="businesstype"
                 type="text"
                 
               />
               <MDBInput
                 label="Your Mobile Number"
-                // id = "contact_number"
-                value={contact_number}
-                onChange={this.changeHandler}
-                name="contact_number"
+                id = "contact"
+                value={this.contact}
+                onChange={this.handleChange}
+                name="handleChange"
                 type="text"
                 
               />
               <MDBInput
                 label="Add a Description"
-                // id = "description"
-                value={description}
-                onChange={this.changeHandler}
+                id = "description"
+                value={this.description}
+                onChange={this.handleChange}
                 name="description"
                 type="text"
                 
               />
-              <div className="text-left">
-                <h3 className="dark-grey-text mb-5">
-                  <strong>Change Your Password</strong>
-                </h3>
-              </div>
-              <MDBInput
-                label="Your New Password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
-              <p className="font-small blue-text d-flex justify-content-end pb-3">
-                
-                <a href="#!" className="blue-text ml-1">
-
-                Forgot Password?
-                </a>
-              </p>
-              <MDBInput
-                label="Confirm Your New Password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
+             
+             
+              
               
               <div className="text-center mb-3">
-                <MDBBtn
-                  type="button"
-                  gradient="blue"
-                  rounded
-                  className="btn-block z-depth-1a"
-                  onClick={this.submitHandler}
-                >
-                  Save Your Information
-                </MDBBtn>
-                <Link to= '/profile'>
-                <MDBBtn
-                  type="button"
-                  gradient="blue"
-                  rounded
-                  className="btn-block z-depth-1a"
-                >
-                  Back To Profile
-                </MDBBtn>
-                </Link>
+                    <MDBBtn
+                      type="button"
+                      gradient="blue"
+                      rounded
+                      className="btn-block z-depth-1a"
+                      onClick={this.handleSubmit}
+                    >
+                      Save Your Information
+                    </MDBBtn>
+                    <Link to= '/profile'>
+                        <MDBBtn
+                          type="button"
+                          gradient="blue"
+                          rounded
+                          className="btn-block z-depth-1a"
+                        >
+                          Back To Profile
+                        </MDBBtn>
+                    </Link>
               </div>
               </Form>
             </MDBCardBody>
