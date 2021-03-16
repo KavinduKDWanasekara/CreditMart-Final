@@ -1,13 +1,21 @@
 import { data } from 'autoprefixer';
 import React, { Component } from 'react'
-import { Form } from 'reactstrap'
+import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
+import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
+
 
 export class ProfileAddInfo extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state={
+        this.state = this.getInitialState();
+
+        
+    }
+
+    getInitialState = () => ({
+        data: {
             year:'',
             totCurrentAssets:'',
             totCurrentLiabilities:'',
@@ -23,20 +31,67 @@ export class ProfileAddInfo extends Component {
             totalLabilities:'',
             longTermDepts:'',
             ebit:''
+        },
+        errors: {}
+    });
+
+    handleChange = (e) => {
+        this.setState({
+            data: {
+                ...this.state.data,
+                [e.target.name]: e.target.value
+            },
+            errors: {
+                ...this.state.errors,
+                [e.target.name]: ''
+            }
+        });
+    }
+    validate = () => {
+        const { data, errors } = this.state;
+        let errors = {};
+
+        if (data.year === '') errors.year = 'This field can not be blank.';
+        if (data.totCurrentAssets === '') errors.totCurrentAssets = 'This field can not be blank.';
+        if (data.totCurrentLiabilities === '') errors.totCurrentLiabilities = 'This field can not be blank.';
+        if (data.workingCapital === '') errors.workingCapital = 'This field can not be blank.';
+        if (data.totalAssets === '') errors.totalAssets = 'This field can not be blank.';
+        if (data.cashEq === '') errors.cashEq = 'This field can not be blank.';
+        if (data.netInc === '') errors.netInc = 'This field can not be blank.';
+        if (data.netCreditSales === '') errors.netCreditSales = 'This field can not be blank.';
+        if (data.accReceivables === '') errors.accReceivables = 'This field can not be blank.';
+        if (data.totalDepts === '') errors.totalDepts = 'This field can not be blank.';
+        if (data.totalShareholderEq === '') errors.totalShareholderEq = 'This field can not be blank.';
+        if (data.intExp === '') errors.intExp = 'This field can not be blank.';
+        if (data.totalLabilities === '') errors.totalLabilities = 'This field can not be blank.';
+        if (data.longTermDepts === '') errors.longTermDepts = 'This field can not be blank.';
+        if (data.ebit === '') errors.ebit = 'This field can not be blank.';
+       
+        
+
+        return errors;
+    }
+    // changeHandler = (e) => {
+    //     this.setState ({[e.target.name]: e.target.value})
+    // }
+
+   
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { data } = this.state;
+
+        const errors = this.validate();
+
+        if (Object.keys(errors).length === 0) {
+            console.log(data);
+            this.setState(this.getInitialState());
+        } else {
+            this.setState({ errors });
         }
     }
-
-    changeHandler = (e) => {
-        this.setState ({[e.target.name]: e.target.value})
-    }
-
-    submitHandler = (e) => {
-        e.preventDefault()
-        console.log(this.state)
-    }
-
     render() {
-        const { year, totCurrentAssets, totCurrentLiabilities, workingCapital, totalAssets, cashEq, netInc, netCreditSales, accReceivables, totalDepts, totalShareholderEq, intExp, totalLabilities, longTermDepts, ebit} = this.state;
+        const { data, errors } = this.state;
         return (
             <div>
 
@@ -53,7 +108,14 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="year" value={year} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="20XX"/>
+                                        <input name="year" 
+                                          value={year}
+                                          onChange={this.changeHandler} 
+                                          className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"
+                                          id="addInfoData" 
+                                          type="text" 
+                                          placeholder="20XX"
+                                          required/>
                                     </div>
                                 </td>
                                 </div>
@@ -68,8 +130,10 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totCurrentAssets" value={totCurrentAssets} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totCurrentAssets" value={data.totCurrentAssets} onChange={this.handleChange} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="totCurrentAssets" type="text" placeholder="RS XXXXX.XX"
+                                         invalid={errors.totCurrentAssets ? true : false}  />
                                     </div>
+                                    <FormFeedback>{errors.totCurrentAssets}</FormFeedback>
                                 </td>
                             </div>
                             </tr>
@@ -83,7 +147,8 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totCurrentLiabilities" value={totCurrentLiabilities} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totCurrentLiabilities" value={totCurrentLiabilities} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX"
+                                        required/>
                                     </div>
                                 </td>
                             </div>
@@ -98,7 +163,8 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="workingCapital" value={workingCapital} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="workingCapital" value={workingCapital} onChange={this.changeHandler} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder=" RS XXXXX.XX"
+                                        required/>
                                     </div>
                                 </td>
                             </div>
@@ -113,7 +179,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totalAssets" value={totalAssets} onChange={this.changeHandler}className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totalAssets" value={totalAssets} onChange={this.changeHandler}className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder=" RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -128,7 +194,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="cashEq" value={cashEq} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="cashEq" value={cashEq} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -144,7 +210,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="netInc" value={netInc} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="netInc" value={netInc} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -160,7 +226,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="netCreditSales" value={netCreditSales} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="netCreditSales" value={netCreditSales} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -175,7 +241,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="accReceivables" value={accReceivables} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="accReceivables" value={accReceivables} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -190,7 +256,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totalDepts" value={totalDepts} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totalDepts" value={totalDepts} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required />
                                     </div>
                                 </td>
                             </div>
@@ -205,7 +271,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totalShareholderEq" value={totalShareholderEq} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totalShareholderEq" value={totalShareholderEq} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -220,7 +286,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="intExp" value={intExp} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="intExp" value={intExp} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -235,7 +301,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="totalLabilities" value={totalLabilities} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="totalLabilities" value={totalLabilities} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -250,7 +316,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="longTermDepts" value={longTermDepts} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="longTermDepts" value={longTermDepts} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -265,7 +331,7 @@ export class ProfileAddInfo extends Component {
                                 </td>
                                 <td>
                                     <div>
-                                        <input name="ebit" value={ebit} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="XXXXX.XX"/>
+                                        <input name="ebit" value={ebit} onChange={this.changeHandler} className= "w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="addInfoData" type="text" placeholder="RS XXXXX.XX" required/>
                                     </div>
                                 </td>
                             </div>
@@ -275,7 +341,7 @@ export class ProfileAddInfo extends Component {
 
                     <div className= "md:flex my-4">
                         <div className= "md:w-full px-1/2 text-center">
-                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
                             Submit
                             </button>
                         </div>
