@@ -1,147 +1,133 @@
-import React, { Component} from 'react';
-import { Link } from "react-router-dom";
+  
+import React, { Component } from 'react';
+import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
+import { isEmail } from 'validator';
+import axiosInstance from '../../axios';
+
 
 class Login extends Component {
 
-  login = event => {
-    fetch('http://127.0.0.1:8000/auth/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.state.credentials)
-    })
-    .then( data => data.json())
-    .then(
-      data => {
-        this.props.userLogin(data.token);
-      }
-    )
-    .catch( error => console.error(error))
-  }
+    constructor(props) {
+        super(props);
 
-  state = {
-    credentials: { username: '',password: ''}
-  }
+        this.state = this.getInitialState();
+    }
 
-  inputChanged = event => {
-    const cred = this.state.credentials;
-    cred[event.target.name] = event.target.value;
-    this.setState({credentials: cred});
-  }
+    getInitialState = () => ({
+        data: {
+            username: '',
+            password: '',
+         
+        },
+        errors: {}
+    });
 
-render(){
-  return (
+    handleChange = (e) => {
+        this.setState({
+            data: {
+                ...this.state.data,
+                [e.target.name]: e.target.value
+            },
+            errors: {
+                ...this.state.errors,
+                [e.target.name]: ''
+            }
+        });
+    }
 
-      <div className="container mx-auto px-4 h-full">
-        <div className="flex content-center items-center justify-center h-full">
-          <div className="w-full lg:w-4/12 px-4">
-            <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
-              <div className="rounded-t mb-0 px-6 py-6">
-                <div className="text-center mb-3">
-                  <h6 className="text-gray-600 text-sm font-bold">
-                    Sign in with
-                  </h6>
-                </div>
-                <div className="btn-wrapper text-center">
-                 
-                  <button
-                    className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                    type="button"
-                  >
-                    <img
-                      alt="..."
-                      className="w-5 mr-1"
-                      src={("assets/img/google.svg")}
-                    />
-                    Google
-                  </button>
-                </div>
-                <hr className="mt-6 border-b-1 border-gray-400" />
-              </div>
-              <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <div className="text-gray-500 text-center mb-3 font-bold">
-                  <small>Or sign in with credentials</small>
-                </div>
-                <form>
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      UserName
-                    </label>
-                    <input
-                      type="text"
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="User Name"
-                      name="username"
-                      value ={this.state.credentials.username}
-                      onChange={this.inputChanged}
-                    />
-                  </div>
+    validate = () => {
+        const { data } = this.state;
+        let errors = {};
 
-                  <div className="relative w-full mb-3">
-                    <label
-                      className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="grid-password"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
-                      placeholder="Password"
-                      name="password"
-                      value ={this.state.credentials.password}
-                      onChange={this.inputChanged}
-                    />
-                  </div>
-                  <div>
-                    <label className="inline-flex items-center cursor-pointer">
-                      <input
-                        id="customCheckLogin"
-                        type="checkbox"
-                        className="form-checkbox text-gray-800 ml-1 w-5 h-5 ease-linear transition-all duration-150"
-                      />
-                      <span className="ml-2 text-sm font-semibold text-gray-700">
-                        Remember me
-                      </span>
-                    </label>
-                  </div>
+        if (data.username === '') errors.username = 'User Name can not be blank.';
 
-                  <div className="text-center mt-6">
-                    <button
-                      className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
-                      onClick={this.login}
-                    >
-                      Sign In
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="flex flex-wrap mt-6 relative">
-              <div className="w-1/2">
-                <a
-                  href="#pablo"
-                  
-                  className="text-gray-300"
-                >
-                  <small>Forgot password?</small>
-                </a>
-              </div>
-              <div className="w-1/2 text-right">
-                <Link to="/Register" className="text-gray-300">
-                  <small>Create new account</small>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        if (data.password === '') errors.password = 'Password must be valid.';
+
+
+        return errors;
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+
+        const { data } = this.state;
+
+        const errors = this.validate();
+
+        if (Object.keys(errors).length === 0) {
+            console.log("sent data intial : ",data)
+            axiosInstance
+			.post(`auth/`, {
+				username: data.username,
+				password: data.password
+			})
+			.then((res) => {
+				localStorage.setItem('token', res.data.access);
+				axiosInstance.defaults.headers['Authorization'] =
+					'Token ' + localStorage.getItem('token');
+                this.props.history.push('/dashboard');
+				console.log(res);
+				console.log(res.data);
+			}).catch(err => console.log("api Erorr: ", err.response)+alert(err.request.response));
+            
+            //Resetting the form
+            this.setState(this.getInitialState());
+        } else {
+            this.setState({ errors });
+        }
+    }
+
+    render() {
+        const { data, errors } = this.state;
+        return (
+            <section className="relative w-full h-full py-40 min-h-screen">
+ <div className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
+    style={{ 
+  backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
+  // backgroundRepeat: 'no-repeat',
+  // // position:"fixed",
+  // width:'100%' 
   
-    );
-  }
+}}>
+<div className="bg-grey-lighter min-h-screen flex flex-col">
+<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
 
+
+            <Form onSubmit={this.handleSubmit} className="w-72">
+                <FormGroup>
+                <label
+                      htmlFor="username"
+                      className="text-gray-600 text-md tracking-wide"
+                    >
+                      Username
+              </label>
+                    <Input id="username" value={data.username} invalid={errors.username ? true : false} name="username" onChange={this.handleChange} />
+                    <FormFeedback>{errors.username}</FormFeedback>
+                </FormGroup>
+
+              
+
+                <FormGroup>
+                    <Label htmlFor="password">Password</Label>
+                    <Input id="password" value={data.password} type="password" name="password" invalid={errors.password ? true : false} onChange={this.handleChange} />
+                    <FormFeedback>{errors.password}</FormFeedback>
+                </FormGroup>
+
+              
+                <div className="text-center ">
+                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Sign In</button>
+                </div>
+
+            </Form>
+            </div>
+            </div>
+            </div>
+           </div>
+            </section>
+        );
+    }
 }
+
 export default Login;

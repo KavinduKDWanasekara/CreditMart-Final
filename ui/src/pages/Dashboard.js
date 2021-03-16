@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 
 // components
 
@@ -8,12 +9,37 @@ import CardPageVisits from "../components/Cards/CardPageVisits";
 import CardSocialTraffic from "../components/Cards/CardSocialTraffic";
 import Navbar from "./../components/Navbar"
 import Footer from "../components/Footer";
+import { Component } from "react";
 
-export default function Dashboard() {
-  return (
+
+class Dashboard extends React.Component{
+  
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+    details: []
+       
+    }
+  }
+
+  componentDidMount() {
+    
+    //CONNECT THE API HERE @Safraz
+    
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(res => {
+        // console.log(res);
+        this.setState({ details : res.data});
+      })
+      .catch(console.error());
+  }
+
+  render (){
+    return(
     <>
     <Navbar/>
-    <div className="mt-32">
+    <div className="">
       <div className="flex flex-wrap m-5">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardLineChart />
@@ -33,5 +59,9 @@ export default function Dashboard() {
       </div>
       <Footer/>
     </>
-  );
+    );
+  }
+
 }
+
+export default Dashboard;

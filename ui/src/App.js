@@ -1,6 +1,6 @@
-// import './App.css';
 
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
+
 
 import ContractPage from './pages/ContractPage';
 import MyProfile from './pages/MyProfile';
@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import ExplorePage from "./pages/ExplorePage";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import './index.css';
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
     <div className="App">
       {/* <h1>HEllo</h1> */}
       {/* <WelcomePage/> */}
+      {/* <Register/> */}
+      {/* <ContractPage/> */}
       {/* <ContractPage/> */}
 {/* < AboutUs /> */}
 {/* <ProfilePage /> */}
@@ -26,13 +29,13 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/Profile" component={MyProfile} />
-          <Route path="/About" component={AboutUs} />
-          <Route path="/Dashboard" component={Dashboard} />
-          <Route path="/Contract" component={ContractPage} />
-          <Route path="/Explore" component={ExplorePage} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Register" component={Register} />
+          <Route path="/profile" component={MyProfile} />
+          <Route path="/about" component={AboutUs} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/contract" component={ContractPage} />
+          <Route path="/explore" component={ExplorePage} />
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
         </Switch>
       </Router>
 
