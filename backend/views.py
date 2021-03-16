@@ -11,11 +11,9 @@ from .serializers import UserSerializer, CompanySerializer, TokenSerializer, Fin
 from .models import Company, FinancialDetails
 
 
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
 
 
 # getting PD prediction for company data
@@ -48,20 +46,12 @@ def getProbabilityOfDefault(current_assets, current_liabilities, working_capital
     with open("probability_of_default_model.pkl", 'rb') as file:
         PD_Model = pickle.load(file)
 
-    with open("scaler.pkl", 'rb') as file:
-        scaler = pickle.load(file)
-#    prediction = PD_Model.predict(scaler.transform([[indicator01, indicator02, indicator02, indicator03, indicator04,
-#                                                 indicator05, indicator06, indicator07, indicator08, indicator09,
-#                                                  indicator10, indicator11, indicator12, indicator13, indicator14,
-#                                                  indicator15, indicator16, indicator17, indicator18, indicator19]]))
-
     prediction = PD_Model.predict_proba([[indicator01, indicator02, indicator02, indicator03, indicator04,
-                                                     indicator05, indicator06, indicator07, indicator08, indicator09,
-                                                     indicator10, indicator11, indicator12, indicator13, indicator14,
-                                                     indicator15, indicator16, indicator17, indicator18, indicator19]])
+                                          indicator05, indicator06, indicator07, indicator08, indicator09,
+                                          indicator10, indicator11, indicator12, indicator13, indicator14,
+                                          indicator15, indicator16, indicator17, indicator18, indicator19]])
 
     return prediction
-
 
 
 class CompanyViewSet(viewsets.ModelViewSet):
@@ -207,8 +197,15 @@ class FinancialDetail(APIView):
             net_credit_sales = float(data_dict["net_credit_sales"])
             accounts_receivables = float(data_dict["accounts_receivables"])
             ebit = float(data_dict["ebit"])
-            pd = float(data_dict["pd"])
-            credit_limit = float(data_dict["credit_limit"])
+            receivables_turnover = net_credit_sales/accounts_receivables
+            return_on_equity = net_income/total_shareholders_equity
+            # pd = 12
+            pd = getProbabilityOfDefault(current_assets,current_liabilities,working_capital,
+                                         total_assets,cash_equivalents,net_income,receivables_turnover,
+                                         total_shareholders_equity,total_debt,interest_expenses,return_on_equity,
+                                         ebit,total_liabilities,long_term_debt)
+            pd_val = pd[0][1]
+            credit_limit = 25000
 
             financial_d = FinancialDetails.objects.create(company=company_obj,
                                                           financial_year=financial_year,
@@ -226,7 +223,7 @@ class FinancialDetail(APIView):
                                                           net_credit_sales=net_credit_sales,
                                                           accounts_receivables=accounts_receivables,
                                                           ebit=ebit,
-                                                          pd=pd,
+                                                          pd=pd_val,
                                                           credit_limit=credit_limit)
             financial_d.save()
             financial_d_serializer = FinancialDetailSerializer(financial_d)
