@@ -5,7 +5,7 @@ export default function Logout() {
 	
 
 	useEffect(() => {
-		const response = axiosInstance.post('user/logout/', {
+		const response = axiosInstance.post('api/logout', {
 			token: localStorage.getItem('Token'),
 		});
 		localStorage.removeItem('Token');

@@ -15,9 +15,8 @@ class Login extends Component {
 
     getInitialState = () => ({
         data: {
-            userName: '',
-    
-            password: ''
+            username: '',
+            password: '',
          
         },
         errors: {}
@@ -40,7 +39,7 @@ class Login extends Component {
         const { data } = this.state;
         let errors = {};
 
-        if (data.userName === '') errors.userName = 'User Name can not be blank.';
+        if (data.username === '') errors.username = 'User Name can not be blank.';
 
         if (data.password === '') errors.password = 'Password must be valid.';
 
@@ -58,18 +57,20 @@ class Login extends Component {
         if (Object.keys(errors).length === 0) {
             console.log("sent data intial : ",data)
             axiosInstance
-			.post(`token/`, {
-				email: data.userName,
-				password: data.password,
+			.post(`auth/`, {
+				username: data.username,
+				password: data.password
 			})
 			.then((res) => {
-				localStorage.setItem('token', res.data.access);
+                
+				localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
-					'Token ' + localStorage.getItem('access_token');
+					'token' + localStorage.getItem('token');
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
-			});
+			}).catch(err => console.log("api Erorr: ", err.response)+alert(err.request.response));
+            
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
@@ -98,13 +99,13 @@ class Login extends Component {
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
                 <label
-                      htmlFor="userName"
+                      htmlFor="username"
                       className="text-gray-600 text-md tracking-wide"
                     >
                       Username
               </label>
-                    <Input id="userName" value={data.userName} invalid={errors.userName ? true : false} name="userName" onChange={this.handleChange} />
-                    <FormFeedback>{errors.userName}</FormFeedback>
+                    <Input id="username" value={data.username} invalid={errors.username ? true : false} name="username" onChange={this.handleChange} />
+                    <FormFeedback>{errors.username}</FormFeedback>
                 </FormGroup>
 
               
@@ -117,7 +118,7 @@ class Login extends Component {
 
               
                 <div className="text-center ">
-                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
+                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Sign In</button>
                 </div>
 
             </Form>

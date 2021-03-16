@@ -8,9 +8,11 @@ import AboutUs from './pages/AboutUs';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import ExplorePage from "./pages/ExplorePage";
+import ProfileAddInfo from "./components/Cards/ProfileAddInfo";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import './index.css';
+import CardCompanyDetails from "./components/Cards/CardCompanyDetails";
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
           <Route path="/explore" component={ExplorePage} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/profileaddinfo" component={ProfileAddInfo} />
+          <Route path="/editinfo" component={CardCompanyDetails} />
         </Switch>
       </Router>
 
