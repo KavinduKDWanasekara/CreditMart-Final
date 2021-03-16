@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar"
 import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
+import CardCompanyDetails from "../components/Cards/CardCompanyDetails";
 
 export default function MyProfile() {
   return (
@@ -103,7 +104,7 @@ export default function MyProfile() {
             </div>
           </div>
         </section>
-        <ProfileAddInfo/>
+        <CardCompanyDetails/>
       </main>
 
  
