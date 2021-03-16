@@ -1,10 +1,10 @@
-import { data } from 'autoprefixer';
+
 import React, { Component } from 'react'
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
 
 
-export class ProfileAddInfo extends Component {
+class ProfileAddInfo extends Component {
 
     constructor(props) {
         super(props);
@@ -48,7 +48,7 @@ export class ProfileAddInfo extends Component {
         });
     }
     validate = () => {
-        const { data, errors } = this.state;
+        const { data } = this.state;
         let errors = {};
 
         if (data.year === '') errors.year = 'This field can not be blank.';
@@ -71,10 +71,7 @@ export class ProfileAddInfo extends Component {
 
         return errors;
     }
-    // changeHandler = (e) => {
-    //     this.setState ({[e.target.name]: e.target.value})
-    // }
-
+   
    
     handleSubmit = (e) => {
         e.preventDefault();
@@ -90,6 +87,8 @@ export class ProfileAddInfo extends Component {
             this.setState({ errors });
         }
     }
+
+
     render() {
         const { data, errors } = this.state;
         return (
@@ -100,6 +99,7 @@ export class ProfileAddInfo extends Component {
                     <div className=" mb-2 flex justify-center">
                         <table className=" text-center">
                             <tr>
+                            
                                 <div className="md:w-full px-1/2 text-left md:mb-0">
                                 <td>
                                     <label className="uppercase tracking-wide text-black text-xs font-bold mb-2">
@@ -119,12 +119,14 @@ export class ProfileAddInfo extends Component {
                                     </div>
                                 </td>
                                 </div>
+                               
                             </tr>
 
                             <tr>
+                          
                             <div className="md:w-full px-1/2 text-left md:mb-0">
                                 <td>
-                                    <label className="uppercase tracking-wide text-black text-xs font-bold mb-2">
+                                    <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="totCurrentAssets">
                                         Total current assets<span className="text-red-500 text-base"> *</span>
                                     </label>
                                 </td>
@@ -136,6 +138,7 @@ export class ProfileAddInfo extends Component {
                                     <FormFeedback>{errors.totCurrentAssets}</FormFeedback>
                                 </td>
                             </div>
+                            
                             </tr>
 
                             <tr>
@@ -348,7 +351,7 @@ export class ProfileAddInfo extends Component {
                     </div>
                 </Form>
             </div>
-        )
+        );
     }
 }
 
