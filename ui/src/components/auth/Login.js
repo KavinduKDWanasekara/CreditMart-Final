@@ -62,9 +62,10 @@ class Login extends Component {
 				password: data.password
 			})
 			.then((res) => {
-				localStorage.setItem('token', res.data.access);
+                
+				localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
-					'Token ' + localStorage.getItem('token');
+					'token' + localStorage.getItem('token');
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
