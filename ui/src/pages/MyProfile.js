@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar"
 import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
 import CardCompanyDetails from "../components/Cards/CardCompanyDetails";
 import { MDBBtn,  } from "mdbreact";
-import { Link } from "react-router-dom";
 
 export default function MyProfile() {
   return (
@@ -55,7 +54,7 @@ export default function MyProfile() {
                         <span className="text-sm text-gray-500">Comments</span>
                       </div>
                     </div>
-
+{/* 
 
   state={
     profileImg:'https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg'
@@ -68,7 +67,7 @@ export default function MyProfile() {
       }
     }
     reader.readAsDataURL(e.target.files[0])
-  };
+  }; */}
 
                 </div>
                 <div className="text-center mt-28">
