@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { isEmail } from 'validator';
+import axiosInstance from '../../axios';
 
 class Register extends Component {
 
@@ -13,7 +14,7 @@ class Register extends Component {
 
     getInitialState = () => ({
         data: {
-            userName: '',
+            username: '',
             email: '',
             password: '',
             confirmPassword: ''
@@ -38,7 +39,7 @@ class Register extends Component {
         const { data } = this.state;
         let errors = {};
 
-        if (data.userName === '') errors.userName = 'User Name can not be blank.';
+        if (data.username === '') errors.username = 'User Name can not be blank.';
        
         if (!isEmail(data.email)) errors.email = 'Email must be valid.';
         if (data.email === '') errors.email = 'Email can not be blank.';
@@ -50,6 +51,7 @@ class Register extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+     
 
         const { data } = this.state;
 
@@ -57,6 +59,17 @@ class Register extends Component {
 
         if (Object.keys(errors).length === 0) {
             console.log(data);
+            axiosInstance
+			.post(`api/users/`, {
+				username: data.username,
+				email: data.email,
+				password: data.password
+			})
+			.then((res) => {
+				this.props.history.push('/login');
+				console.log(res);
+				console.log(res.data);
+			}).catch(err => console.log("api Erorr: ", err.response )+alert(err.request.response));
             //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());
@@ -77,21 +90,21 @@ class Register extends Component {
   // width:'100%' 
   
 }}>
-<div class="bg-grey-lighter min-h-screen flex flex-col">
-<div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+<div className="bg-grey-lighter min-h-screen flex flex-col">
+<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
 
             <Form onSubmit={this.handleSubmit} className="w-72">
                 <FormGroup>
                 <label
-                      htmlFor="userName"
+                      htmlFor="username"
                       className="text-gray-600 text-md tracking-wide"
                     >
                       Username
               </label>
-                    <Input id="userName" value={data.userName} invalid={errors.userName ? true : false} name="userName" onChange={this.handleChange} />
-                    <FormFeedback>{errors.userName}</FormFeedback>
+                    <Input id="username" value={data.username} invalid={errors.username ? true : false} name="username" onChange={this.handleChange} />
+                    <FormFeedback>{errors.username}</FormFeedback>
                 </FormGroup>
 
                
@@ -115,7 +128,9 @@ class Register extends Component {
                     <FormFeedback>{errors.confirmPassword}</FormFeedback>
                 </FormGroup>
                 <div className="text-center ">
-                <button class="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
+
+                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
+
                 </div>
 
             </Form>

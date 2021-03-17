@@ -3,10 +3,13 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('Register', views.index),
-    path('Login', views.index),
-    path('Explore', views.index),
-    path('Contract', views.index),
-    path('Dashboard', views.index),
-    path('About', views.index),
+    path('register', views.index),
+    path('login', views.index),
+    path('explore', views.index),
+    path('contract', views.index),
+    path('dashboard', views.index),
+    path('about', views.index),
+    path('profile', views.index),
+    path('profileaddinfo', views.index),
+    path('editinfo', views.index)
 ]
