@@ -1,4 +1,6 @@
-import React from "react";
+// import React from "react";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
 import CardCompanyDetails from "../components/Cards/CardCompanyDetails";
@@ -55,6 +57,19 @@ export default function MyProfile() {
                     </div>
 
 
+  state={
+    profileImg:'https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg'
+  }
+  imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () =>{
+      if(reader.readyState === 2){
+        this.setState({profileImg: reader.result})
+      }
+    }
+    reader.readAsDataURL(e.target.files[0])
+  };
+
                 </div>
                 <div className="text-center mt-28">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
@@ -71,29 +86,59 @@ export default function MyProfile() {
                   <div className="mb-2 text-gray-700">
                     <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
                     077-125 4551
+
                   </div>
-                  <div className="mb-2 text-gray-700 mt-2">
-                    <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
-                    creditMart@gmail.com 
+                  <div className="text-right mt-1">
+                    <Link to='/profileEdit'><button type="button" class="btn btn-outline-dark">Edit Profile </button></Link>
+                    <button type="button" class="btn btn-outline-dark">Edit Profile Picture</button>
                   </div>
-                  <div className="inline-flex mb-2 text-gray-700 mt-2">
-                    <i className="text-lg text-gray-500 "></i>
-                     <img alt="rate1" src={('static/images/starOut.png')} className="h-8 w-8" />
-                     <img alt="rate2" src={('static/images/starOut.png')} className="h-8 w-8" />
-                     <img alt="rate3" src={('static/images/starOut.png')} className="h-8 w-8" />
-                     <img alt="rate4" src={('static/images/starOut.png')} className="h-8 w-8" />
-                     <img alt="rate5" src={('static/images/starOut.png')} className="h-8 w-8" />
+                  <div className="text-center mt-28">
+                  
+                     {/* <input type="file" accept="image/*" name="image-upload" id="input" onChange={this.imageHandler} />
+                     <div className="label">
+          				        <label className="image-upload" htmlFor="input">
+							                  	Add/Edit  Profile Picture
+						              </label>
+          			      </div> */}
+                        
+                    <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
+                      No Name
+                    </h3>
+                    <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+                      <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
+                      No Location
+                    </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
+                      No Bussiness Type 
+                    </div>
+                    <div className="mb-2 text-gray-700">
+                      <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
+                      No Mobile Number
+                    </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
+                      creditMart@gmail.com 
+                    </div>
+                    {/* <div className="inline-flex mb-2 text-gray-700 mt-2">
+                      <i className="text-lg text-gray-500 "></i>
+                       <img alt="rate1" src={('static/images/starOut.png')} className="h-8 w-8" />
+                       <img alt="rate2" src={('static/images/starOut.png')} className="h-8 w-8" />
+                       <img alt="rate3" src={('static/images/starOut.png')} className="h-8 w-8" />
+                       <img alt="rate4" src={('static/images/starOut.png')} className="h-8 w-8" />
+                       <img alt="rate5" src={('static/images/starOut.png')} className="h-8 w-8" />
+                    </div> */}
+                    
                   </div>
-                </div>
-                <div className="mt-10 py-10 border-t border-gray-300 text-center">
-                  <div className="flex flex-wrap justify-center">
-                    <div className="w-full lg:w-9/12 px-4">
-                      <p className="mb-4 text-lg leading-relaxed text-gray-800">
-                        We are a  credit rating agency (CRA, also called a ratings service) is a
-                         company that assigns credit ratings, which rate a debtor's ability to pay back debt by making timely
-                          principal and interest payments and the likelihood of default
-                      </p>
-                     
+                  
+                  <div className="mt-10 py-10 border-t border-gray-300 text-center">
+                    <div className="flex flex-wrap justify-center">
+                      <div className="w-full lg:w-9/12 px-4">
+                        <p className="mb-4 text-lg leading-relaxed text-gray-800">
+                          No Description
+                        </p>
+                       
+                      </div>
                     </div>
                   </div>
                 </div>

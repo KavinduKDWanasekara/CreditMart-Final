@@ -1,9 +1,11 @@
 
+
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 
 
 import ContractPage from './pages/ContractPage';
 import MyProfile from './pages/MyProfile';
+import MyProfileEditForm from './pages/MyProfileEditForm';
 import AboutUs from './pages/AboutUs';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -24,6 +26,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/profile" component={MyProfile} />
+          <Route path="/profileEdit" component={MyProfileEditForm} />
           <Route path="/about" component={AboutUs} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/contract" component={ContractPage} />
