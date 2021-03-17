@@ -17,24 +17,47 @@ export class MyProfile extends Component {
     super(props)
   
     this.state = {
-       posts:[]
+
+       company_name:"",
+       business_type:"",
+       contact_number:"",
+       location:"",
+       description:""
+
     }
   }
 
   componentDidMount(){
     // axios.get('https://jsonplaceholder.typicode.com/posts')
-    axios.get('http://localhost:8000/api/profile')
-    .then(response =>{
-      console.log(response)
-      this.setState({posts: response.data})
+    axios.get('http://localhost:8000/api/profile', {
+      headers: {
+        'Authorization': 'Token '+localStorage.getItem('token'),
+        Accept: "application/json"
+      }
     })
+    
+    .then(response =>{
+
+      console.log( response.data )
+      this.setState( {
+        ...this.state,
+        company_name : response.data.company.company_name,
+        business_type : response.data.company.business_type,
+        contact_number : response.data.company.contact_number,
+        location : response.data.company.location,
+        description: response.data.company.description
+
+         } )
+
+    })
+
     .catch(error =>{
       console.log(error)
     })
   }
   
   render() {
-    const {posts} =this.state
+    
     return (
       <main className="profile-page">
     <Navbar/>
@@ -54,14 +77,14 @@ export class MyProfile extends Component {
                       />
                     </div>
                   </div>
-                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center ">
+                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-right ">
                     <div className="py-6 px-3 mt-32 sm:mt-0">
                     <Link  to="/profileaddinfo"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12">Enter Financial Data</MDBBtn></Link>
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                   </div>
-
+{/* 
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                       <div className="mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
@@ -81,7 +104,7 @@ export class MyProfile extends Component {
                         </span>
                         <span className="text-sm text-gray-500">Comments</span>
                       </div>
-                    </div>
+                    </div> */}
 
 
 {/* 
@@ -103,22 +126,22 @@ export class MyProfile extends Component {
 
                 </div>
                 <div className="text-center mt-28">
-                  <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
-                    Credit Mart
+                  {/* <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
+                  
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>
-                    Los Angeles, California ,US
+                    {this.state.location}
                   </div>
                   <div className="mb-2 text-gray-700 mt-2">
                     <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                    Credit Managment 
+                    {this.state.location}
                   </div>
                   <div className="mb-2 text-gray-700">
                     <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
-                    077-125 4551
+                    {this.state.location}
 
-                  </div>
+                  </div> */}
                   <div className="text-right mt-1">
                     <Link to='/profileEdit'><button type="button" class="btn btn-outline-dark">Edit Profile </button></Link>
                     <button type="button" class="btn btn-outline-dark">Edit Profile Picture</button>
@@ -133,23 +156,23 @@ export class MyProfile extends Component {
           			      </div> */}
                         
                     <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
-                      No Name
+                    {this.state.company_name}
                     </h3>
                     <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                       <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                      No Location
+                      {this.state.location}
                     </div>
                     <div className="mb-2 text-gray-700 mt-2">
                       <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                      No Bussiness Type 
+                      {this.state.business_type}
                     </div>
                     <div className="mb-2 text-gray-700">
                       <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
-                      No Mobile Number
+                      {this.state.contact_number}
                     </div>
                     <div className="mb-2 text-gray-700 mt-2">
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
-                      creditMart@gmail.com 
+                      {this.state.location}
                     </div>
                     {/* <div className="inline-flex mb-2 text-gray-700 mt-2">
                       <i className="text-lg text-gray-500 "></i>
@@ -166,7 +189,7 @@ export class MyProfile extends Component {
                     <div className="flex flex-wrap justify-center">
                       <div className="w-full lg:w-9/12 px-4">
                         <p className="mb-4 text-lg leading-relaxed text-gray-800">
-                          No Description
+                        {this.state.description}
                         </p>
                        
                       </div>
@@ -178,13 +201,7 @@ export class MyProfile extends Component {
           </div>
         </section>
         <CardCompanyDetails/>
-        <div>
-          {
-            posts.length ?
-            posts.map(post =><div key={post.id}>{post.userId}</div>):
-            null
-          }
-        </div>
+        
       </main>
     )
   }
