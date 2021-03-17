@@ -70,7 +70,6 @@ import axiosInstance from '../../axios';
 				console.log(res);
 				console.log(res.data);
 			});
-            //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
