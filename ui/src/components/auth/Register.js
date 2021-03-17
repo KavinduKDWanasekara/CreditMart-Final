@@ -7,9 +7,8 @@ import axiosInstance from '../../axios';
 
 class Register extends Component {
 
-    constructor(props) {
+    constructor(props){
         super(props);
-
         this.state = this.getInitialState();
     }
 
