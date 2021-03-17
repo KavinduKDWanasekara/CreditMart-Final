@@ -5,15 +5,41 @@ import Navbar from "../components/Navbar"
 import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
 import CardCompanyDetails from "../components/Cards/CardCompanyDetails";
 import { MDBBtn,  } from "mdbreact";
-import { Link } from "react-router-dom";
+import axios from 'axios'
+// import { Link } from "react-router-dom";
 
-export default function MyProfile() {
-  return (
+// import React, { Component } from 'react'
+
+export class MyProfile extends Component {
+
+  constructor(props) {
+    super(props)
   
+    this.state = {
+       posts:[]
+    }
+  }
+
+  componentDidMount(){
+    // axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('http://localhost:8000/api/profile')
+    .then(response =>{
+      console.log(response)
+      this.setState({posts: response.data})
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
+  
+  render() {
+    const {posts} =this.state
+    return (
       <main className="profile-page">
     <Navbar/>
 
         <section className="relative py-96 bg-gray-700">
+        
           <div className="container mx-auto px-14">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
               <div className="0" >
@@ -56,7 +82,7 @@ export default function MyProfile() {
                       </div>
                     </div>
 
-
+{/* 
   state={
     profileImg:'https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg'
   }
@@ -68,7 +94,7 @@ export default function MyProfile() {
       }
     }
     reader.readAsDataURL(e.target.files[0])
-  };
+  }; */}
 
                 </div>
                 <div className="text-center mt-28">
@@ -147,8 +173,27 @@ export default function MyProfile() {
           </div>
         </section>
         <CardCompanyDetails/>
+        <div>
+          {
+            posts.length ?
+            posts.map(post =><div key={post.id}>{post.userId}</div>):
+            null
+          }
+        </div>
       </main>
+    )
+  }
+}
+
+export default MyProfile
+
+
+// export default function MyProfile() {
+  
+//   return (
+  
+      
 
  
-  );
-}
+//   );
+// }

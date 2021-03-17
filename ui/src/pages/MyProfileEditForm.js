@@ -85,14 +85,14 @@ handleSubmit = (e) => {
               <MDBInput
                 label="Your Company Name"
                 id = "companyname"
-                invalid={errors.companyname ? true : false}
+                // invalid={errors.companyname ? true : false}
                 value={this.companyname}
                 onChange={this.handleChange}
                 name = "companyname"
                 type="text"
                 
               />
-              <h1>{errors.companyname}</h1>
+              {/* <h1>{errors.companyname}</h1> */}
               <MDBInput
                 label="Your Location"
                 id = "location"
