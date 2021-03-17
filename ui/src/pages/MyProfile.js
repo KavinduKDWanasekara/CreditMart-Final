@@ -8,6 +8,7 @@ import { MDBBtn,  } from "mdbreact";
 import axios from 'axios'
 // import { Link } from "react-router-dom";
 
+
 // import React, { Component } from 'react'
 
 export class MyProfile extends Component {
@@ -82,7 +83,11 @@ export class MyProfile extends Component {
                       </div>
                     </div>
 
+
 {/* 
+
+{/* 
+
   state={
     profileImg:'https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg'
   }
