@@ -4,47 +4,43 @@ import Chart from "chart.js";
 export default function CardLineChart() {
   React.useEffect(() => {
     fetch(
-      'https://jsonplaceholder.typicode.com/posts',
+      'http://127.0.0.1:8000/api/pd',
       {
         method: "GET",
         headers: new Headers({
-          Accept: "application/vnd.github.vloak-preview"
+          Authorization : 'Token '+localStorage.getItem('token'), 
+          Accept: "application/json"
         })
       })
     .then(res => res.json())
     .then(response => {
-      // setCommitHistory(response.items);
-      // setIsLoading(false);
-      console.log(response[2]);
+    
+      console.log(response);
+      
     })
-    .catch(console.error());
+    .catch((error) => {
+      console.error(error);
+    });
     var config = {
       type: "line",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
         ],
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: "PD",
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
-            fill: false,
-          },
-          {
-            label: new Date().getFullYear() - 1,
-            fill: false,
-            backgroundColor: "#fff",
-            borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
-          },
+            data: [0.8, 0.6, 0.9, 0.7, 1, 0.8, 0.5],
+            fill: true,
+          }
         ],
       },
       options: {
@@ -52,7 +48,7 @@ export default function CardLineChart() {
         responsive: true,
         title: {
           display: false,
-          text: "Sales Charts",
+          text: "Probability of Default Chart",
           fontColor: "white",
         },
         legend: {
@@ -130,7 +126,7 @@ export default function CardLineChart() {
               <h6 className="uppercase text-gray-200 mb-1 text-xs font-semibold">
                 Overview
               </h6>
-              <h2 className="text-white text-xl font-semibold">Sales value</h2>
+              <h2 className="text-white text-xl font-semibold">Probability of Default Chart</h2>
             </div>
           </div>
         </div>
