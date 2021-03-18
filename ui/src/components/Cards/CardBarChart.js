@@ -1,51 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Chart from "chart.js";
 import axiosInstance from '../../axios';
 
 export default function CardBarChart() {
-
+  const [yearArray, setYearArray] = useState([]);
 
   React.useEffect(() => {
-    fetch(
-      'http://127.0.0.1:8000/api/pd',
-      {
-        method: "GET",
-        headers: new Headers({
-          Authorization : 'Token '+localStorage.getItem('token'), 
-          Accept: "application/json"
-        })
+    
+    let salesArray = [];
+    axiosInstance
+			.get(`api/pd`)
+			.then((response) => {
+        console.log(response.data);
+        let tmpArrayYear = [];
+        let tmpArraySales = [];
+        console.log(response.data.financial_data.length)
+            for (var i = 0; i < response.data.financial_data.length; i++) {
+              tmpArrayYear.push(response.data.financial_data[i].financial_year.toString())
+              tmpArraySales.push(response.data.financial_data[i].pd)
+            }
+            // console.log(tmpArrayYear)
+
+        setYearArray = tmpArrayYear;
+        salesArray = tmpArraySales;
+
+        console.log("Year array : ",yearArray)
+        console.log("Sales array : ",salesArray)
+        // console.log(response.status);
+        // console.log(response.statusText);
+        // console.log(response.headers);
+        // console.log(response.config);
       })
-    .then(res => res.json())
-    .then(response => {
-      // setCommitHistory(response.items);
-      // setIsLoading(false);
-      console.log(response);
-    })
-    .catch(console.error());
+      .catch((error) => {
+        console.log(error);
+      });
   
     let config = {
       type: "bar",
       data: {
-        labels: [
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-        ],
+        labels: setYearArray,
         datasets: [
           {
             label: "Sales",
             backgroundColor: "#ed64a6",
             borderColor: "#ed64a6",
-            data: [30, 78, 56, 34, 100, 45, 13],
+            data: salesArray,
             fill: false,
             barThickness: 8,
           }
         ],
       },
+      
       options: {
         maintainAspectRatio: false,
         responsive: true,

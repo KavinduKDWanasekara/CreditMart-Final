@@ -65,7 +65,7 @@ class Login extends Component {
                 
 				localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
-					'token' + localStorage.getItem('token');
+					'Token ' + localStorage.getItem('token');
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
