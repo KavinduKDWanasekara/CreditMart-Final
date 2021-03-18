@@ -1,23 +1,25 @@
 import React from "react";
 import Chart from "chart.js";
+import axiosInstance from '../../axios';
 
 export default function CardBarChart() {
+
+
   React.useEffect(() => {
-    fetch(
-      'https://jsonplaceholder.typicode.com/posts',
-      {
-        method: "GET",
-        headers: new Headers({
-          Accept: "application/vnd.github.vloak-preview"
-        })
-      })
-    .then(res => res.json())
-    .then(response => {
-      // setCommitHistory(response.items);
-      // setIsLoading(false);
-      console.log(response[6]);
-    })
-    .catch(console.error());
+      axiosInstance
+			.get(`auth/`, {
+				username: data.username,
+				password: data.password
+			})
+			.then((res) => {
+                
+				localStorage.setItem('token', res.data.token);
+				axiosInstance.defaults.headers['Authorization'] =
+					'token' + localStorage.getItem('token');
+                this.props.history.push('/dashboard');
+				console.log(res);
+				console.log(res.data);
+			}).catch(err => console.log("api Erorr: ", err.response)+alert(err.request.response));
   
     let config = {
       type: "bar",
