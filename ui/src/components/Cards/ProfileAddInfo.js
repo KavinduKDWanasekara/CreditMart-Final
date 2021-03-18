@@ -119,7 +119,7 @@ export class ProfileAddInfo extends Component {
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
-			.post(`api/fdetails/`, {
+			.post(`api/fdetails`, {
 				financial_year: data.financial_year,
 				current_assets: data.current_assets,
 				current_liabilities: data.current_liabilities,

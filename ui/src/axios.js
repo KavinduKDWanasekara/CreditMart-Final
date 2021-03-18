@@ -4,7 +4,7 @@ const baseURL = 'http://127.0.0.1:8000/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
-	timeout: 10000,
+	// timeout: 10000,
 	headers: {
 		Authorization: localStorage.getItem('token')
 			? 'Token ' + localStorage.getItem('token')

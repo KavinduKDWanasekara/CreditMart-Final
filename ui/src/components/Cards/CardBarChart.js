@@ -3,26 +3,23 @@ import Chart from "chart.js";
 import axiosInstance from '../../axios';
 
 export default function CardBarChart() {
-  const [yearArray, setYearArray] = useState([]);
+  
 
   React.useEffect(() => {
-    
+    let yearArray = [];
     let salesArray = [];
+
     axiosInstance
 			.get(`api/pd`)
 			.then((response) => {
         console.log(response.data);
-        let tmpArrayYear = [];
-        let tmpArraySales = [];
+   
         console.log(response.data.financial_data.length)
             for (var i = 0; i < response.data.financial_data.length; i++) {
-              tmpArrayYear.push(response.data.financial_data[i].financial_year.toString())
-              tmpArraySales.push(response.data.financial_data[i].pd)
+              yearArray.push(response.data.financial_data[i].financial_year.toString())
+              salesArray.push(response.data.financial_data[i].pd)
             }
             // console.log(tmpArrayYear)
-
-        setYearArray = tmpArrayYear;
-        salesArray = tmpArraySales;
 
         console.log("Year array : ",yearArray)
         console.log("Sales array : ",salesArray)
@@ -38,7 +35,7 @@ export default function CardBarChart() {
     let config = {
       type: "bar",
       data: {
-        labels: setYearArray,
+        labels: yearArray,
         datasets: [
           {
             label: "Sales",

@@ -1,44 +1,41 @@
 import React from "react";
 import Chart from "chart.js";
+import axiosInstance from '../../axios';
+ 
 
 export default function CardLineChart() {
   React.useEffect(() => {
-    fetch(
-      'http://127.0.0.1:8000/api/pd',
-      {
-        method: "GET",
-        headers: new Headers({
-          Authorization : 'Token '+localStorage.getItem('token'), 
-          Accept: "application/json"
-        })
+    let yearArray = [];
+    let pdArray = [];
+    axiosInstance
+			.get(`api/pd`)
+			.then((response) => {
+        console.log(response.data);
+   
+        console.log(response.data.financial_data.length)
+            for (var i = 0; i < response.data.financial_data.length; i++) {
+              yearArray.push(response.data.financial_data[i].financial_year.toString())
+              pdArray.push(response.data.financial_data[i].pd)
+            }
+          
+        console.log("Year array : ",yearArray)
+        console.log("pd array : ",pdArray)
+
       })
-    .then(res => res.json())
-    .then(response => {
-    
-      console.log(response);
-      
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .catch((error) => {
+        console.log(error);
+      });
+
     var config = {
       type: "line",
       data: {
-        labels: [
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-        ],
+        labels: yearArray,
         datasets: [
           {
             label: "PD",
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [0.8, 0.6, 0.9, 0.7, 1, 0.8, 0.5],
+            data: pdArray,
             fill: true,
           }
         ],
@@ -131,7 +128,7 @@ export default function CardLineChart() {
           </div>
         </div>
         <div className="p-4 flex-auto">
-          {/* Chart */}
+        
           <div className="relative h-72">
             <canvas id="line-chart" ></canvas>
           </div>
