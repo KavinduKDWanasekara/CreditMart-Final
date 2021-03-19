@@ -81,10 +81,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'CreditMart',
-        'USER': 'Admin',
-        'PASSWORD': '@Superman',
-        'PORT': '21835',
-        'HOST': 'mysql-21835-0.cloudclusters.net'
+        'USER': 'admin',
+        'PASSWORD': '12345678',
+        'PORT': '24110',
+        'HOST': 'mysql-24110-0.cloudclusters.net'
     }
 }
 
