@@ -1,50 +1,43 @@
 import React from "react";
 import Chart from "chart.js";
+import axiosInstance from '../../axios';
+ 
 
 export default function CardLineChart() {
   React.useEffect(() => {
-    fetch(
-      'https://jsonplaceholder.typicode.com/posts',
-      {
-        method: "GET",
-        headers: new Headers({
-          Accept: "application/vnd.github.vloak-preview"
-        })
+    let yearArray = [];
+    let pdArray = [];
+    axiosInstance
+			.get(`api/pd`)
+			.then((response) => {
+        console.log(response.data);
+   
+        console.log(response.data.financial_data.length)
+            for (var i = 0; i < response.data.financial_data.length; i++) {
+              yearArray.push(response.data.financial_data[i].financial_year.toString())
+              pdArray.push(response.data.financial_data[i].pd)
+            }
+          
+        console.log("Year array : ",yearArray)
+        console.log("pd array : ",pdArray)
+
       })
-    .then(res => res.json())
-    .then(response => {
-      // setCommitHistory(response.items);
-      // setIsLoading(false);
-      console.log(response[2]);
-    })
-    .catch(console.error());
+      .catch((error) => {
+        console.log(error);
+      });
+
     var config = {
       type: "line",
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
+        labels: yearArray,
         datasets: [
           {
-            label: new Date().getFullYear(),
+            label: "PD",
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75],
-            fill: false,
-          },
-          {
-            label: new Date().getFullYear() - 1,
-            fill: false,
-            backgroundColor: "#fff",
-            borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87],
-          },
+            data: pdArray,
+            fill: true,
+          }
         ],
       },
       options: {
@@ -52,7 +45,7 @@ export default function CardLineChart() {
         responsive: true,
         title: {
           display: false,
-          text: "Sales Charts",
+          text: "Probability of Default Chart",
           fontColor: "white",
         },
         legend: {
@@ -130,12 +123,12 @@ export default function CardLineChart() {
               <h6 className="uppercase text-gray-200 mb-1 text-xs font-semibold">
                 Overview
               </h6>
-              <h2 className="text-white text-xl font-semibold">Sales value</h2>
+              <h2 className="text-white text-xl font-semibold">Probability of Default Chart</h2>
             </div>
           </div>
         </div>
         <div className="p-4 flex-auto">
-          {/* Chart */}
+        
           <div className="relative h-72">
             <canvas id="line-chart" ></canvas>
           </div>

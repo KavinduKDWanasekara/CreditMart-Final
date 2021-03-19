@@ -70,7 +70,6 @@ import axiosInstance from '../../axios';
 				console.log(res);
 				console.log(res.data);
 			});
-            //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
@@ -176,7 +175,14 @@ import axiosInstance from '../../axios';
                                 </td>
                                 <td>
                                 <FormGroup>
-                                        <input name="business_type" value={data.business_type} onChange={this.changeHandler} invalid={errors.business_type ? 1 : 0} className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" id="business_type" type="text" placeholder="Enter Business Type"/>
+                                        <input name="business_type" 
+                                        value={data.business_type} 
+                                        onChange={this.changeHandler} 
+                                        invalid={errors.business_type ? 1 : 0} 
+                                        className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" 
+                                        id="business_type" 
+                                        type="text" 
+                                        placeholder="Enter Business Type"/>
                                         <p className="text-red-500 text-xs font-semibold ml-4">{errors.business_type}</p>
 
                                 </FormGroup>
@@ -190,19 +196,18 @@ import axiosInstance from '../../axios';
                                
                             
                                 <td>
-                                    <label className="uppercase tracking-wide text-black text-xs font-bold mb-2">
+                                    <label htmlFor="description" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
                                     Description<span className="text-red-500 text-base"> *</span>
                                     </label>
                                 </td>
                                 <td>
                                 <FormGroup>
-                                        <input name="description" 
+                                        <textarea name="description" 
                                         value={data.description} 
                                         onChange={this.changeHandler} 
                                         invalid={errors.description ? 1 : 0} 
-                                        className="w-96 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" 
-                                        id="description" 
-                                        type="text" 
+                                        className="w-96 h-32 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" 
+                                        id="description"  
                                         placeholder="Enter Company Description"/>
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.description}</p>
                                 </FormGroup>
