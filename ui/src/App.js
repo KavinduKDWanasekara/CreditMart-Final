@@ -1,8 +1,6 @@
 
 
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
-
-
 import ContractPage from './pages/ContractPage';
 import MyProfile from './pages/MyProfile';
 import AboutUs from './pages/AboutUs';

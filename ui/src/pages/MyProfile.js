@@ -1,19 +1,19 @@
-// import React from "react";
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
-import ProfileAddInfo from "../components/Cards/ProfileAddInfo";
 import CardCompanyDetails from "../components/Cards/CardCompanyDetails";
 import { MDBBtn,  } from "mdbreact";
 import axios from 'axios'
-// import { Link } from "react-router-dom";
 
 
-// import React, { Component } from 'react'
+
+var s = "No name" ;
+
 
 export class MyProfile extends Component {
 
   constructor(props) {
+    
     super(props)
   
     this.state = {
@@ -25,21 +25,28 @@ export class MyProfile extends Component {
        description:""
 
     }
+
   }
 
   componentDidMount(){
-    // axios.get('https://jsonplaceholder.typicode.com/posts')
+    
     axios.get('http://localhost:8000/api/profile', {
-      headers: {
+
+      headers : {
+
         'Authorization': 'Token '+localStorage.getItem('token'),
         Accept: "application/json"
+
       }
+
     })
     
-    .then(response =>{
+    .then(response => {
 
       console.log( response.data )
-      this.setState( {
+
+      this.setState ( {
+
         ...this.state,
         company_name : response.data.company.company_name,
         business_type : response.data.company.business_type,
@@ -52,16 +59,20 @@ export class MyProfile extends Component {
     })
 
     .catch(error =>{
+
       console.log(error)
+
     })
   }
+
+  
   
   render() {
     
     return (
-      <main className="profile-page">
-    <Navbar/>
 
+      <main className="profile-page">
+        <Navbar/>
         <section className="relative py-96 bg-gray-700">
         
           <div className="container mx-auto px-14">
@@ -84,77 +95,13 @@ export class MyProfile extends Component {
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                   </div>
-{/* 
-                    <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          22
-                        </span>
-                        <span className="text-sm text-gray-500">Companies</span>
-                      </div>
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          10
-                        </span>
-                        <span className="text-sm text-gray-500">Likes</span>
-                      </div>
-                      <div className="lg:mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          89
-                        </span>
-                        <span className="text-sm text-gray-500">Comments</span>
-                      </div>
-                    </div> */}
-
-
-{/* 
-
-{/* 
-
-  state={
-    profileImg:'https://retailx.com/wp-content/uploads/2019/12/iStock-476085198.jpg'
-  }
-  imageHandler = (e) => {
-    const reader = new FileReader();
-    reader.onload = () =>{
-      if(reader.readyState === 2){
-        this.setState({profileImg: reader.result})
-      }
-    }
-    reader.readAsDataURL(e.target.files[0])
-  }; */}
-
                 </div>
                 <div className="text-center mt-28">
-                  {/* <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
-                  
-                  </h3>
-                  <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>
-                    {this.state.location}
-                  </div>
-                  <div className="mb-2 text-gray-700 mt-2">
-                    <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                    {this.state.location}
-                  </div>
-                  <div className="mb-2 text-gray-700">
-                    <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
-                    {this.state.location}
-
-                  </div> */}
                   <div className="text-right mt-1">
                     <Link to='/profileEdit'><button type="button" class="btn btn-outline-dark">Edit Profile </button></Link>
                     <button type="button" class="btn btn-outline-dark">Edit Profile Picture</button>
                   </div>
                   <div className="text-center mt-28">
-                  
-                     {/* <input type="file" accept="image/*" name="image-upload" id="input" onChange={this.imageHandler} />
-                     <div className="label">
-          				        <label className="image-upload" htmlFor="input">
-							                  	Add/Edit  Profile Picture
-						              </label>
-          			      </div> */}
-                        
                     <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">
                     {this.state.company_name}
                     </h3>
@@ -174,15 +121,6 @@ export class MyProfile extends Component {
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
                       {this.state.location}
                     </div>
-                    {/* <div className="inline-flex mb-2 text-gray-700 mt-2">
-                      <i className="text-lg text-gray-500 "></i>
-                       <img alt="rate1" src={('static/images/starOut.png')} className="h-8 w-8" />
-                       <img alt="rate2" src={('static/images/starOut.png')} className="h-8 w-8" />
-                       <img alt="rate3" src={('static/images/starOut.png')} className="h-8 w-8" />
-                       <img alt="rate4" src={('static/images/starOut.png')} className="h-8 w-8" />
-                       <img alt="rate5" src={('static/images/starOut.png')} className="h-8 w-8" />
-                    </div> */}
-                    
                   </div>
                   
                   <div className="mt-10 py-10 border-t border-gray-300 text-center">
@@ -209,13 +147,7 @@ export class MyProfile extends Component {
 
 export default MyProfile
 
-
-// export default function MyProfile() {
-  
-//   return (
   
       
 
- 
-//   );
-// }
+
