@@ -7,9 +7,6 @@ import axios from 'axios'
 
 
 
-var s = "No name" ;
-
-
 export class MyProfile extends Component {
 
   constructor(props) {
@@ -78,8 +75,7 @@ export class MyProfile extends Component {
           <div className="container mx-auto px-14">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
               <div className="0" >
-                <div className="flex flex-wrap-reverse">
-                  <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+              {/* <div className="content-center	align-content: center">
                     <div className="relative flex items-center justify-center pl-36 mr-8 ">
                       <img
                         alt="img"
@@ -87,12 +83,19 @@ export class MyProfile extends Component {
                         className="shadow-xl rounded-full h-36 w-64 align-middle border-none absolute mt-10"
                       />
                     </div>
-                  </div>
-                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-right ">
-                    <div className="py-6 px-3 mt-32 sm:mt-0">
-                    <Link  to="/profileaddinfo"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12">Enter Financial Data</MDBBtn></Link>
+                  </div> */}
+                  <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                    <div className="relative">
+                      <img
+                        alt="..."
+                        src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
+                        className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                      />
                     </div>
                   </div>
+                <div className="flex flex-wrap-reverse">
+                  
+                  
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                   </div>
                 </div>
@@ -100,6 +103,11 @@ export class MyProfile extends Component {
                   <div className="text-right mt-1">
                     <Link to='/profileEdit'><button type="button" class="btn btn-outline-dark">Edit Profile </button></Link>
                     <button type="button" class="btn btn-outline-dark">Edit Profile Picture</button>
+                  </div>
+                  <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-right ">
+                    <div className="py-6 px-3 mt-32 sm:mt-0">
+                    <Link  to="/profileaddinfo"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12">Enter Financial Data</MDBBtn></Link>
+                    </div>
                   </div>
                   <div className="text-center mt-28">
                     <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 ">

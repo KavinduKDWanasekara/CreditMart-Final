@@ -3,6 +3,7 @@
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 import ContractPage from './pages/ContractPage';
 import MyProfile from './pages/MyProfile';
+import MyProfileNew from './pages/MyProfileNew';
 import AboutUs from './pages/AboutUs';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/profile" component={MyProfile} />
+          <Route path="/profile2" component={MyProfileNew} />
           <Route path="/about" component={AboutUs} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/contract" component={ContractPage} />
