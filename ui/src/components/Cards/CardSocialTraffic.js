@@ -133,7 +133,7 @@ export default function CardSocialTraffic() {
                   <div className="flex items-center">
                     <span className="mr-2">30%</span>
                     <div className="relative w-full">
-                      <div className="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
+                      <div className="overflow-hidden h-2 text-xs flex rounded bg-green-200">
                         <div
                           style={{ width: "30%" }}
                           className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
