@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, FormGroup, FormFeedback } from 'reactstrap'
+import { Form, FormGroup } from 'reactstrap'
 import axiosInstance from '../../axios';
 
  class CardCompanyDetails extends Component {
@@ -50,7 +50,6 @@ import axiosInstance from '../../axios';
     handleSubmit = (e) => {
         
         e.preventDefault();
-     
 
         const { data } = this.state;
 
