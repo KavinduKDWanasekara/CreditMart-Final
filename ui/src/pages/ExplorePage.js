@@ -3,8 +3,8 @@ import axiosInstance from './../axios';
 import Navbar from '../components/Navbar'
 import CardExplorePage from "../components/Cards/CardExplorePage";
 
-import { MDBCol, MDBFormInline, MDBIcon, MDBBtn  } from "mdbreact";
 import Footer from '../components/Footer';
+import { Form } from 'reactstrap';
 
 class ExplorePage extends Component{
 
@@ -38,7 +38,7 @@ class ExplorePage extends Component{
         const { data } = this.state;
         let errors = {};
 
-        if (data.search === '') errors.search = 'Field can not be blank.';
+        if (data.search === '') errors.search = 'Please enter company name to search.';
         
         return errors;
     }
@@ -72,25 +72,35 @@ render(){
     return (
         <div>
             <Navbar/>
-            <div>
-            <MDBCol>
-                <MDBFormInline onSubmit={this.handleSubmit} className="md-form flex justify-center">
-                    <MDBIcon icon="search" />
-                    <input 
-                    value={data.search}
-                    invalid={errors.company_name ? 1 : 0} 
-                    onChange={this.changeHandler} 
-                    className="form-control ml-3"
-                    placeholder="Search" 
-                    aria-label="Search"/>
-                    <MDBBtn color="blue" type="submit" className="rounded-3xl p-2 w-24 h-9">
-                        Search
-                    </MDBBtn>
-                    <p className="text-red-500 text-xs font-semibold ml-4">{errors.search}</p>
+            
 
-                </MDBFormInline>
-            </MDBCol>
-            </div>
+
+            <Form onSubmit={this.handleSubmit} className="md-form flex justify-center">
+                <div className="text-center flex justify-center">
+                    <input 
+                        value={data.search}
+                        invalid={errors.company_name ? 1 : 0} 
+                        onChange={this.changeHandler} 
+                        className=" w-80 text-gray-700 form-control ml-3 px-10" 
+                        id="search" 
+                        type="text" 
+                        placeholder="Search"/>
+                        
+                    <div className="p-4">
+                        <button className="bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center"
+                        type="submit">
+                            <i className="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </Form>
+                <p className="text-red-500 text-xs font-semibold md-form flex justify-center -ml-44">
+                    {errors.search}
+                </p>
+
+
+
             <div className="container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
                 <CardExplorePage/>
