@@ -75,36 +75,36 @@ export default function CardBarChart() {
             {
               display: true,
               scaleLabel: {
-                // display: true,
-                // labelString: "Month",
+                display: true,
+                labelString: "Year",
               },
-              // gridLines: {
-              //   drawBorder: false,
-              //   borderDash: [0],
-              //   borderDashOffset: [0],
-              //   color: "rgba(33, 37, 41, 0.3)",
-              //   zeroLineColor: "rgba(33, 37, 41, 0.3)",
-              //   zeroLineBorderDash: [2],
-              //   zeroLineBorderDashOffset: [2],
-              // },
+              gridLines: {
+                drawBorder: false,
+                borderDash: [0],
+                borderDashOffset: [0],
+                color: "rgba(33, 37, 41, 0.3)",
+                zeroLineColor: "rgba(33, 37, 41, 0.3)",
+                zeroLineBorderDash: [2],
+                zeroLineBorderDashOffset: [2],
+              },
             },
           ],
           yAxes: [
             {
               display: true,
               scaleLabel: {
-                // display: false,
-                // labelString: "Value",
+                display: false,
+                labelString: "Sales",
               },
-              // gridLines: {
-              //   borderDash: [2],
-              //   drawBorder: false,
-              //   borderDashOffset: [2],
-              //   color: "rgba(33, 37, 41, 0.2)",
-              //   zeroLineColor: "rgba(33, 37, 41, 0.15)",
-              //   zeroLineBorderDash: [2],
-              //   zeroLineBorderDashOffset: [2],
-              // },
+              gridLines: {
+                borderDash: [2],
+                drawBorder: false,
+                borderDashOffset: [2],
+                color: "rgba(33, 37, 41, 0.2)",
+                zeroLineColor: "rgba(33, 37, 41, 0.15)",
+                zeroLineBorderDash: [2],
+                zeroLineBorderDashOffset: [2],
+              },
             },
           ],
         },
@@ -112,6 +112,8 @@ export default function CardBarChart() {
     };
     let ctx = document.getElementById("bar-chart").getContext("2d");
     window.myBar = new Chart(ctx, config);
+
+
   }, []);
 
 
@@ -131,7 +133,7 @@ export default function CardBarChart() {
           </div>
         </div>
         <div className="p-4 flex-auto">
-          {/* Chart */}
+       
           <div className="relative h-72">
             <canvas id="bar-chart"></canvas>
           </div>

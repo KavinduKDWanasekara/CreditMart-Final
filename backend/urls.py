@@ -1,17 +1,18 @@
 from django.urls import path
-from . import views
 from rest_framework import routers
-from .views import UserViewSet, CompanyViewSet, Logout, Profile, probability_of_default, FinancialDetail
+from backend.views.user_views import UserViewSet, Logout, Profile, SearchProfile
+from backend.views.financial_views import ProbabilityOFDefault, FinancialDetail, CreditSales
 from django.conf.urls import include
 
 router = routers.DefaultRouter()
 router.register('users', UserViewSet)
-router.register('companies', CompanyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('logout', Logout.as_view()),
     path('profile', Profile.as_view()),
     path('fdetails', FinancialDetail.as_view()),
-    path('pd', probability_of_default)
+    path('pd', ProbabilityOFDefault.as_view()),
+    path('sales', CreditSales.as_view()),
+    path('search', SearchProfile.as_view()),
 ]

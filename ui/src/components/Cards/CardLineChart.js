@@ -4,115 +4,135 @@ import axiosInstance from '../../axios';
  
 
 export default function CardLineChart() {
+
+  let yearArray = [];
+  let pdArray = [];
+ 
+  //sleep fun
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
   React.useEffect(() => {
-    let yearArray = [];
-    let pdArray = [];
+  
     axiosInstance
-			.get(`api/pd`)
-			.then((response) => {
-        console.log(response.data);
-   
-        console.log(response.data.financial_data.length)
-            for (var i = 0; i < response.data.financial_data.length; i++) {
-              yearArray.push(response.data.financial_data[i].financial_year.toString())
-              pdArray.push(response.data.financial_data[i].pd)
-            }
-          
-        console.log("Year array : ",yearArray)
-        console.log("pd array : ",pdArray)
-
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    var config = {
-      type: "line",
-      data: {
-        labels: yearArray,
-        datasets: [
-          {
-            label: "PD",
-            backgroundColor: "#4c51bf",
-            borderColor: "#4c51bf",
-            data: pdArray,
-            fill: true,
+    .get(`api/pd`)
+    .then((response) => {
+      console.log(response.data);
+ 
+      console.log(response.data.financial_data.length)
+          for (var i = 0; i < response.data.financial_data.length; i++) {
+            yearArray.push(response.data.financial_data[i].financial_year.toString())
+            pdArray.push(response.data.financial_data[i].pd)
           }
-        ],
-      },
-      options: {
-        maintainAspectRatio: false,
-        responsive: true,
-        title: {
-          display: false,
-          text: "Probability of Default Chart",
-          fontColor: "white",
-        },
-        legend: {
-          labels: {
-            fontColor: "white",
+        
+      console.log("Year array : ",yearArray)
+      console.log("pd array : ",pdArray)
+
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+
+ 
+    async function printCosmosChart() {
+      await sleep(5000)
+      var ctx = document.getElementById("line-chart").getContext("2d");
+      window.myLine = new Chart(ctx, 
+        {
+          type: "line",
+          data: {
+            labels: yearArray,
+            datasets: [
+              {
+                label: "PD",
+                backgroundColor: "#4c51bf",
+                borderColor: "#4c51bf",
+                data: pdArray,
+                fill: true,
+                
+              }
+            ],
           },
-          align: "end",
-          position: "bottom",
-        },
-        tooltips: {
-          mode: "index",
-          intersect: false,
-        },
-        hover: {
-          mode: "nearest",
-          intersect: true,
-        },
-        scales: {
-          xAxes: [
-            {
-              ticks: {
-                fontColor: "rgba(255,255,255,.7)",
-              },
-              display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Month",
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            
+            title: {
+              display: false,
+              text: "Probability of Default Chart",
+              fontColor: "white",
+            },
+            legend: {
+              labels: {
                 fontColor: "white",
               },
-              gridLines: {
-                display: false,
-                borderDash: [2],
-                borderDashOffset: [2],
-                color: "rgba(33, 37, 41, 0.3)",
-                zeroLineColor: "rgba(0, 0, 0, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
+              align: "end",
+              position: "bottom",
             },
-          ],
-          yAxes: [
-            {
-              ticks: {
-                fontColor: "rgba(255,255,255,.7)",
-              },
-              display: true,
-              scaleLabel: {
-                display: false,
-                labelString: "Value",
-                fontColor: "white",
-              },
-              gridLines: {
-                borderDash: [3],
-                borderDashOffset: [3],
-                drawBorder: false,
-                color: "rgba(255, 255, 255, 0.15)",
-                zeroLineColor: "rgba(33, 37, 41, 0)",
-                zeroLineBorderDash: [2],
-                zeroLineBorderDashOffset: [2],
-              },
+            tooltips: {
+              mode: "index",
+              intersect: false,
             },
-          ],
-        },
-      },
-    };
-    var ctx = document.getElementById("line-chart").getContext("2d");
-    window.myLine = new Chart(ctx, config);
+            hover: {
+              mode: "nearest",
+              intersect: true,
+            },
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    fontColor: "rgba(255,255,255,.7)",
+                  },
+                  display: true,
+                  scaleLabel: {
+                    display: false,
+                    labelString: "Month",
+                    fontColor: "white",
+                  },
+                  gridLines: {
+                    display: false,
+                    borderDash: [2],
+                    borderDashOffset: [2],
+                    color: "rgba(33, 37, 41, 0.3)",
+                    zeroLineColor: "rgba(0, 0, 0, 0)",
+                    zeroLineBorderDash: [2],
+                    zeroLineBorderDashOffset: [2],
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  ticks: {
+                    fontColor: "rgba(255,255,255,.7)",
+                  },
+                  display: true,
+                  scaleLabel: {
+                    display: false,
+                    labelString: "Value",
+                    fontColor: "white",
+                  },
+                  gridLines: {
+                    borderDash: [3],
+                    borderDashOffset: [3],
+                    drawBorder: false,
+                    color: "rgba(255, 255, 255, 0.15)",
+                    zeroLineColor: "rgba(33, 37, 41, 0)",
+                    zeroLineBorderDash: [2],
+                    zeroLineBorderDashOffset: [2],
+                  },
+                },
+              ],
+            },
+          },
+        }
+        );
+    }
+      
+      
+    printCosmosChart()
+    
   }, []);
   return (
     <>
