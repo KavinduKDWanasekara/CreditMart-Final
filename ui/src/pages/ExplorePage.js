@@ -4,10 +4,9 @@ import Navbar from '../components/Navbar'
 import CardExplorePage from "../components/Cards/CardExplorePage";
 
 import Footer from '../components/Footer';
-import { Form } from 'reactstrap';
+import { Form, FormGroup } from 'reactstrap';
 
 class ExplorePage extends Component{
-
     constructor(props) {
         super(props);
 
@@ -44,6 +43,7 @@ class ExplorePage extends Component{
     }
 
     handleSubmit = (e) => {
+       
         e.preventDefault();
 
         const { data } = this.state;
@@ -72,30 +72,29 @@ render(){
     return (
         <div>
             <Navbar/>
-            
-
-
             <Form onSubmit={this.handleSubmit} className="md-form flex justify-center">
-                <div className="text-center flex justify-center">
-                    <input 
-                        value={data.search}
-                        invalid={errors.company_name ? 1 : 0} 
-                        onChange={this.changeHandler} 
-                        className=" w-80 text-gray-700 form-control ml-3 px-10" 
-                        id="search" 
-                        type="text" 
-                        placeholder="Search"/>
-                        
-                    <div className="p-4">
-                        <button className="bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center"
-                        type="submit">
-                            <i className="fas fa-search"></i>
-                        </button>
+                <FormGroup>
+                    <div className="text-center flex justify-center">
+                       
+                       <input 
+                            value={data.search}
+                            invalid={errors.company_name ? 1 : 0} 
+                            onChange={this.changeHandler} 
+                            className=" w-80 form-control ml-3 px-10" 
+                            id="search" 
+                            type="text" 
+                            placeholder="Search"/>
+                            
+                        <div className="p-4">
+                            <button className="bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center"
+                            type="submit">
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-
+                </FormGroup>
             </Form>
-                <p className="text-red-500 text-xs font-semibold md-form flex justify-center -ml-44">
+                <p className="text-red-500 text-xs font-semibold flex justify-center -ml-44">
                     {errors.search}
                 </p>
 

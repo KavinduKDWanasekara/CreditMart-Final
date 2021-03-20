@@ -11,7 +11,7 @@ class ContractPage extends Component {
         return(
             <div className="md:w-full px-1/2 text-center md:mb-0">
                 <Navbar/>
-                <div class="flex justify-center ">
+                <div className="flex justify-center ">
                         <img  src={('static/images/coming-soon-4.gif')} className=""/>		
                     </div>
                 {/* <Footer/> */}
