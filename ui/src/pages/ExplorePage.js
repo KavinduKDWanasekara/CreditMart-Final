@@ -15,7 +15,7 @@ class ExplorePage extends Component{
 
     getInitialState = () => ({
         data: {
-            search: '',
+            search: ""
         },
         errors: {},
     });
@@ -60,7 +60,7 @@ class ExplorePage extends Component{
 				console.log(res);
 				console.log(res.data);
 			});
-            //Resetting the form
+            // Resetting the form
             this.setState(this.getInitialState());
         } else {
             this.setState({ errors });
@@ -81,7 +81,7 @@ render(){
                             invalid={errors.company_name ? 1 : 0} 
                             onChange={this.changeHandler} 
                             className=" w-80 form-control ml-3 px-10" 
-                            id="search" 
+                            name="search"
                             type="text" 
                             placeholder="Search"/>
                             
