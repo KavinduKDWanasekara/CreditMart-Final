@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
-from backend.views.user_views import UserViewSet, Logout, Profile
-from backend.views.financial_views import ProbabilityOFDefault, FinancialDetail
+from backend.views.user_views import UserViewSet, Logout, Profile, SearchProfile
+from backend.views.financial_views import ProbabilityOFDefault, FinancialDetail, CreditSales
 from django.conf.urls import include
 
 router = routers.DefaultRouter()
@@ -12,5 +12,7 @@ urlpatterns = [
     path('logout', Logout.as_view()),
     path('profile', Profile.as_view()),
     path('fdetails', FinancialDetail.as_view()),
-    path('pd', ProbabilityOFDefault.as_view())
+    path('pd', ProbabilityOFDefault.as_view()),
+    path('sales', CreditSales.as_view()),
+    path('search', SearchProfile.as_view()),
 ]

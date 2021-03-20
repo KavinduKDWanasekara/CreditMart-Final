@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from backend.models import Company, FinancialDetails
-from backend.serializers import FinancialDetailSerializer, PDSerializer
+from backend.serializers import FinancialDetailSerializer, PDSerializer, CreditSalesSerializer
 import traceback
 import os
 from pathlib import Path
@@ -110,6 +110,34 @@ class FinancialDetail(APIView):
             pd_val = pd[0][1]
             credit_limit = 0
 
+            # Update existing details in a particular year
+            financial_d = FinancialDetails.objects.get(company=company_obj, financial_year=financial_year)
+            financial_d.current_assets = current_assets
+            financial_d.current_liabilities = current_liabilities
+            financial_d.working_capital = working_capital
+            financial_d.total_assets = total_assets
+            financial_d.net_income = net_income
+            financial_d.total_shareholders_equity = total_shareholders_equity
+            financial_d.total_debt = total_debt
+            financial_d.long_term_debt = long_term_debt
+            financial_d.interest_expenses = interest_expenses
+            financial_d.cash_equivalents = cash_equivalents
+            financial_d.total_liabilities = total_liabilities
+            financial_d.net_credit_sales = net_credit_sales
+            financial_d.accounts_receivables = accounts_receivables
+            financial_d.pd_val = pd_val
+            financial_d.credit_limit = credit_limit
+            financial_d.save()
+            financial_d_serializer = FinancialDetailSerializer(financial_d)
+
+            print("Company financial details for the year ", financial_year, " updated")
+
+            return Response({
+                "message": "financial details for the year " + str(financial_year) + " updated",
+                "detail": financial_d_serializer.data
+            })
+        except FinancialDetails.DoesNotExist as e:
+            print(e)
             financial_d = FinancialDetails.objects.create(company=company_obj,
                                                           financial_year=financial_year,
                                                           current_assets=current_assets,
@@ -161,7 +189,7 @@ class ProbabilityOFDefault(APIView):
         user_obj = token_obj.user
         try:
             company_obj = Company.objects.get(user=user_obj)
-            queryset = FinancialDetails.objects.filter(company=company_obj)
+            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year')
             pd_serializer = PDSerializer(queryset, many=True)
             return Response({
                 "financial_data": pd_serializer.data
@@ -174,7 +202,37 @@ class ProbabilityOFDefault(APIView):
 
         except Exception as e:
             print(e)
+            traceback.print_exc()
             return Response({
                 "message": "An unexpected error has occurred",
-                "details": e
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CreditSales(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        token_var = request.headers.get('Authorization')
+        token_obj = Token.objects.get(key=token_var[6:])
+        user_obj = token_obj.user
+        try:
+            company_obj = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year')
+            credit_sales_serializer = CreditSalesSerializer(queryset, many=True)
+            return Response({
+                "financial_data": credit_sales_serializer.data
+            })
+
+        except Company.DoesNotExist as e:
+            print(e)
+            return Response({
+                "message": "Company data not yet specified"
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        except Exception as e:
+            print(e)
+            traceback.print_exc()
+            return Response({
+                "message": "An unexpected error has occurred",
             }, status=status.HTTP_400_BAD_REQUEST)

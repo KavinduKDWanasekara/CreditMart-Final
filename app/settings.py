@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CreditMart',
+        'NAME': 'CreditMartDB',
         'USER': 'admin',
         'PASSWORD': '12345678',
         'PORT': '24110',

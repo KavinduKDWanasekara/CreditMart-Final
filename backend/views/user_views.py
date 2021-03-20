@@ -117,3 +117,32 @@ class Profile(APIView):
             return Response({
                 "message": "an unexpected error has occurred",
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SearchProfile(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request):
+        try:
+            search = request.data["search"]
+            filter_by_name = Company.objects.filter(company_name__contains=search)
+            print(filter_by_name)
+            filter_by_type = Company.objects.filter(business_type__contains=search)
+            print(filter_by_type)
+            queryset = filter_by_type.union(filter_by_name)
+            print(queryset)
+            company_serializer = CompanySerializer(queryset, many=True)
+            return Response({
+                "search_result": company_serializer.data
+            })
+
+        except Exception as e:
+            print(e)
+            traceback.print_exc()
+            return Response({
+                "message": "an unexpected error has occurred"
+            })
+
+
+
