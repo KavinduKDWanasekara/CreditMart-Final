@@ -10,6 +10,8 @@ mysqlclient = "*"
 djangorestframework-simplejwt = "*"
 sklearn = "*"
 django-cors-headers = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
