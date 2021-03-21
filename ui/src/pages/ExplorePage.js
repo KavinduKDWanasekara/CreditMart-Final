@@ -53,7 +53,7 @@ class ExplorePage extends Component{
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
-			.post(`api/profile`, {
+			.post(`api/search`, {
 				search: data.search
 			})
 			.then((res) => {
