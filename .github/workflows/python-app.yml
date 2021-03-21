@@ -28,8 +28,7 @@ jobs:
     - name: Build react app
       run: |
         cd ui
-        npm run clean
-        npm install
+        npm ci
         npm run build
     - name: Lint with flake8
       run: |
