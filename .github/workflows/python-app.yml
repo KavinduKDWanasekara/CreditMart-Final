@@ -28,9 +28,8 @@ jobs:
     - name: Build react app
       run: |
         cd ui
-        npm run clean
-        npm install
-        npm run build
+        npm ci
+        CI=false npm run build
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
