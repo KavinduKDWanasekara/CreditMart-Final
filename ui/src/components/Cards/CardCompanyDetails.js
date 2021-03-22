@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Form, FormGroup } from 'reactstrap'
 import axiosInstance from '../../axios';
+import Navbar from "../Navbar"
+
 
  class CardCompanyDetails extends Component {
     constructor(props) {
@@ -48,29 +50,32 @@ import axiosInstance from '../../axios';
     }
 
     handleSubmit = (e) => {
+
         
         e.preventDefault();
-
+        
         const { data } = this.state;
-
+        
         const errors = this.validate();
-
+        
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
 			.post(`api/profile`, {
-				company_name: data.company_name,
+                company_name: data.company_name,
 				contact_number: data.contact_number,
 				location: data.location,
                 business_type: data.business_type,
                 description: data.description
 			})
 			.then((res) => {
-				console.log(res);
+                console.log(res);
 				console.log(res.data);
 			});
             //Resetting the form
             this.setState(this.getInitialState());
+            alert("Data Entered successfully");
+            this.props.history.push('/profile');
         } else {
             this.setState({ errors });
         }
@@ -80,6 +85,7 @@ import axiosInstance from '../../axios';
         const {  data, errors } = this.state;
         return (
             <div>
+                <Navbar/>
                 <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2 text-center md:mb-0">
                     <p className="text-4xl font-bold py-9 capitalize">Edit Profile!</p>
                         <table className=" text-center mb-2 flex justify-center">

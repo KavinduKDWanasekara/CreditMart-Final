@@ -4,8 +4,6 @@ MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggle
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
 
-import { BrowserRouter as Router } from 'react-router-dom';
-
 class Navbar extends Component {
 state = {
   isOpen: false
@@ -49,7 +47,6 @@ render() {
 
           </MDBNavbarNav>
             </MDBCollapse>
-                  {/* </MDBCollapse> */}
       </MDBNavbar>
     
     );
