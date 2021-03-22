@@ -63,16 +63,12 @@ class ExplorePage extends Component{
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
-                if(res.data.search_result>0){
-                    this.setState({responseData:res.data.search_result})
-                }else{
-                    console.log("NO data")
-                }
+                this.setState({responseData:res.data.search_result})
+
                 
                 
 			});
-            // Resetting the form
-            // this.setState(this.getInitialState());
+
         } else {
             this.setState({ errors });
         }
@@ -126,7 +122,7 @@ render(){
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
                         {companyCards}
                 </div>
-            </div>
+        </div>
         <Footer/>
         </div>
     )

@@ -28,11 +28,11 @@ export default function Home() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                    We ensure your credibility .
+                    We ensure your credibility.
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                  Credit Mart is an application which encourages in credit businesses.
-                  which we manage the credit limit of the company 
+                  Credit Mart is an application which encourages credit businesses in
+                  which we manage the credit limit of the company.
                   </p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function Home() {
                     </div>
                     <h6 className="text-xl font-semibold">Find the Best</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      you will be able to finf the best compaines 
+                      You will be able to find the best companies 
                       with the best credibility you can do your transaction with
                     </p>
                   </div>
@@ -85,7 +85,7 @@ export default function Home() {
                     </div>
                     <h6 className="text-xl font-semibold">Contract</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      Find the compaines and ask for quoation for the 
+                      Find the compaines and ask for quotation for the 
                       the credit transaction.
                     </p>
                   </div>
@@ -100,8 +100,8 @@ export default function Home() {
                     </div>
                     <h6 className="text-xl font-semibold">Verified Company</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      We only have Verified companies who share their the
-                      financial data with Us !
+                      We only have verified companies who share their the
+                      financial data with Us!
                     </p>
                   </div>
                 </div>
@@ -256,8 +256,8 @@ export default function Home() {
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold">Here are our heroes</h2>
                 <p className="text-lg leading-relaxed m-4 text-gray-600">
-                  According to the Credit mart we as a team have 
-                  Adminstered , and also we have created the UI using react and 
+                  According to the Credit-Mart we as a team have 
+                  adminstered , and also we have created the UI using react and 
                   Also used Tailwind css. used Django for backend develoupent
                 </p>
               </div>
