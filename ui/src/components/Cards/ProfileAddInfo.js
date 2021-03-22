@@ -4,7 +4,11 @@ import React, { Component } from 'react'
 import { Form, Input, Label, FormGroup, Feedback, FormFeedback, Button } from 'reactstrap';
 import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
 import axiosInstance from '../../axios';
+
+import { Link } from 'react-router-dom';
+
 import Navbar from "../../components/Navbar"
+
 
 
 export class ProfileAddInfo extends Component {
@@ -161,10 +165,12 @@ export class ProfileAddInfo extends Component {
     render() {
         const { data, errors } = this.state;
         return (
+
             <>
             <Navbar/>
+
             <div>
-                <p className="text-4xl text-center font-bold py-9 capitalize">Please enter your financial data</p>
+                
 
                 <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2  md:mb-0">
                 <table className=" text-center mb-2 flex justify-center">
@@ -546,6 +552,9 @@ export class ProfileAddInfo extends Component {
                             <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
                             Submit
                             </button>
+                            <Link to="/profile"><button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
+                            Back
+                            </button></Link>
                         </div>
                     </div>
                 </Form>
