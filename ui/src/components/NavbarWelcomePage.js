@@ -31,8 +31,8 @@ render() {
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
-          <Link  to="/Login"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12">Login</MDBBtn></Link>
-          <Link  to="/Register"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12" >Signup</MDBBtn></Link>
+          <Link  to="/login"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12">Login</MDBBtn></Link>
+          <Link  to="/register"><MDBBtn color="blue" className="rounded-lg p-2 w-24 h-12" >Signup</MDBBtn></Link>
           </MDBNavbarNav>
                   </MDBCollapse>
       </MDBNavbar>
