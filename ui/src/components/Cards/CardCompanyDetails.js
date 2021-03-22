@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, FormGroup } from 'reactstrap'
 import axiosInstance from '../../axios';
+import { Link } from 'react-router-dom';
 
  class CardCompanyDetails extends Component {
     constructor(props) {
@@ -222,6 +223,10 @@ import axiosInstance from '../../axios';
                             <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
                             Submit
                             </button>
+                            
+                            <Link to="/profile"><button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
+                            Back
+                            </button></Link>
                         </div>
                     </div>
                 </Form>

@@ -80,21 +80,19 @@ export class MyProfileNew extends Component {
           </div>
         </section>
         <section className="relative py-44 bg-gray-300">
-          <div className="container mx-9 px-10">
+          <div className="container">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-10 shadow-xl rounded-lg -mt-56">
             
               <div className="px-6">
-              <div className="py-6 px-3 mt-32 sm:mt-0">
-                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button">Edit Profile</button> */}
+              {/* <div className="py-6 px-3 mt-32 sm:mt-0">
+                      
                         <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
-                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button">Edit Financial Data</button> */}
+                      
                         <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
                         
-                </div>
+                </div> */}
                       
-              <div className="flex flex-wrap justify-center -mt-36">
+              <div className="flex flex-wrap justify-center -mt-24">
                   <img
                         alt="..."
                         // src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
@@ -115,6 +113,15 @@ export class MyProfileNew extends Component {
 
                         
                       
+                </div>
+                <div className="py-6 px-3 mt-32 sm:mt-0">
+                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                        type="button">Edit Profile</button> */}
+                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
+                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                        type="button">Edit Financial Data</button> */}
+                        <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
+                        
                 </div>
                       
                 
