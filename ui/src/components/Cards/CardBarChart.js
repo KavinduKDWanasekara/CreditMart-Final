@@ -10,7 +10,7 @@ export default function CardBarChart() {
     let salesArray = [];
 
     axiosInstance
-			.get(`api/pd`)
+			.get(`api/sales`)
 			.then((response) => {
         console.log(response.data);
    

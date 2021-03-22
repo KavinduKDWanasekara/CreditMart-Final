@@ -14,26 +14,6 @@ import { Component } from "react";
 
 class Dashboard extends React.Component{
   
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-    details: []
-       
-    }
-  }
-
-  componentDidMount() {
-    
-    //CONNECT THE API HERE @Safraz
-    
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(res => {
-        // console.log(res);
-        this.setState({ details : res.data});
-      })
-      .catch(console.error());
-  }
 
   render (){
     return(

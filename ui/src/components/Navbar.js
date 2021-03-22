@@ -4,8 +4,6 @@ MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggle
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
 
-import { BrowserRouter as Router } from 'react-router-dom';
-
 class Navbar extends Component {
 state = {
   isOpen: false
@@ -28,16 +26,16 @@ render() {
           <MDBNavbarNav right>
 
             <MDBNavItem className="active:bg-green-700">
-              <MDBNavLink to="/Profile" className="mx-2 rounded-lg px-3 hover:bg-blue-400" ><strong>My Profile</strong></MDBNavLink>
+              <MDBNavLink to="/profile" className="mx-2 rounded-lg px-3 hover:bg-blue-400" ><strong>My Profile</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/Dashboard" className=" mx-2 rounded-lg px-3 hover:bg-blue-400" ><strong>My Dashboard</strong></MDBNavLink>
+              <MDBNavLink to="/dashboard" className=" mx-2 rounded-lg px-3 hover:bg-blue-400" ><strong>My Dashboard</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/Explore" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Explore</strong></MDBNavLink>
+              <MDBNavLink to="/explore" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Explore</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/Contract" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Contract</strong></MDBNavLink>
+              <MDBNavLink to="/contract" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Contract</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="/" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Log out</strong></MDBNavLink>
@@ -49,7 +47,6 @@ render() {
 
           </MDBNavbarNav>
             </MDBCollapse>
-                  {/* </MDBCollapse> */}
       </MDBNavbar>
     
     );

@@ -5,6 +5,8 @@ import CardExplorePage from "../components/Cards/CardExplorePage";
 
 import Footer from '../components/Footer';
 import { Form, FormGroup } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 class ExplorePage extends Component{
     constructor(props) {
@@ -18,6 +20,8 @@ class ExplorePage extends Component{
             search: ""
         },
         errors: {},
+        responseData:[],
+        
     });
 
     changeHandler = (e) => {
@@ -53,22 +57,40 @@ class ExplorePage extends Component{
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
-			.post(`api/profile`, {
+			.post(`api/search`, {
 				search: data.search
 			})
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
+                if(res.data.search_result>0){
+                    this.setState({responseData:res.data.search_result})
+                }else{
+                    console.log("NO data")
+                }
+                
+                
 			});
             // Resetting the form
-            this.setState(this.getInitialState());
+            // this.setState(this.getInitialState());
         } else {
             this.setState({ errors });
         }
     }
 
+
+    
 render(){
-    const {  data, errors } = this.state;
+    const {  data, errors,responseData} = this.state;
+    console.log("render ",responseData)
+    let companyCards = this.state.responseData.map(company => {
+        return (
+         
+            <CardExplorePage company={company} key={company.company_name}/>
+        
+        )
+      })
+    
     return (
         <div>
             <Navbar/>
@@ -102,16 +124,9 @@ render(){
 
             <div className="container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                <CardExplorePage/>
-                <CardExplorePage/>
-                <CardExplorePage/>
-                <CardExplorePage/>
-                <CardExplorePage/>
-                <CardExplorePage/>
-                <CardExplorePage/>
-
+                        {companyCards}
                 </div>
-        </div>
+            </div>
         <Footer/>
         </div>
     )

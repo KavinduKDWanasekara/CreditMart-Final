@@ -4,7 +4,11 @@ import React, { Component } from 'react'
 import { Form, Input, Label, FormGroup, Feedback, FormFeedback, Button } from 'reactstrap';
 import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
 import axiosInstance from '../../axios';
+
 import { Link } from 'react-router-dom';
+
+import Navbar from "../../components/Navbar"
+
 
 
 export class ProfileAddInfo extends Component {
@@ -141,20 +145,30 @@ export class ProfileAddInfo extends Component {
 				// this.props.history.push('/login');
 				console.log(res);
 				console.log(res.data);
+               
 			});
             //Call an api here
             //Resetting the form
             this.setState(this.getInitialState());
+            alert("data entered successfully");
+            this.props.history.push('/dashboard');
+
         } else {
             this.setState({ errors });
+            // alert("Please try again");
         }
+
+        
     
 
     }
     render() {
         const { data, errors } = this.state;
         return (
-            
+
+            <>
+            <Navbar/>
+
             <div>
                 
 
@@ -545,6 +559,7 @@ export class ProfileAddInfo extends Component {
                     </div>
                 </Form>
             </div>
+            </>
         )
     }
 }
