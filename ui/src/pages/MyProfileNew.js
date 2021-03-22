@@ -87,10 +87,10 @@ export class MyProfileNew extends Component {
               <div className="py-6 px-3 mt-32 sm:mt-0">
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Profile</button> */}
-                        <Link to="editinfo"><button class="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
+                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Financial Data</button> */}
-                        <Link  to="/profileaddinfo"><button class="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
+                        <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
                         
                 </div>
                       
@@ -103,13 +103,15 @@ export class MyProfileNew extends Component {
                         className="inline object-cover w-44 h-44 -mr- 6 rounded-full"
                       />
                       
-                      <button  class="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
+                      <button  className="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
                           
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path> </svg>
+                            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path> </svg>
                             
-                            {/* <input type="file" hidden/> */}
+                           
                       </button>
-                      
+                      {/* <input type="file" className="bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center"   >
+                    
+                      </input> */}
 
                         
                       
