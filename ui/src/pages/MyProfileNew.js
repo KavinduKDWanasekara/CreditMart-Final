@@ -24,7 +24,7 @@ export class MyProfileNew extends Component {
     
       componentDidMount(){
         
-        axios.get('http://localhost:8000/api/profile', {
+        axios.get('https://agile-stream-27533.herokuapp.com/api/profile', {
     
           headers : {
     
@@ -62,7 +62,6 @@ export class MyProfileNew extends Component {
     render() {
         return (
             <>
-      {/* <Navbar transparent /> */}
       <main className="relative block h-100-px">
       <Navbar/>
         <section className="relative py-36 h-500-px">
