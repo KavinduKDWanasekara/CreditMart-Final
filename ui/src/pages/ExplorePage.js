@@ -5,6 +5,8 @@ import CardExplorePage from "../components/Cards/CardExplorePage";
 
 import Footer from '../components/Footer';
 import { Form, FormGroup } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 class ExplorePage extends Component{
     constructor(props) {
@@ -18,6 +20,7 @@ class ExplorePage extends Component{
             search: ""
         },
         errors: {},
+        responseData:[],
         
     });
 
@@ -60,6 +63,8 @@ class ExplorePage extends Component{
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
+                this.setState({responseData:res.data.search_result})
+                
                 
 			});
             // Resetting the form
@@ -69,8 +74,19 @@ class ExplorePage extends Component{
         }
     }
 
+
+    
 render(){
-    const {  data, errors } = this.state;
+    const {  data, errors,responseData} = this.state;
+    console.log("render ",responseData)
+    let companyCards = this.state.responseData.map(company => {
+        return (
+         
+            <CardExplorePage company={company} key={company.company_name}/>
+        
+        )
+      })
+    
     return (
         <div>
             <Navbar/>
@@ -104,7 +120,7 @@ render(){
 
             <div className="container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                
+                        {companyCards}
                 </div>
         </div>
         <Footer/>
