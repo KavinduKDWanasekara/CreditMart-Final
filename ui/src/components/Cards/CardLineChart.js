@@ -13,13 +13,11 @@ export default function CardLineChart() {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
   }
 
-  React.useEffect(() => {
-  
-    axiosInstance
-    .get(`api/pd`)
-    .then((response) => {
+  const sendGetRequest = async () => {
+    try {
+      const response = await  axiosInstance.get(`api/pd`);
       console.log(response.data);
- 
+
       console.log(response.data.financial_data.length)
           for (var i = 0; i < response.data.financial_data.length; i++) {
             yearArray.push(response.data.financial_data[i].financial_year.toString())
@@ -28,17 +26,28 @@ export default function CardLineChart() {
         
       console.log("Year array : ",yearArray)
       console.log("pd array : ",pdArray)
-
-    })
-    .catch((error) => {
+    } catch (error) {
       console.log(error);
-    });
+    }
+  
+
+  }
 
 
  
+
+
+  React.useEffect(() => {
+
+  
+ 
     async function printCosmosChart() {
-      await sleep(5000)
-      var ctx = document.getElementById("line-chart").getContext("2d");
+    
+      await sendGetRequest();
+      
+      var context = document.getElementById("line-chart")  
+      var ctx = context.getContext("2d"); 
+      
       window.myLine = new Chart(ctx, 
         {
           type: "line",
@@ -51,7 +60,6 @@ export default function CardLineChart() {
                 borderColor: "#4c51bf",
                 data: pdArray,
                 fill: true,
-                
               }
             ],
           },
@@ -130,12 +138,18 @@ export default function CardLineChart() {
         );
     }
       
-      
-    printCosmosChart()
+    
+  
+    printCosmosChart();
     
   }, []);
+
+ 
   return (
+    
+  
     <>
+    
       <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-800">
         <div className="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div className="flex flex-wrap items-center">

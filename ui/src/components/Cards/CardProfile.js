@@ -3,21 +3,7 @@ import React from "react";
 // components
 
 export default function CardProfile() {
-  fetch(
-    'https://jsonplaceholder.typicode.com/posts',
-    {
-      method: "GET",
-      headers: new Headers({
-        Accept: "application/vnd.github.vloak-preview"
-      })
-    })
-  .then(res => res.json())
-  .then(response => {
-    // setCommitHistory(response.items);
-    // setIsLoading(false);
-    console.log(response[11]);
-  })
-  .catch(console.error());
+
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
