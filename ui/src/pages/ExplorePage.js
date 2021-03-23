@@ -64,11 +64,11 @@ class ExplorePage extends Component{
 				console.log(res);
 				console.log(res.data);
                 this.setState({responseData:res.data.search_result})
+
                 
                 
 			});
-            // Resetting the form
-            this.setState(this.getInitialState());
+
         } else {
             this.setState({ errors });
         }
