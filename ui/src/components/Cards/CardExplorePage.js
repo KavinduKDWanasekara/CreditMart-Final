@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 
+
 export class CardExplorePage extends Component {
 
     constructor(props) {
         super(props);
       }
 
+      onEdit = (pr) =>{
+        console.log("Individual Company details  ",pr)
+
+      }
+
     render() {
         
         return (
-            <div className=" py-6 w-full md:w-1/2 lg:my-4 lg:px-6 lg:w-1/3">
+            <div className=" py-6 w-full md:w-1/2 lg:my-4 lg:px-6 lg:w-1/3" onClick={() =>{this.onEdit(this.props)}}>
                 <div className="rounded-xl shadow bg-blue-100  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 cursor-pointer ">
                     <div className="flex justify-center -mt-8 rounded-t-xl  h-32">
                         <img  src={('static/images/prof.png')} className="rounded-full  border-white border-2 my-2 h-32 bg-gray-200"/>		
@@ -29,6 +35,7 @@ export class CardExplorePage extends Component {
                         <i className="fas fa-envelope mt-1 text-lg text-gray-500"></i><br/>
                         {this.props.company.contact_number} 
                         </div>
+                        
                     </div>
                 </div>
             </div>

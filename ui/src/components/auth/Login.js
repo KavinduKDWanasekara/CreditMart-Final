@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
 import { isEmail } from 'validator';
 import axiosInstance from '../../axios';
-
+import Swal from 'sweetalert2'
 
 class Login extends Component {
 
@@ -69,7 +69,13 @@ class Login extends Component {
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
-			}).catch(err => console.log("api Erorr: ", err.response)+alert(err.request.response));
+			}).catch(err => console.log("api Erorr: ", err.response)+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: err.request.response,
+                footer: '<a>Error</a>'
+              }));
             
             //Resetting the form
             this.setState(this.getInitialState());

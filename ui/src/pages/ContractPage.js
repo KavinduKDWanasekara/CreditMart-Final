@@ -23,3 +23,4 @@ class ContractPage extends Component {
 }
 
 export default ContractPage
+

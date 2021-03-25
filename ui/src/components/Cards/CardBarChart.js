@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Chart from "chart.js";
 import axiosInstance from '../../axios';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 export default function CardBarChart() {
   
-
+  const history = useHistory();
   React.useEffect(() => {
     let yearArray = [];
     let salesArray = [];
@@ -17,7 +19,7 @@ export default function CardBarChart() {
         console.log(response.data.financial_data.length)
             for (var i = 0; i < response.data.financial_data.length; i++) {
               yearArray.push(response.data.financial_data[i].financial_year.toString())
-              salesArray.push(response.data.financial_data[i].pd)
+              salesArray.push(response.data.financial_data[i].net_credit_sales)
             }
             // console.log(tmpArrayYear)
 
@@ -30,6 +32,15 @@ export default function CardBarChart() {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.request.response,
+          footer: '<a>Login </a>'
+        });
+        if (error.request.status == 401) {
+          history.push('/login')
+        }
       });
   
     let config = {

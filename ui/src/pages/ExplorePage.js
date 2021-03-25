@@ -74,7 +74,6 @@ class ExplorePage extends Component{
         }
     }
 
-
     
 render(){
     const {  data, errors,responseData} = this.state;
@@ -82,7 +81,7 @@ render(){
     let companyCards = this.state.responseData.map(company => {
         return (
          
-            <CardExplorePage company={company} key={company.company_name}/>
+            <CardExplorePage company={company} key={company.company_name} />
         
         )
       })
@@ -120,7 +119,7 @@ render(){
 
             <div className="container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                        {companyCards}
+                        {companyCards} 
                 </div>
         </div>
         <Footer/>

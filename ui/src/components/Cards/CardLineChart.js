@@ -5,8 +5,8 @@ import axiosInstance from '../../axios';
 
 export default function CardLineChart() {
 
-  let yearArray = [];
-  let pdArray = [];
+  let yearArray = ["2","3"];
+  let pdArray = [1,2];
  
   //sleep fun
   const sleep = (milliseconds) => {
@@ -14,6 +14,8 @@ export default function CardLineChart() {
   }
 
   const sendGetRequest = async () => {
+    yearArray = [];
+    pdArray = [];
     try {
       const response = await  axiosInstance.get(`api/pd`);
       console.log(response.data);
