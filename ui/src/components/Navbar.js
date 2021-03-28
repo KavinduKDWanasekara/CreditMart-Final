@@ -35,7 +35,7 @@ render() {
               <MDBNavLink to="/explore" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Explore</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/contract" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Contract</strong></MDBNavLink>
+              <MDBNavLink to="/contract1" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Contract</strong></MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="/logout" className="mx-2 rounded-lg px-3 hover:bg-blue-400"><strong>Log out</strong></MDBNavLink>

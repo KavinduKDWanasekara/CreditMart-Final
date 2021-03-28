@@ -8,6 +8,8 @@ import axiosInstance from '../../axios';
 import { Link } from 'react-router-dom';
 
 import Navbar from "../../components/Navbar"
+import Swal from 'sweetalert2'
+
 
 
 
@@ -142,20 +144,24 @@ export class ProfileAddInfo extends Component {
                 ebit:data.ebit
 			})
 			.then((res) => {
-				// this.props.history.push('/login');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data saved successfully',
+                })
+                this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
                
-			});
-            //Call an api here
-            //Resetting the form
-            this.setState(this.getInitialState());
-            alert("data entered successfully");
-            this.props.history.push('/dashboard');
+			}).catch(err => console.log("api Erorr: ", err.response)+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Something went wrong!"
+            }));
+            // this.setState(this.getInitialState());
 
         } else {
             this.setState({ errors });
-            // alert("Please try again");
         }
 
         
@@ -172,7 +178,10 @@ export class ProfileAddInfo extends Component {
             <div>
                 
 
-                <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2  md:mb-0">
+                <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2 text-center  md:mb-0 ">
+                <p className="text-4xl font-bold py-9 capitalize">
+                    Enter Financial Data
+                </p>
                 <table className=" text-center mb-2 flex justify-center">
                 <tbody> 
                 <tr className="md:w-full px-1/2 text-left md:mb-0"> 
