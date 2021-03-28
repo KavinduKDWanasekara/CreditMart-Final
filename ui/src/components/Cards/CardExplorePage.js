@@ -1,21 +1,37 @@
 import React, { Component } from 'react'
-
+import ContractPage1 from '../../pages/ContractPage-1';
+import { Link, useHistory } from "react-router-dom";
 
 export class CardExplorePage extends Component {
 
     constructor(props) {
         super(props);
+        
+        this.state={
+            companyData : this.props.company
+        }
+        
       }
 
       onEdit = (pr) =>{
+        
         console.log("Individual Company details  ",pr)
-
+        console.log("Individual Company details state  ",this.state.companyData)
+        
+       
+        
       }
 
     render() {
         
+ 
+
         return (
-            <div className=" py-6 w-full md:w-1/2 lg:my-4 lg:px-6 lg:w-1/3" onClick={() =>{this.onEdit(this.props)}}>
+            <Link className=" py-6 w-full md:w-1/2 lg:my-4 lg:px-6 lg:w-1/3" to={{
+                pathname: "/contract1",
+                state: this.state.companyData
+              }}>
+            <div  onClick={() =>{this.onEdit(this.props)}} >
                 <div className="rounded-xl shadow bg-blue-100  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 cursor-pointer ">
                     <div className="flex justify-center -mt-8 rounded-t-xl  h-32">
                         <img  src={('static/images/prof.png')} className="rounded-full  border-white border-2 my-2 h-32 bg-gray-200"/>		
@@ -39,6 +55,7 @@ export class CardExplorePage extends Component {
                     </div>
                 </div>
             </div>
+            </Link>
         )
     }
 }

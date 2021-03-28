@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import ExplorePage from "./pages/ExplorePage";
 import ProfileAddInfo from "./components/Cards/ProfileAddInfo";
-
+import Error from "./pages/404Error";
 import Login from "./components/auth/Login";
 import Logout from "./components/auth/logout";
 import Register from "./components/auth/Register";
@@ -33,6 +33,7 @@ function App() {
           <Route path="/logout" component={Logout} />
           <Route path="/profileaddinfo" component={ProfileAddInfo} />
           <Route path="/editinfo" component={CardCompanyDetails} />
+          <Route path="*" component={Error} />
         </Switch>
       </Router>
 

@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 class ContractPage1 extends Component {
     constructor(props) {
         super(props);
-
+    
         // this.state = this.getInitialState();
     }
 
@@ -82,7 +82,10 @@ class ContractPage1 extends Component {
     //     }
     // }
     render(){
+        const { state } = this.props.location
+        console.log(state)
         return (
+            <h1>{state.company_name}</h1>
             // <div>
             //     <Navbar/>
             //     <div className="">
@@ -311,9 +314,9 @@ class ContractPage1 extends Component {
             //     <Footer/>
             // </div>
 
-            <div>
+            // <div>
 
-            </div>
+            // </div>
         )
     }
     
