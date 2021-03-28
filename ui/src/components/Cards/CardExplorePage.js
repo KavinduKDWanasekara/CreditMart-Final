@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ContractPage1 from '../../pages/ContractPage-1';
+import companyPage from '../../pages/ProfilePageCompanies';
 import { Link, useHistory } from "react-router-dom";
 
 export class CardExplorePage extends Component {
@@ -28,7 +28,7 @@ export class CardExplorePage extends Component {
 
         return (
             <Link className=" py-6 w-full md:w-1/2 lg:my-4 lg:px-6 lg:w-1/3" to={{
-                pathname: "/contract1",
+                pathname: "/companies",
                 state: this.state.companyData
               }}>
             <div  onClick={() =>{this.onEdit(this.props)}} >

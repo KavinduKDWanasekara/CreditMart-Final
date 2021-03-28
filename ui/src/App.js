@@ -1,7 +1,7 @@
 
 
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
-import ContractPage from './pages/ContractPage';
+import ProfileCompany from './pages/ProfilePageCompanies';
 import ContractPage1 from './pages/ContractPage-1';
 import MyProfileNew from './pages/MyProfileNew';
 import Home from './pages/Home';
@@ -25,7 +25,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/profile" component={MyProfileNew} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/contract" component={ContractPage} />
+          <Route path="/companies" component={ProfileCompany} />
           <Route path="/contract1" component={ContractPage1} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/register" component={Register} />
