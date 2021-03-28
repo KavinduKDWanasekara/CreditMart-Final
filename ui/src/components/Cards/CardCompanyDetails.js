@@ -239,11 +239,11 @@ import Swal from 'sweetalert2'
                     <div className= "md:flex my-4">
                         <div className= "md:w-full px-1/2 text-center">
                             <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                            Submit
+                                Submit
                             </button>
                             
                             <Link to="/profile"><button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
-                            Back
+                                Back
                             </button></Link>
                         </div>
                     </div>

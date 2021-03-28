@@ -64,8 +64,6 @@ class ExplorePage extends Component{
 				console.log(res);
 				console.log(res.data);
                 this.setState({responseData:res.data.search_result})
-
-                
                 
 			});
 
@@ -87,7 +85,7 @@ render(){
       })
     
     return (
-        <div>
+        <div className="flex flex-col h-screen justify-between">
             <Navbar/>
             <Form onSubmit={this.handleSubmit} className="md-form flex justify-center">
                 <FormGroup>
@@ -111,18 +109,15 @@ render(){
                     </div>
                 </FormGroup>
             </Form>
-                <p className="text-red-500 text-xs font-semibold flex justify-center -ml-44">
-                    {errors.search}
-                </p>
-
-
-
+            <p className="text-red-500 text-xs font-semibold flex justify-center -ml-44">
+                {errors.search}
+            </p>
             <div className="container my-12 mx-auto px-4 md:px-12">
                 <div className="flex flex-wrap -mx-1 lg:-mx-4">
-                        {companyCards} 
+                    {companyCards} 
                 </div>
-        </div>
-        <Footer/>
+            </div>
+            <Footer/>
         </div>
     )
 }

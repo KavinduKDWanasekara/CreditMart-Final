@@ -14,6 +14,7 @@ import Logout from "./components/auth/logout";
 import Register from "./components/auth/Register";
 import './index.css';
 import CardCompanyDetails from "./components/Cards/CardCompanyDetails";
+import CardsIndividualExplore from "./components/Cards/CardsIndividualExplore";
 
 function App() {
 
@@ -25,8 +26,8 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/profile" component={MyProfileNew} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/contract" component={ContractPage} />
-          <Route path="/contract1" component={ContractPage1} />
+          <Route path="/profileInd" component={CardsIndividualExplore} />
+          <Route path="/contract" component={ContractPage1} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />

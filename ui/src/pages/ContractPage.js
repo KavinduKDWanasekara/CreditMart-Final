@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import { Form, FormGroup, FormFeedback } from 'reactstrap'
 import axiosInstance from '../axios';
 import Error404 from './404Error';
+import CardsIndividualExplore from "../components/Cards/CardsIndividualExplore";
 
 class ContractPage extends Component {
     render(){
@@ -15,7 +16,7 @@ class ContractPage extends Component {
                         <img  src={('static/images/coming-soon-4.gif')} className=""/>		
                     </div>
                 {/* <Footer/> */}
-
+                <CardsIndividualExplore/>
                 {/* <Error404/> */}
             </div>
         )
