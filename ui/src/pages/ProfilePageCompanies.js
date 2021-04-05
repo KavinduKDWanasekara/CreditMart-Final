@@ -14,6 +14,7 @@ class ProfileCompany extends Component {
       }
 
     render(){
+        
         const { state } = this.props.location
         
 
@@ -33,7 +34,7 @@ class ProfileCompany extends Component {
                 <LazyLoadImage
                     src={("https://cdn.hipwallpaper.com/m/17/28/yfmsQL.jpg")}
                     alt="profile"
-                    className={`w-full mx-auto`}
+                    className={`w-full mx-auto rounded-full`}
                     effect="blur"
                     placeholderSrc="image"
                 />
@@ -63,7 +64,7 @@ class ProfileCompany extends Component {
                     <button
                     className=" animate-bounce bg-indigo-500 px-10 py-3 text-lg uppercase text-white rounded-lg mt-10 hover:bg-indigo-300 "
                     >
-                    Contract
+                    My credibility
                     </button>
                 </ScrollLink>
                 </div>
@@ -80,18 +81,18 @@ class ProfileCompany extends Component {
              }}
              id="mywork"
            >
-             <h1 className="text-5xl font-dosis font-bold">{state.business_type}</h1>
-             <p className="text-gray-600 text-2xl font-dosis mb-10">What we do</p>
+             <h1 className="text-5xl font-dosis font-bold mt-5">What we do !</h1>
+             <p className="text-gray-600 text-2xl font-dosis mb-10">{state.business_type}</p>
              <div className="flex flex-col md:flex-row justify-between items-center w-11/12 ">
                <LazyLoadImage
                  effect="blur"
                  placeholderSrc={"Image wall"}
-                 src={("assets/img/team-2-800x800.jpg")}
+                 src={("static/images/kavindu.jpg")}
                  alt="phone prototype"
-                 className="m-10 transtion duration-2000 ease-in-out z-10  md:w-3/5 w-4/5"
+                 className="transform hover:-translate-y-1 hover:scale-110 z-10  md:w-3/5 w-4/5 m-10"
                />
                <div
-                 className="transtion duration-2000 ease-in-out p-10 max-w-xl lg:max-w-3xl rounded-lg hidden md:block"
+                 className="transtion duration-2000 ease-in-out p-10 max-w-xl lg:max-w-3xl rounded-lg md:block"
                  style={{
                    border: '1px solid #e5ecf9',
                    transform: 'translate(-10%, 0%) rotate3d(0.540, -0.95, 0, 22deg) rotateZ(7deg)',
@@ -111,21 +112,57 @@ class ProfileCompany extends Component {
                             {state.description}
                         </p>
                         <button
-                            className="transform transition duration-2000  px-20 py-3 m-4 bg-black flex justify-around text-white rounded-lg shadow-2xl"
+                            className="transform transition duration-2000 hover:scale-105 px-20 py-3 m-4 bg-black flex justify-around text-white rounded-lg shadow-2xl"
+                            onClick={(e) => {
+                                console.log("clicked")
+                                window.location = "mailto:no-reply@example.com";
+                                e.preventDefault();
+                                }}
                         >
                             <img
                             src="https://www.iconfinder.com/icons/353437/rocket_space_spaceship_launch_icon"
                             alt="rocket"
                             className="mr-5"
                             />
-                            <p className="text-lg">Mail Us</p>
+                            <p className="text-lg" >Mail Us</p>
                         </button>
-                        </div>
+                                </div>
                </div>
-               <div className="flex justify-center items-center md:hidden">
-              
-               </div>
+             
              </div>
+
+
+                <div className="relative flex flex-col min-w-0 w-5/6 break-words py-8 bg-white rounded mb-20 shadow-lg ">
+                        <div className="flex-auto p-4">
+                        <div className="flex flex-wrap">
+                            <div className="relative w-full pr-4 max-w-full flex-grow flex-1 ml-20">
+                            <h5 className="text-blueGray-400 uppercase font-bold text-xs">
+                                name
+                            </h5>
+                            <span className="font-semibold text-xl text-blueGray-700">
+                                my name
+                            </span>
+                            </div>
+                            <div className="relative w-auto pl-4 flex-initial">
+                            <div
+                                className={
+                                "text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500 " }
+                            >
+                                <i className={"far fa-chart-bar"}></i>
+                            </div>
+                            </div>
+                        </div>
+                        <p className="text-sm text-blueGray-400 mt-4">
+                            <span className={" mr-2"}>
+                            
+                            6654654654
+                            </span>
+                            <span className="whitespace-nowrap">fadfdofuhsduguasyygh</span>
+                        </p>
+                        </div>
+                    </div>
+
+
            </div>
 
 

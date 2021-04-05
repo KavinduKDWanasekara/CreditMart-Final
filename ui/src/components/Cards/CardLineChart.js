@@ -36,7 +36,7 @@ export default function CardLineChart() {
   }
 
 
- 
+
 
 
   React.useEffect(() => {
@@ -47,7 +47,7 @@ export default function CardLineChart() {
     
       await sendGetRequest();
       
-      var context = document.getElementById("line-chart")  
+      var context = document.getElementById("line-chart");
       var ctx = context.getContext("2d"); 
       
       window.myLine = new Chart(ctx, 
