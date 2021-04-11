@@ -6,7 +6,7 @@ import React, { Component } from "react";
 class Footer extends Component {
     render(){
     return (
-        <MDBFooter color="cyan" className="font-small darken-3 pt-0" id="footerTag">
+        <MDBFooter color="blue" className="font-small darken-3 pt-0" id="footerTag">
           <MDBContainer>
             <MDBRow>
               <MDBCol md="12" className="py-5">
