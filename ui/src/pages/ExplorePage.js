@@ -87,7 +87,7 @@ render(){
       })
     
     return (
-        <div>
+        <div className="flex flex-col h-screen justify-between">
             <Navbar/>
             <Form onSubmit={this.handleSubmit} className="md-form flex justify-center">
                 <FormGroup>
