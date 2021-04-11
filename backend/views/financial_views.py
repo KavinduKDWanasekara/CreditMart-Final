@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from backend.models import Company, FinancialDetails
-from backend.serializers import FinancialDetailSerializer, PDSerializer, CreditSalesSerializer
+from backend.serializers import FinancialDetailSerializer, PDSerializer, SalesSerializer
 import traceback
 import os
 import math
@@ -217,7 +217,7 @@ class ProbabilityOFDefault(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CreditSales(APIView):
+class Sales(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
@@ -228,9 +228,9 @@ class CreditSales(APIView):
         try:
             company_obj = Company.objects.get(user=user_obj)
             queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year')
-            credit_sales_serializer = CreditSalesSerializer(queryset, many=True)
+            sales_serializer = SalesSerializer(queryset, many=True)
             return Response({
-                "financial_data": credit_sales_serializer.data
+                "financial_data": sales_serializer.data
             })
 
         except Company.DoesNotExist as e:

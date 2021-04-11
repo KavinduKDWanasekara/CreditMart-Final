@@ -58,7 +58,7 @@ class PDSerializer(serializers.ModelSerializer):
         fields = ["financial_year", "pd"]
 
 
-class CreditSalesSerializer(serializers.ModelSerializer):
+class SalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinancialDetails
-        fields = ["financial_year", "net_credit_sales"]
+        fields = ["financial_year", "sales"]
