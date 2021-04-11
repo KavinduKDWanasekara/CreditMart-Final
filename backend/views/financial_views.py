@@ -8,45 +8,51 @@ from backend.models import Company, FinancialDetails
 from backend.serializers import FinancialDetailSerializer, PDSerializer, CreditSalesSerializer
 import traceback
 import os
+import math
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # getting PD prediction for company data
-def getProbabilityOfDefault(current_assets, current_liabilities, working_capital, total_assets, cash_equivalents,
-                            net_income,
-                            receivables_turnover, total_shareholders_equity, total_debt, interest_expenses,
-                            return_on_equity,
-                            ebit, total_liabilities, long_term_debt):
-    indicator01 = current_assets / current_liabilities
-    indicator02 = working_capital / total_assets
-    indicator03 = current_liabilities / current_assets
-    indicator04 = current_liabilities / total_assets
-    indicator05 = cash_equivalents / current_liabilities
-    indicator06 = net_income / total_assets
-    indicator07 = net_income / return_on_equity
-    indicator08 = net_income / receivables_turnover
-    indicator09 = ebit / total_assets
-    indicator10 = total_debt / total_shareholders_equity
-    indicator11 = total_debt / total_assets
-    indicator12 = ebit / interest_expenses
-    indicator13 = total_liabilities / total_assets
-    indicator14 = total_shareholders_equity / total_assets
-    indicator15 = long_term_debt / total_assets
-    indicator16 = total_debt / total_debt
-    indicator17 = total_debt / current_assets
-    indicator18 = total_debt / (total_assets - total_debt)
-    indicator19 = total_debt / total_liabilities
+def getProbabilityOfDefault(total_assets,
+                            profit_on_sales,
+                            interest_expenses,
+                            ebitda,
+                            ebit,
+                            cost_of_products_sold,
+                            sales,
+                            depreciation,
+                            profit_on_operating_activities,
+                            extraordinary_items,
+                            total_expenses,
+                            short_term_liabilities,
+                            total_liabilities):
+    gross_profit = sales - cost_of_products_sold
+    net_profit = gross_profit - total_expenses
+
+    indicator1 = net_profit / total_assets
+    indicator2 = profit_on_sales / total_assets
+    indicator3 = math.log(total_assets)
+    indicator4 = (gross_profit + interest_expenses) / total_assets
+    indicator5 = ebit / total_assets
+    indicator6 = (gross_profit + extraordinary_items + total_expenses) / total_assets
+    indicator7 = profit_on_operating_activities / total_assets
+    indicator8 = (sales - cost_of_products_sold) / sales
+    indicator9 = profit_on_sales / sales
+    indicator10 = gross_profit / total_assets
+    indicator11 = gross_profit / short_term_liabilities
+    indicator12 = (net_profit + depreciation) / total_liabilities
+    indicator13 = (gross_profit + depreciation) / total_liabilities
+    indicator14 = (ebitda * (profit_on_operating_activities - depreciation)) / total_assets
 
     import pickle
-    with open(os.path.join(BASE_DIR, 'views/probability_of_default_model.pkl'), 'rb') as file:
+    with open(os.path.join(BASE_DIR, 'views/probability_of_default_model-14-features.pkl'), 'rb') as file:
         PD_Model = pickle.load(file)
 
-    prediction = PD_Model.predict_proba([[indicator01, indicator02, indicator02, indicator03, indicator04,
-                                          indicator05, indicator06, indicator07, indicator08, indicator09,
-                                          indicator10, indicator11, indicator12, indicator13, indicator14,
-                                          indicator15, indicator16, indicator17, indicator18, indicator19]])
+    prediction = PD_Model.predict_proba([[indicator1, indicator2, indicator3, indicator4,
+                                          indicator5, indicator6, indicator7, indicator8, indicator9,
+                                          indicator10, indicator11, indicator12, indicator13, indicator14]])
 
     return prediction
 
@@ -86,45 +92,49 @@ class FinancialDetail(APIView):
         try:
             company_obj = Company.objects.get(user=user_obj)
             financial_year = int(data_dict["financial_year"])
-            current_assets = float(data_dict["current_assets"])
-            current_liabilities = float(data_dict["current_liabilities"])
-            working_capital = float(data_dict["working_capital"])
             total_assets = float(data_dict["total_assets"])
-            net_income = float(data_dict["net_income"])
-            total_shareholders_equity = float(data_dict["total_shareholders_equity"])
-            total_debt = float(data_dict["total_debt"])
-            long_term_debt = float(data_dict["long_term_debt"])
             interest_expenses = float(data_dict["interest_expenses"])
-            cash_equivalents = float(data_dict["cash_equivalents"])
-            total_liabilities = float(data_dict["total_liabilities"])
-            net_credit_sales = float(data_dict["net_credit_sales"])
-            accounts_receivables = float(data_dict["accounts_receivables"])
+            profit_on_sales = float(data_dict["profit_on_sales"])
+            ebitda = float(data_dict["ebitda"])
             ebit = float(data_dict["ebit"])
+            cost_of_products_sold = float(data_dict["cost_of_products_sold"])
+            sales = float(data_dict["sales"])
+            short_term_liabilities = float(data_dict["short_term_liabilities"])
+            depreciation = float(data_dict["depreciation"])
+            profit_on_operating_activities = float(data_dict["profit_on_operating_activities"])
+            extraordinary_items = float(data_dict["extraordinary_items"])
+            total_liabilities = float(data_dict["total_liabilities"])
+            total_expenses = float(data_dict["total_expenses"])
 
-            receivables_turnover = net_credit_sales / accounts_receivables
-            return_on_equity = net_income / total_shareholders_equity
-            pd = getProbabilityOfDefault(current_assets, current_liabilities, working_capital,
-                                         total_assets, cash_equivalents, net_income, receivables_turnover,
-                                         total_shareholders_equity, total_debt, interest_expenses, return_on_equity,
-                                         ebit, total_liabilities, long_term_debt)
+            pd = getProbabilityOfDefault(total_assets,
+                                         profit_on_sales,
+                                         interest_expenses,
+                                         ebitda,
+                                         ebit,
+                                         cost_of_products_sold,
+                                         sales,
+                                         depreciation,
+                                         profit_on_operating_activities,
+                                         extraordinary_items,
+                                         total_expenses,
+                                         short_term_liabilities,
+                                         total_liabilities)
             pd_val = pd[0][1]
             credit_limit = 0
 
             # Update existing details in a particular year
             financial_d = FinancialDetails.objects.get(company=company_obj, financial_year=financial_year)
-            financial_d.current_assets = current_assets
-            financial_d.current_liabilities = current_liabilities
-            financial_d.working_capital = working_capital
             financial_d.total_assets = total_assets
-            financial_d.net_income = net_income
-            financial_d.total_shareholders_equity = total_shareholders_equity
-            financial_d.total_debt = total_debt
-            financial_d.long_term_debt = long_term_debt
             financial_d.interest_expenses = interest_expenses
-            financial_d.cash_equivalents = cash_equivalents
-            financial_d.total_liabilities = total_liabilities
-            financial_d.net_credit_sales = net_credit_sales
-            financial_d.accounts_receivables = accounts_receivables
+            financial_d.profit_on_sales = profit_on_sales
+            financial_d.ebitda = ebitda
+            financial_d.ebit = ebit
+            financial_d.cost_of_products_sold = cost_of_products_sold
+            financial_d.sales = sales
+            financial_d.short_term_liabilities = short_term_liabilities
+            financial_d.depreciation = depreciation
+            financial_d.profit_on_operating_activities = profit_on_operating_activities
+            financial_d.extraordinary_items = extraordinary_items
             financial_d.pd_val = pd_val
             financial_d.credit_limit = credit_limit
             financial_d.save()
@@ -140,20 +150,19 @@ class FinancialDetail(APIView):
             print(e)
             financial_d = FinancialDetails.objects.create(company=company_obj,
                                                           financial_year=financial_year,
-                                                          current_assets=current_assets,
-                                                          current_liabilities=current_liabilities,
-                                                          working_capital=working_capital,
                                                           total_assets=total_assets,
-                                                          net_income=net_income,
-                                                          total_shareholders_equity=total_shareholders_equity,
-                                                          total_debt=total_debt,
-                                                          long_term_debt=long_term_debt,
+                                                          profit_on_sales=profit_on_sales,
                                                           interest_expenses=interest_expenses,
-                                                          cash_equivalents=cash_equivalents,
-                                                          total_liabilities=total_liabilities,
-                                                          net_credit_sales=net_credit_sales,
-                                                          accounts_receivables=accounts_receivables,
+                                                          ebitda=ebitda,
                                                           ebit=ebit,
+                                                          cost_of_products_sold=cost_of_products_sold,
+                                                          sales=sales,
+                                                          depreciation=depreciation,
+                                                          profit_on_operating_activities=profit_on_operating_activities,
+                                                          extraordinary_items=extraordinary_items,
+                                                          total_expenses=total_expenses,
+                                                          short_term_liabilities=short_term_liabilities,
+                                                          total_liabilities=total_liabilities,
                                                           pd=pd_val,
                                                           credit_limit=credit_limit)
             financial_d.save()

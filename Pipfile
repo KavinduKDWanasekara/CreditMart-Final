@@ -12,6 +12,7 @@ sklearn = "*"
 django-cors-headers = "*"
 gunicorn = "*"
 whitenoise = "*"
+imblearn = "*"
 
 [dev-packages]
 
