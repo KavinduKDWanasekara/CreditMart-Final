@@ -113,16 +113,36 @@ export class MyProfileNew extends Component {
                         
                       
                 </div>
-                <div className="py-6 px-3 mt-32 sm:mt-0">
+                {/* <div className="py-6 px-3 mt-32 sm:mt-0"> */}
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Profile</button> */}
-                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
+                     {/* <div class="flex items-stretch ..."> */}
+
+                     {/* <div class="pt-6 pb-20">
+                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link> */}
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Financial Data</button> */}
+{/* </div> */}
+                        {/* <div class="pt-6 pb-10">
+  
                         <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
-                        
-                </div>
-                      
+                        </div>
+                        </div>
+                </div> */}
+                <div className="md:flex my-4">
+              <div className="md:w-full px-1/2 text-center">
+              <Link to="/editinfo">
+                <button className="md:w-48 bg-blue-600 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                  Edit Profile
+                </button>
+                </Link>
+                <Link to="/profileaddinfo">
+                  <button className="md:w-48 bg-blue-600 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+                    Add Financial Data
+                  </button>
+                </Link>
+              </div>              
+              </div>
                 
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
