@@ -220,7 +220,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="profit_on_sales" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                profit on sales<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -243,7 +243,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="interest_expenses" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                interest expenses<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -266,7 +266,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="ebitda" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                ebitda<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -289,7 +289,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="ebit" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                ebit<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -312,7 +312,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="cost_of_products_sold" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                cost of products sold<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -335,7 +335,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="sales" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                sales<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -358,7 +358,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="depreciation" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                depreciation<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -381,7 +381,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="profit_on_operating_activities" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                profit on operating activities<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -404,7 +404,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="extraordinary_items" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                extraordinary items<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -427,7 +427,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="total_expenses" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                total expenses<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -450,7 +450,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="short_term_liabilities" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                short term liabilities<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
@@ -473,7 +473,7 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="total_liabilities" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total assets<span className="text-red-500 text-base"> *</span>
+                                total liabilities<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
