@@ -69,14 +69,20 @@ class Login extends Component {
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
-			}).catch(err => console.log("api Erorr: ", err.response)+
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: err.request.response,
-                footer: '<a>Error</a>'
-              }));
-            
+			})
+           
+            .catch((error) => {
+                console.log("api Erorr: ", error.response);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: error.request.response,
+                  footer: '<a>Login </a>'
+                });
+                if (error.request.status == 401) {
+                  this.props.history.push('/login')
+                }
+              });
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
