@@ -52,7 +52,8 @@ class Profile(APIView):
             company = Company.objects.get(user=user)
             company_serializer = CompanySerializer(company)
             return Response({
-                "company": company_serializer.data
+                "company": company_serializer.data,
+                "email": user.email
             })
 
         except Company.DoesNotExist as e:
