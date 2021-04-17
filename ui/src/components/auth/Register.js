@@ -67,7 +67,10 @@ class Register extends Component {
 				password: data.password
 			})
 			.then((res) => {
-				this.props.history.push('/login');
+                localStorage.setItem('token', res.data.token);
+				axiosInstance.defaults.headers['Authorization'] =
+					'Token ' + localStorage.getItem('token');
+				this.props.history.push('/editinfo');
 				console.log(res);
 				console.log(res.data);
 			}).catch(err => console.log("api Erorr: ", err.response )+
