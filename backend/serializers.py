@@ -9,11 +9,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["id", "username", "email", "password"]
 
-    def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
-        Token.objects.create(user=user)
-        return user
-
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:

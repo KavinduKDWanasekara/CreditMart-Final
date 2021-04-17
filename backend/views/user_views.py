@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import viewsets, status
+from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
@@ -10,9 +10,33 @@ from backend.serializers import UserSerializer, CompanySerializer
 import traceback
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UserSignUp(APIView):
+
+    def post(self, request):
+        global username, email, password
+        try:
+            username = request.data['username']
+            email = request.data['email']
+            password = request.data['password']
+            if User.objects.filter(username=username).exists():
+                return Response({
+                    "message": "A user with the given username already exists"
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            else:
+                user_obj = User.objects.create_user(username=username, email=email, password=password)
+                Token.objects.create(user=user_obj)
+                token_obj = Token.objects.get(user=user_obj)
+                return Response({
+                    "message": "user created",
+                    "token": token_obj.key
+                }, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            traceback.print_exc()
+            return Response({
+                "message": "invalid credentials provided"
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Logout(APIView):
@@ -144,6 +168,3 @@ class SearchProfile(APIView):
             return Response({
                 "message": "an unexpected error has occurred"
             })
-
-
-
