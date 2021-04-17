@@ -5,8 +5,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from backend.models import Company
-from backend.serializers import UserSerializer, CompanySerializer
+from backend.models import Company, FinancialDetails
+from backend.serializers import UserSerializer, CompanySerializer, CreditLimitSerializer
 import traceback
 
 
@@ -18,6 +18,7 @@ class UserSignUp(APIView):
             username = request.data['username']
             email = request.data['email']
             password = request.data['password']
+
             if User.objects.filter(username=username).exists():
                 return Response({
                     "message": "A user with the given username already exists"
@@ -75,9 +76,12 @@ class Profile(APIView):
         try:
             company = Company.objects.get(user=user)
             company_serializer = CompanySerializer(company)
+            financial_detail = FinancialDetails.objects.filter(company=company).order_by("financial_year").reverse()[:1]
+            credit_limit_serializer = CreditLimitSerializer(financial_detail, many=True)
             return Response({
                 "company": company_serializer.data,
-                "email": user.email
+                "email": user.email,
+                "credit_limit": credit_limit_serializer.data
             })
 
         except Company.DoesNotExist as e:

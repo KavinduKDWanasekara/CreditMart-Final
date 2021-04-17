@@ -5,12 +5,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from backend.models import Company, FinancialDetails
-from backend.serializers import FinancialDetailSerializer, PDSerializer, SalesSerializer
+from backend.serializers import FinancialDetailSerializer, PDSerializer, SalesSerializer, ThreeYearFinancialDataSerializer, FinancialRatioSerializer
 import traceback
 import os
 import math
 from pathlib import Path
-
+from . import credit_limit_model
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -120,7 +120,7 @@ class FinancialDetail(APIView):
                                          short_term_liabilities,
                                          total_liabilities)
             pd_val = pd[0][1]
-            credit_limit = 0
+            credit_limit = credit_limit_model.margin(pd_val, sales)
 
             # Update existing details in a particular year
             financial_d = FinancialDetails.objects.get(company=company_obj, financial_year=financial_year)
@@ -245,3 +245,51 @@ class Sales(APIView):
             return Response({
                 "message": "An unexpected error has occurred",
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class ThreeYearFinancialDetails(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        token_var = request.headers.get('Authorization')
+        token_obj = Token.objects.get(key=token_var[6:])
+        user_obj = token_obj.user
+        try:
+            company_obj = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year').reverse()
+            serializer = ThreeYearFinancialDataSerializer(queryset, many=True)
+            return Response({
+                "message": serializer.data
+            })
+
+        except Exception as e:
+            traceback.print_exc()
+            return Response({
+                "message": "an unexpected error occurred"
+            })
+
+
+class FinancialRatiosData(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        token_var = request.headers.get('Authorization')
+        token_obj = Token.objects.get(key=token_var[6:])
+        user_obj = token_obj.user
+        try:
+            company_obj = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year').reverse()
+            serializer = FinancialRatioSerializer(queryset, many=True)
+            return Response({
+                "message": serializer.data
+            })
+
+        except Exception as e:
+            traceback.print_exc()
+            return Response({
+                "message": "an unexpected error occurred"
+            })
+
+
