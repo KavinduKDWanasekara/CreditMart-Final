@@ -9,11 +9,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ["id", "username", "email", "password"]
 
-    def create(self, validated_data):
-        user = User.objects.create_user(**validated_data)
-        Token.objects.create(user=user)
-        return user
-
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
@@ -58,7 +53,41 @@ class PDSerializer(serializers.ModelSerializer):
         fields = ["financial_year", "pd"]
 
 
-class CreditSalesSerializer(serializers.ModelSerializer):
+class SalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinancialDetails
-        fields = ["financial_year", "net_credit_sales"]
+        fields = ["financial_year", "sales"]
+
+
+class ThreeYearFinancialDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinancialDetails
+        fields = [
+            "financial_year",
+            "total_assets",
+            "profit_on_sales",
+            "interest_expenses",
+            "total_expenses",
+            "total_liabilities"
+        ]
+
+
+class FinancialRatioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinancialDetails
+        fields = [
+            "financial_year",
+            "ebit",
+            "ebitda",
+            "cost_of_products_sold",
+            "short_term_liabilities",
+            "extraordinary_items"
+        ]
+
+
+class CreditLimitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FinancialDetails
+        fields = [
+            "credit_limit"
+        ]
