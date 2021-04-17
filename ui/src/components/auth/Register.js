@@ -67,6 +67,10 @@ class Register extends Component {
 				password: data.password
 			})
 			.then((res) => {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Enter financial data for at-least 03 years',
+                })
 				this.props.history.push('/login');
 				console.log(res);
 				console.log(res.data);

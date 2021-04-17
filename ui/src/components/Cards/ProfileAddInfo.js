@@ -19,6 +19,7 @@ export class ProfileAddInfo extends Component {
         super(props);
 
         this.state = this.getInitialState();
+        
 
         
     }
