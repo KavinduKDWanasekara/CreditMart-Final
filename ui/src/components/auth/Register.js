@@ -67,10 +67,17 @@ class Register extends Component {
 				password: data.password
 			})
 			.then((res) => {
+
                 localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
 					'Token ' + localStorage.getItem('token');
 				this.props.history.push('/editinfo');
+
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Enter financial data for at-least 03 years',
+                })
+
 				console.log(res);
 				console.log(res.data);
 			}).catch(err => console.log("api Erorr: ", err.response )+
