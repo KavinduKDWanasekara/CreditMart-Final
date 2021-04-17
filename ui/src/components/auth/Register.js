@@ -67,7 +67,17 @@ class Register extends Component {
 				password: data.password
 			})
 			.then((res) => {
-				this.props.history.push('/login');
+
+                localStorage.setItem('token', res.data.token);
+				axiosInstance.defaults.headers['Authorization'] =
+					'Token ' + localStorage.getItem('token');
+				this.props.history.push('/editinfo');
+
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Enter financial data for at-least 03 years',
+                })
+
 				console.log(res);
 				console.log(res.data);
 			}).catch(err => console.log("api Erorr: ", err.response )+
@@ -136,7 +146,7 @@ class Register extends Component {
                 </FormGroup>
                 <div className="text-center ">
 
-                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold  px-4 border border-blue-700 rounded" >Register</button>
+                <button class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  >Register</button>
 
                 </div>
 

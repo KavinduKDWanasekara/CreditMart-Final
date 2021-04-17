@@ -81,7 +81,7 @@ import Swal from 'sweetalert2'
                 this.props.history.push('/profile');
                 console.log(res);
                 console.log(res.data);
-                window.location.reload();
+                // window.location.reload();
 			}).catch(err => console.log("api Erorr: ", err.response)+
             Swal.fire({
                 icon: 'error',
