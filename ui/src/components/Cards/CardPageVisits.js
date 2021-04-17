@@ -1,8 +1,46 @@
 import React from "react";
-
-// components
+import axiosInstance from '../../axios';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 export default function CardPageVisits() {
+  
+  let yearArray = [];
+  let salesArray = [];
+  const history = useHistory();
+  const sendGetRequest = async () => {
+    axiosInstance
+    .get(`api/sales`)
+    .then((response) => {
+      console.log(response.data);
+ 
+      console.log(response.data.financial_data.length)
+          for (var i = 0; i < response.data.financial_data.length; i++) {
+            yearArray.push(response.data.financial_data[i].financial_year.toString())
+            salesArray.push(response.data.financial_data[i].net_credit_sales)
+          }
+          // console.log(tmpArrayYear)
+
+      console.log("Year array : ",yearArray)
+      console.log("Sales array : ",salesArray)
+      // console.log(response.status);
+      // console.log(response.statusText);
+      // console.log(response.headers);
+      // console.log(response.config);
+    })
+    .catch((error) => {
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.request.response,
+        footer: '<a>card page visit</a>'
+      });
+      if (error.request.status == 401) {
+        history.push('/login')
+      }
+    });
+  }
  
   return (
     <>
@@ -11,35 +49,28 @@ export default function CardPageVisits() {
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3 className="font-semibold text-base text-gray-800">
-                Page visits
+                Financial Data
               </h3>
             </div>
-            <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-              <button
-                className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button"
-              >
-                See all
-              </button>
-            </div>
+        
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
+        
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  
+                  Name
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  Visitors
+                  year 1
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  Unique users
+                  year 2
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  Bounce rate
+                  year 3
                 </th>
               </tr>
             </thead>

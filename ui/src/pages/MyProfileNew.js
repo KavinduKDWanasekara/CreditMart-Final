@@ -132,7 +132,7 @@ export class MyProfileNew extends Component {
                         <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link> */}
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Financial Data</button> */}
-{/* </div> */}
+                    {/* </div> */}
                         {/* <div class="pt-6 pb-10">
   
                         <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
