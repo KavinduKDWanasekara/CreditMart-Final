@@ -136,7 +136,7 @@ class Register extends Component {
                 </FormGroup>
                 <div className="text-center ">
 
-                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Register</button>
+                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold  px-4 border border-blue-700 rounded" >Register</button>
 
                 </div>
 

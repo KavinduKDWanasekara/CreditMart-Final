@@ -69,14 +69,20 @@ class Login extends Component {
                 this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
-			}).catch(err => console.log("api Erorr: ", err.response)+
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: err.request.response,
-                footer: '<a>Error</a>'
-              }));
-            
+			})
+           
+            .catch((error) => {
+                console.log("api Erorr: ", error.response);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: error.request.response,
+                  footer: '<a>Login </a>'
+                });
+                if (error.request.status == 401) {
+                  this.props.history.push('/login')
+                }
+              });
             //Resetting the form
             this.setState(this.getInitialState());
         } else {
@@ -88,50 +94,57 @@ class Login extends Component {
         const { data, errors } = this.state;
         return (
             <section className="relative w-full h-full py-40 min-h-screen">
- <div className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
-    style={{ 
-  backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
-  // backgroundRepeat: 'no-repeat',
-  // // position:"fixed",
-  // width:'100%' 
-  
-}}>
-<div className="bg-grey-lighter min-h-screen flex flex-col">
-<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
-
-
-            <Form onSubmit={this.handleSubmit} className="w-72">
-                <FormGroup>
-                <label
-                      htmlFor="username"
-                      className="text-gray-600 text-md tracking-wide"
-                    >
-                      Username
-              </label>
-                    <Input id="username" value={data.username} invalid={errors.username ? true : false} name="username" onChange={this.handleChange} />
-                    <FormFeedback>{errors.username}</FormFeedback>
-                </FormGroup>
-
-              
-
-                <FormGroup>
-                    <Label htmlFor="password">Password</Label>
-                    <Input id="password" value={data.password} type="password" name="password" invalid={errors.password ? true : false} onChange={this.handleChange} />
-                    <FormFeedback>{errors.password}</FormFeedback>
-                </FormGroup>
-
-              
-                <div className="text-center ">
-                <button className="  text-center py-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Sign In</button>
+                <div className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
+                    style={{
+                        backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
+                    }}>
+                    <div className="bg-grey-lighter min-h-screen flex flex-col">
+                        <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                            <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                                <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+                                    <Form onSubmit={this.handleSubmit} className="w-72">
+                                        <FormGroup>
+                                            <label
+                                                htmlFor="username"
+                                                className="text-gray-600 text-md tracking-wide"
+                                                >
+                                                Username
+                                            </label>
+                                            <Input id="username" 
+                                                value={data.username} 
+                                                invalid={errors.username ? true : false} 
+                                                name="username" 
+                                                onChange={this.handleChange} 
+                                            />
+                                            <FormFeedback>
+                                                {errors.username}
+                                            </FormFeedback>
+                                        </FormGroup>
+                                        
+                                        <FormGroup>
+                                            <Label 
+                                                htmlFor="password">
+                                                Password
+                                            </Label>
+                                            <Input id="password" 
+                                                value={data.password} 
+                                                type="password" 
+                                                name="password" 
+                                                invalid={errors.password ? true : false} 
+                                                onChange={this.handleChange} 
+                                            />
+                                            <FormFeedback>
+                                                {errors.password}
+                                            </FormFeedback>
+                                        </FormGroup>
+                                        <div className="text-center ">
+                                            <button className="  text-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" >Sign In</button>
+                                        </div>
+                                    </Form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            </Form>
-            </div>
-            </div>
-            </div>
-           </div>
             </section>
         );
     }
