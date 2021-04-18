@@ -5,6 +5,12 @@ import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 export default function CardBarChart() {
+
+   //sleep fun
+   const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
   let yearArray = [];
   let salesArray = [];
   const history = useHistory();
@@ -17,7 +23,7 @@ export default function CardBarChart() {
       console.log(response.data.financial_data.length)
           for (var i = 0; i < response.data.financial_data.length; i++) {
             yearArray.push(response.data.financial_data[i].financial_year.toString())
-            salesArray.push(response.data.financial_data[i].net_credit_sales)
+            salesArray.push(response.data.financial_data[i].sales)
           }
           // console.log(tmpArrayYear)
 
@@ -46,8 +52,8 @@ export default function CardBarChart() {
   React.useEffect(() => {
    
     async function printChart(){
-      await sendGetRequest();
-
+      sendGetRequest();
+      
       let config = {
         type: "bar",
         data: {

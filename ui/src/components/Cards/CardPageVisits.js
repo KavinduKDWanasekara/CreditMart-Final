@@ -1,32 +1,32 @@
-import React from "react";
+
 import axiosInstance from '../../axios';
 import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import React, {useEffect, useState} from 'react';
 
 export default function CardPageVisits() {
   
-  let yearArray = [];
-  let salesArray = [];
+  // let yearArray = [];
+  const [data, setData] = useState([]);
   const history = useHistory();
   const sendGetRequest = async () => {
     axiosInstance
-    .get(`api/sales`)
+    .get(`api/fdetails3year`)
     .then((response) => {
       console.log(response.data);
- 
-      console.log(response.data.financial_data.length)
-          for (var i = 0; i < response.data.financial_data.length; i++) {
-            yearArray.push(response.data.financial_data[i].financial_year.toString())
-            salesArray.push(response.data.financial_data[i].net_credit_sales)
-          }
-          // console.log(tmpArrayYear)
+      setData(response.data.message);
 
-      console.log("Year array : ",yearArray)
-      console.log("Sales array : ",salesArray)
-      // console.log(response.status);
-      // console.log(response.statusText);
-      // console.log(response.headers);
-      // console.log(response.config);
+ 
+      // console.log(response.data.financial_data.length)
+      //     for (var i = 0; i < response.data.financial_data.length; i++) {
+      //       yearArray.push(response.data.financial_data[i].financial_year.toString())
+      //       salesArray.push(response.data.financial_data[i].net_credit_sales)
+      //     }
+         
+
+      // console.log("Year array : ",yearArray)
+      // console.log("Sales array : ",salesArray)
+   
     })
     .catch((error) => {
       console.log(error);
@@ -41,8 +41,12 @@ export default function CardPageVisits() {
       }
     });
   }
+  useEffect(() => {
+    sendGetRequest();
+}, []);
  
   return (
+
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
         <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -61,95 +65,40 @@ export default function CardPageVisits() {
             <thead>
               <tr>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  Name
+                  Year
+                </th>
+               
+                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                interest_expenses
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  year 1
+                profit_on_sales 
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  year 2
+                total_assets 
                 </th>
                 <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                  year 3
+                total_expenses 
+                </th>
+                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                total_liabilities 
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                  /argon/
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  4,569
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  340
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  <i className="fas fa-arrow-up text-green-500 mr-4"></i>
-                  46,53%
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                  /argon/index.html
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  3,985
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  319
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  <i className="fas fa-arrow-down text-orange-500 mr-4"></i>
-                  46,53%
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                  /argon/charts.html
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  3,513
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  294
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  <i className="fas fa-arrow-down text-orange-500 mr-4"></i>
-                  36,49%
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                  /argon/tables.html
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  2,050
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  147
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  <i className="fas fa-arrow-up text-green-500 mr-4"></i>
-                  50,87%
-                </td>
-              </tr>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4 text-left">
-                  /argon/profile.html
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  1,795
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  190
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-no-wrap p-4">
-                  <i className="fas fa-arrow-down text-red-500 mr-4"></i>
-                  46,53%
-                </td>
-              </tr>
+            {
+                        data.map((item) => (
+                            <tr key={item.financial_year}>
+                                <td>{item.financial_year}</td>
+                                <td>{item.interest_expenses}</td>
+                                <td>{item.total_assets}</td>
+                                <td>{item.profit_on_sales}</td>
+                                <td>{item.total_expenses}</td>
+                                <td>{item.total_liabilities}</td>
+                                <td/>
+                            </tr>
+                        ))
+                    }
             </tbody>
           </table>
         </div>

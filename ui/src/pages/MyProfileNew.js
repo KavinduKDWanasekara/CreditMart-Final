@@ -17,6 +17,8 @@ export class MyProfileNew extends Component {
            contact_number:"",
            location:"",
            description:"",
+           email:"",
+           limit:1,
           
     
         }
@@ -51,7 +53,9 @@ export class MyProfileNew extends Component {
             business_type : response.data.company.business_type,
             contact_number : response.data.company.contact_number,
             location : response.data.company.location,
-            description: response.data.company.description
+            description: response.data.company.description,
+            email : response.data.email,
+            credit_limit : response.data.credit_limit.credit_limit,
     
              } )
     
@@ -172,7 +176,11 @@ export class MyProfileNew extends Component {
                     </div>
                     <div className="mb-2 text-gray-700 mt-2">
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
-                      {/* {this.state.location} */} Safraznazar@gmail.com
+                      {this.state.email}
+                    </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="mr-2 text-lg text-gray-500"></i>
+                      Credit Limit is : {this.state.limit}
                     </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">
