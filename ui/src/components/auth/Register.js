@@ -5,6 +5,7 @@ import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap'
 import { isEmail } from 'validator';
 import axiosInstance from '../../axios';
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
 
@@ -99,6 +100,7 @@ class Register extends Component {
         const { data, errors } = this.state;
         return (
             <section className="relative w-full h-full py-40 min-h-screen">
+
  <div className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
     style={{ 
   backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
@@ -107,7 +109,10 @@ class Register extends Component {
   // width:'100%' 
   
 }}>
-<div className="bg-grey-lighter min-h-screen flex flex-col">
+     <Link to="/"><button className= "md:w-48 bg-blue-700 text-white font-bold  mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full h-16 w-16" >
+                            Home &#xe036;<i class="fas fa-home"></i>
+                            </button></Link> 
+<div className="bg-grey-lighter min-h-screen flex flex-col"> 
 <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
@@ -149,7 +154,8 @@ class Register extends Component {
                 <button class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"  >Register</button>
 
                 </div>
-
+ <a href="/login" class="...group relative  flex justify-center md:no-underline md:hover:underline ...">Already have an account?
+Log in</a>	
             </Form>
             </div>
             </div>
