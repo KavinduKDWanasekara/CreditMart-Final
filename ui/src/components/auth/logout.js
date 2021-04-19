@@ -8,7 +8,7 @@ export default function Logout() {
 		axiosInstance.get('api/logout');
 		localStorage.removeItem('token');
 		axiosInstance.defaults.headers['Authorization'] = null;
-		history.push('/login');
+		history.push('/');
 	});
 	return <div>Logout</div>;
 }

@@ -6,8 +6,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Form, FormGroup, FormFeedback } from 'reactstrap'
 import axiosInstance from '../axios';
-import Test from "../components/Cards/Test";
-
 
 class ContractPage1 extends Component {
     constructor(props) {

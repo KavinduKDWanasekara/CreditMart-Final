@@ -55,7 +55,6 @@ import Swal from 'sweetalert2'
     }
 
     handleSubmit = (e) => {
-
         
         e.preventDefault();
         

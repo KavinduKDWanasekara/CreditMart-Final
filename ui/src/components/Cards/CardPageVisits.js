@@ -11,10 +11,10 @@ export default function CardPageVisits() {
   const history = useHistory();
   const sendGetRequest = async () => {
     axiosInstance
-    .get(`api/fdetails3year`)
+    .get(`api/fdetails`)
     .then((response) => {
       console.log(response.data);
-      setData(response.data.message);
+      setData(response.data.financial_details);
 
  
       // console.log(response.data.financial_data.length)
