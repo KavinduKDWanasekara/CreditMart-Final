@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from backend.models import Company, FinancialDetails
-from backend.serializers import FinancialDetailSerializer, PDSerializer, SalesSerializer, ThreeYearFinancialDataSerializer, FinancialRatioSerializer
+from backend.serializers import FinancialDetailSerializer, PDSerializer, SalesSerializer, CreditLimitSerializer
 import traceback
 import os
 import math
@@ -70,8 +70,8 @@ class FinancialDetail(APIView):
         token_obj = Token.objects.get(key=token[6:])
         user_obj = token_obj.user
         try:
-            company_obj = Company.objects.get(user=user_obj)
-            queryset = FinancialDetails.objects.filter(company=company_obj)
+            company = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company).order_by("financial_year").reverse()
             financial_d_serializer = FinancialDetailSerializer(queryset, many=True)
             return Response({
                 "financial_details": financial_d_serializer.data
@@ -80,11 +80,12 @@ class FinancialDetail(APIView):
         except Company.DoesNotExist as e:
             print(e)
             return Response({
-                "message": "Company data not yet specified",
+                "message": "Company profile not yet created",
                 "detail": "Cannot get financial details since company has not been created yet"
             }, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
+        global company_obj, financial_year, total_assets, profit_on_sales, interest_expenses, ebitda, ebit, cost_of_products_sold, sales, depreciation, profit_on_operating_activities, extraordinary_items, total_expenses, short_term_liabilities, total_liabilities, pd_val, credit_limit
         token = request.headers.get('Authorization')
         token_obj = Token.objects.get(key=token[6:])
         user_obj = token_obj.user
@@ -226,8 +227,8 @@ class Sales(APIView):
         token_obj = Token.objects.get(key=token_var[6:])
         user_obj = token_obj.user
         try:
-            company_obj = Company.objects.get(user=user_obj)
-            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year')
+            company = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company).order_by('financial_year')
             sales_serializer = SalesSerializer(queryset, many=True)
             return Response({
                 "financial_data": sales_serializer.data
@@ -236,7 +237,7 @@ class Sales(APIView):
         except Company.DoesNotExist as e:
             print(e)
             return Response({
-                "message": "Company data not yet specified"
+                "message": "Company profile not yet created"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         except Exception as e:
@@ -247,7 +248,7 @@ class Sales(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ThreeYearFinancialDetails(APIView):
+class CreditLimit(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
@@ -256,40 +257,15 @@ class ThreeYearFinancialDetails(APIView):
         token_obj = Token.objects.get(key=token_var[6:])
         user_obj = token_obj.user
         try:
-            company_obj = Company.objects.get(user=user_obj)
-            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year').reverse()
-            serializer = ThreeYearFinancialDataSerializer(queryset, many=True)
+            company = Company.objects.get(user=user_obj)
+            queryset = FinancialDetails.objects.filter(company=company).order_by('financial_year').reverse()[:1]
+            credit_limit_serializer = CreditLimitSerializer(queryset, many=True)
             return Response({
-                "message": serializer.data
+                "message": credit_limit_serializer.data
             })
 
-        except Exception as e:
-            traceback.print_exc()
+        except Company.DoesNotExist as e:
+            print(e)
             return Response({
-                "message": "an unexpected error occurred"
+                "message": "Company profile not yet created"
             })
-
-
-class FinancialRatiosData(APIView):
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request):
-        token_var = request.headers.get('Authorization')
-        token_obj = Token.objects.get(key=token_var[6:])
-        user_obj = token_obj.user
-        try:
-            company_obj = Company.objects.get(user=user_obj)
-            queryset = FinancialDetails.objects.filter(company=company_obj).order_by('financial_year').reverse()
-            serializer = FinancialRatioSerializer(queryset, many=True)
-            return Response({
-                "message": serializer.data
-            })
-
-        except Exception as e:
-            traceback.print_exc()
-            return Response({
-                "message": "an unexpected error occurred"
-            })
-
-

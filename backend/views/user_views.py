@@ -5,8 +5,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from backend.models import Company, FinancialDetails
-from backend.serializers import UserSerializer, CompanySerializer, CreditLimitSerializer
+from backend.models import Company
+from backend.serializers import UserSerializer, CompanySerializer
 import traceback
 
 
@@ -34,10 +34,25 @@ class UserSignUp(APIView):
                 }, status=status.HTTP_201_CREATED)
 
         except Exception as e:
+            print(e)
             traceback.print_exc()
             return Response({
                 "message": "invalid credentials provided"
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserDetails(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        token = request.headers.get('Authorization')
+        token_obj = Token.objects.get(key=token[6:])
+        user_serializer = UserSerializer(token_obj.user)
+        return Response({
+            "message": "user details",
+            "detail": user_serializer.data
+        })
 
 
 class Logout(APIView):
@@ -52,7 +67,7 @@ class Logout(APIView):
         token_obj.delete()
         return Response({
             "message": "user logged out",
-            "user-data": user_serializer.data
+            "detail": user_serializer.data
         })
 
 
@@ -76,12 +91,8 @@ class Profile(APIView):
         try:
             company = Company.objects.get(user=user)
             company_serializer = CompanySerializer(company)
-            financial_detail = FinancialDetails.objects.filter(company=company).order_by("financial_year").reverse()[:1]
-            credit_limit_serializer = CreditLimitSerializer(financial_detail, many=True)
             return Response({
                 "company": company_serializer.data,
-                "email": user.email,
-                "credit_limit": credit_limit_serializer.data
             })
 
         except Company.DoesNotExist as e:
@@ -98,6 +109,7 @@ class Profile(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
+        global company_name, contact_number, location, business_type, description
         token_var = request.headers.get('Authorization')
         token = Token.objects.get(key=token_var[6:])
         user = token.user
