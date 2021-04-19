@@ -101,8 +101,8 @@ class Login extends Component {
                     }}>
                         
                   
-                        <Link to="/"><button className= "md:w-48 bg-blue-700 text-white font-bold  mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full h-16 w-16" >
-                            Home<i className="fas fa-home"></i>
+                        <Link to="/"><button className= "bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                            <i className="fas fa-home"></i>
                             </button></Link> 
                     <div className="bg-grey-lighter min-h-screen flex flex-col">
                         <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
@@ -146,8 +146,7 @@ class Login extends Component {
                                         <div className="text-center ">
                                             <button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >Sign In</button>
                                         </div>
-                                        <a href="/register" className="... md:no-underline md:hover:underline ...">Don’t have an account?
-                                            Sign up</a>	
+                                        <a href="/register" className="... group relative  flex justify-center  ...">Don’t have an account?<span className="text-red-800 md:no-underline md:hover:underline">Sign up</span>    </a>	
                                     </Form>
                             </div>
                         </div>
