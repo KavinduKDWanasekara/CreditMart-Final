@@ -4,6 +4,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 class ProfileCompany extends Component {
 
@@ -29,6 +30,11 @@ class ProfileCompany extends Component {
             className="min-h-screen flex items-center justify-center"
             id="header"
             >
+                <Link to="/explore">
+                    <button className= "bg-indigo-500 px-4 py-1 text-lg text-white rounded-lg hover:bg-indigo-300 absolute top-0 left-0 mt-3 ml-3" >
+                    Back
+                    </button>
+                </Link>
             <div className="flex flex-col items-center justify-center md:flex-row-reverse md:w-10/12 md:justify-between">
                 <div className="w-full md:w-2/5 ">
                 <LazyLoadImage
@@ -115,7 +121,7 @@ class ProfileCompany extends Component {
                             className="transform transition duration-2000 hover:scale-105 px-20 py-3 m-4 bg-black flex justify-around text-white rounded-lg shadow-2xl"
                             onClick={(e) => {
                                 console.log("clicked")
-                                window.location = "mailto:no-reply@example.com";
+                                window.location = "mailto:ashfaaqahamed@hotmail.com";
                                 e.preventDefault();
                                 }}
                         >
@@ -133,7 +139,7 @@ class ProfileCompany extends Component {
 
 
                 <div className="relative flex flex-col min-w-0 w-5/6 break-words py-8 bg-white rounded mb-20 shadow-lg ">
-                        <div className="flex-auto p-4">
+                    <div className="flex-auto p-4">
                         <div className="flex flex-wrap">
                             <div className="relative w-full pr-4 max-w-full flex-grow flex-1 ml-20">
                             <h5 className="text-blueGray-400 uppercase font-bold text-xs">
@@ -159,9 +165,14 @@ class ProfileCompany extends Component {
                             </span>
                             <span className="whitespace-nowrap">fadfdofuhsduguasyygh</span>
                         </p>
-                        </div>
                     </div>
-
+                </div>
+                
+                <Link to="/contract1">
+                    <button className= "animate-bounce bg-blue-700 px-10 py-3 text-2xl text-white rounded-lg hover:bg-blue-300 mb-4" >
+                    Start Contract &nbsp;<i class="fas fa-file-signature"></i>
+                    </button>
+                </Link>
 
            </div>
 
