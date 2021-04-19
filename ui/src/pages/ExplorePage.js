@@ -63,7 +63,7 @@ class ExplorePage extends Component{
 			.then((res) => {
 				console.log(res);
 				console.log(res.data);
-                this.setState({responseData:res.data.search_result})
+                this.setState({responseData:res.data.search_result.company})
 
                 
                 
@@ -77,7 +77,7 @@ class ExplorePage extends Component{
     
 render(){
     const {  data, errors,responseData} = this.state;
-    console.log("render ",responseData)
+    console.log("render ",responseData.company)
     let companyCards = this.state.responseData.map(company => {
         return (
          
