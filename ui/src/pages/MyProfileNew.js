@@ -17,6 +17,8 @@ export class MyProfileNew extends Component {
            contact_number:"",
            location:"",
            description:"",
+           email:"",
+           limit:1,
           
     
         }
@@ -51,7 +53,9 @@ export class MyProfileNew extends Component {
             business_type : response.data.company.business_type,
             contact_number : response.data.company.contact_number,
             location : response.data.company.location,
-            description: response.data.company.description
+            description: response.data.company.description,
+            email : response.data.email,
+            credit_limit : response.data.credit_limit.credit_limit,
     
              } )
     
@@ -132,7 +136,7 @@ export class MyProfileNew extends Component {
                         <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link> */}
                         {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                         type="button">Edit Financial Data</button> */}
-{/* </div> */}
+                    {/* </div> */}
                         {/* <div class="pt-6 pb-10">
   
                         <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
@@ -172,7 +176,11 @@ export class MyProfileNew extends Component {
                     </div>
                     <div className="mb-2 text-gray-700 mt-2">
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
-                      {/* {this.state.location} */} Safraznazar@gmail.com
+                      {this.state.email}
+                    </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="mr-2 text-lg text-gray-500"></i>
+                      Credit Limit is : {this.state.limit}
                     </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">

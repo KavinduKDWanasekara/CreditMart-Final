@@ -19,7 +19,7 @@ class Dashboard extends React.Component{
     return(
     <>
     <Navbar/>
-    <div className="">
+    <div>
       <div className="flex flex-wrap m-5">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardLineChart />
@@ -29,13 +29,14 @@ class Dashboard extends React.Component{
         </div>
       </div>
       <div className="flex flex-wrap m-4">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+        <div className="w-100 xl:w-8/12 mb-12 xl:mb-0 px-4">
           <CardPageVisits />
         </div>
-        <div className="w-full xl:w-4/12 px-4">
+       
+      </div>
+      <div className="w-100 xl:w-4/12 px-4">
           <CardSocialTraffic />
         </div>
-      </div>
       </div>
       <Footer/>
     </>

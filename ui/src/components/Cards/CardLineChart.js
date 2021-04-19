@@ -18,16 +18,16 @@ export default function CardLineChart() {
     pdArray = [];
     try {
       const response = await  axiosInstance.get(`api/pd`);
-      console.log(response.data);
+      // console.log(response.data);
 
-      console.log(response.data.financial_data.length)
+      // console.log(response.data.financial_data.length)
           for (var i = 0; i < response.data.financial_data.length; i++) {
             yearArray.push(response.data.financial_data[i].financial_year.toString())
             pdArray.push(response.data.financial_data[i].pd)
           }
         
-      console.log("Year array : ",yearArray)
-      console.log("pd array : ",pdArray)
+      // console.log("Year array : ",yearArray)
+      // console.log("pd array : ",pdArray)
     } catch (error) {
       console.log(error);
     }
