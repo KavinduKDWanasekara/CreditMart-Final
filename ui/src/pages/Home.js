@@ -1,14 +1,40 @@
 import React from "react";
-
-
+import { useState } from 'react';
+import { send } from 'emailjs-com';
 import NavbarWelcomePage from './../components/NavbarWelcomePage';
-
 import Footer from './../components/Footer';
 
 export default function Home() {
+  const [toSend, setToSend] = useState({
+    from_name: '',
+    reply_to: '',
+    message: ''
+
+  });
+  
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    send(
+      'service_udihsuq',
+      'template_2aqza9r',
+      toSend,
+      'user_UYjlSRpxsOdzE2aLGyb5d'
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
+  };
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
   return (
     <>
-<NavbarWelcomePage/>
+  <NavbarWelcomePage/>
       <main className="">
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div
@@ -258,7 +284,7 @@ export default function Home() {
                 <p className="text-lg leading-relaxed m-4 text-gray-600">
                   According to the Credit-Mart we as a team have 
                   adminstered , and also we have created the UI using react and 
-                  Also used Tailwind css. used Django for backend develoupent
+                  Also used Tailwind css. used Django for backend development
                 </p>
               </div>
             </div>
@@ -502,12 +528,10 @@ export default function Home() {
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold text-white">
-                  Build something
+                  Contact Us
                 </h2>
                 <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                  Put the potentially record low maximum sea ice extent tihs
-                  year down to low ice. According to the National Oceanic and
-                  Atmospheric Administration, Ted, Scambos.
+                While we’re good with smoke signals, there are simpler ways for us to get in touch
                 </p>
               </div>
             </div>
@@ -520,8 +544,7 @@ export default function Home() {
                   Excelent Services
                 </h6>
                 <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  we provide you the best services in the field of credit management 
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -532,8 +555,8 @@ export default function Home() {
                   Grow your market
                 </h5>
                 <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  grow your market sales do not face unexpected bankruptcy in your business. predict your future 
+                  probility of facing losses.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -541,11 +564,11 @@ export default function Home() {
                   <i className="fas fa-lightbulb text-xl"></i>
                 </div>
                 <h5 className="text-xl mt-5 font-semibold text-white">
-                  Launch time
+                  Easy Decision
                 </h5>
                 <p className="mt-2 mb-4 text-gray-500">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Take Quick and easy decision by comparing your customers and 
+                  identify potential threats.
                 </p>
               </div>
             </div>
@@ -556,7 +579,7 @@ export default function Home() {
             <div className="flex flex-wrap justify-center lg:-mt-64 -mt-48">
               <div className="w-full lg:w-6/12 px-4">
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
-                  <div className="flex-auto p-5 lg:p-10">
+                  <form className="flex-auto p-5 lg:p-10"  onSubmit={onSubmit} id="formDat">
                     <h4 className="text-2xl font-semibold">
                       Contact Us
                     </h4>
@@ -573,8 +596,12 @@ export default function Home() {
                       </label>
                       <input
                         type="text"
+                        name='from_name'
                         className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                         placeholder="Full Name"
+                        value={toSend.from_name}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
 
@@ -587,8 +614,12 @@ export default function Home() {
                       </label>
                       <input
                         type="email"
+                        name='reply_to'
                         className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full ease-linear transition-all duration-150"
                         placeholder="Email"
+                        value={toSend.reply_to}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
 
@@ -604,17 +635,21 @@ export default function Home() {
                         cols="80"
                         className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full"
                         placeholder="Type a message..."
+                        name='message'
+                        value={toSend.message}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className="text-center mt-6">
                       <button
                         className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                        type="button"
+                        type="submit"
                       >
                         Send Message
                       </button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

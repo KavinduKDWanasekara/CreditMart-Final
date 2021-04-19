@@ -6,7 +6,6 @@ import React, {useEffect, useState} from 'react';
 
 export default function CardPageVisits() {
   
-  // let yearArray = [];
   const [data, setData] = useState([]);
   const history = useHistory();
   const sendGetRequest = async () => {
@@ -15,17 +14,6 @@ export default function CardPageVisits() {
     .then((response) => {
       console.log(response.data);
       setData(response.data.financial_details);
-
- 
-      // console.log(response.data.financial_data.length)
-      //     for (var i = 0; i < response.data.financial_data.length; i++) {
-      //       yearArray.push(response.data.financial_data[i].financial_year.toString())
-      //       salesArray.push(response.data.financial_data[i].net_credit_sales)
-      //     }
-         
-
-      // console.log("Year array : ",yearArray)
-      // console.log("Sales array : ",salesArray)
    
     })
     .catch((error) => {
@@ -52,11 +40,10 @@ export default function CardPageVisits() {
         <div className="rounded-t mb-0 px-4 py-3 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-              <h3 className="font-semibold text-base text-gray-800">
+              <h3 className="font-bold text-2xl text-center">
                 Financial Data
               </h3>
             </div>
-        
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
@@ -64,41 +51,44 @@ export default function CardPageVisits() {
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
                   Year
                 </th>
                
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                interest_expenses
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
+                  interest expenses
                 </th>
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                profit_on_sales 
+                
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
+                  profit on sales 
                 </th>
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                total_assets 
+                
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
+                  total assets 
                 </th>
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                total_expenses 
+                
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
+                  total expenses 
                 </th>
-                <th className="px-6 bg-gray-100 text-gray-600 align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-left">
-                total_liabilities 
+                
+                <th className="bg-gray-800 text-white align-middle border border-solid border-gray-200 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-no-wrap font-semibold text-center px-4">
+                  total liabilities 
                 </th>
               </tr>
             </thead>
             <tbody>
             {
-                        data.map((item) => (
-                            <tr key={item.financial_year}>
-                                <td>{item.financial_year}</td>
-                                <td>{item.interest_expenses}</td>
-                                <td>{item.total_assets}</td>
-                                <td>{item.profit_on_sales}</td>
-                                <td>{item.total_expenses}</td>
-                                <td>{item.total_liabilities}</td>
-                                <td/>
-                            </tr>
-                        ))
-                    }
+              data.map((item) => (
+                <tr key={item.financial_year} className="hover:bg-gray-100">
+                  <td className="px-3 py-2 text-center font-normal">{item.financial_year}</td>
+                  <td className="border-l border-solid border-gray-200 px-3 py-2 text-right font-normal">{item.interest_expenses}</td>
+                  <td className="border-l border-solid border-gray-200 px-3 py-2 text-right font-normal">{item.total_assets}</td>
+                  <td className="border-l border-solid border-gray-200 px-3 py-2 text-right font-normal">{item.profit_on_sales}</td>
+                  <td className="border-l border-solid border-gray-200 px-3 py-2 text-right font-normal">{item.total_expenses}</td>
+                  <td className="border-l border-solid border-gray-200 px-3 py-2 text-right font-normal">{item.total_liabilities}</td>
+                </tr>
+              ))
+            }
             </tbody>
           </table>
         </div>
