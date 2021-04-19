@@ -162,7 +162,7 @@ class ProfileCompany extends Component {
                             <span className={" mr-2"}>
                             Probability of The Company being bankruptcy
                             </span>
-                            <span className="whitespace-nowrap">{state.pd}</span>
+                            <span className="whitespace-nowrap">{state.pd * 100}</span>
                         </p>
                     </div>
                 </div>
