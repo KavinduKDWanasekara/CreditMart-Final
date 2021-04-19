@@ -149,58 +149,37 @@ export class MyProfileNew extends Component {
                               
                             
                       </div>
-                     
-
-              
-
-
-                        
-                      
+                    
                 </div>
-                {/* <div className="py-6 px-3 mt-32 sm:mt-0"> */}
-                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button">Edit Profile</button> */}
-                     {/* <div class="flex items-stretch ..."> */}
-
-                     {/* <div class="pt-6 pb-20">
-                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link> */}
-                        {/* <button className="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button">Edit Financial Data</button> */}
-                    {/* </div> */}
-                        {/* <div class="pt-6 pb-10">
-  
-                        <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
-                        </div>
-                        </div>
-                </div> */}
-                <div className="md:flex my-4">
-              <div className="md:w-full px-1/2 text-center">
-              <Link to="/editinfo">
-                <button className="md:w-48 bg-blue-600 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                  Edit Profile
-                </button>
-                </Link>
-                <Link to="/profileaddinfo">
-                  <button className="md:w-48 bg-blue-600 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                    Add Financial Data
-                  </button>
-                </Link>
-              </div>              
-              </div>
+                  <div className="md:flex my-4">
+                    <div className="md:w-full px-1/2 text-center">
+                      <Link to="/editinfo">
+                        <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
+                          {/* //transform h-64 bg-blue-400 w-1/5 hover:bg-blue-600 transition duration-500 hover:scale-125" */}
+                          Edit Profile
+                        </button>
+                      </Link>
+                      <Link to="/profileaddinfo">
+                        <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
+                          Add Financial Data
+                        </button>
+                      </Link>
+                    </div>              
+                  </div>
                 
-                <div className="text-center mt-12">
-                  <h3 className="text-4xl font-semibold leading-normal  text-gray-800 mb-2">
-                  {this.state.company_name}
-                  </h3>
-                  <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                    {this.state.location}
-                  </div>
-                  <div className="mb-2 text-gray-700 mt-2">
-                    <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-                    {this.state.business_type}
-                  </div>
-                  <div className="mb-2 text-gray-700">
+                  <div className="text-center mt-12">
+                    <h3 className="text-4xl font-semibold leading-normal  text-gray-800 mb-2">
+                    {this.state.company_name}
+                    </h3>
+                    <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+                      <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
+                      {this.state.location}
+                    </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
+                      {this.state.business_type}
+                    </div>
+                    <div className="mb-2 text-gray-700">
                       <i className="fas fa-phone mr-2 text-lg text-gray-500"></i>
                       {this.state.contact_number}
                     </div>
@@ -208,9 +187,10 @@ export class MyProfileNew extends Component {
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
                       {this.state.email}
                     </div>
-                    <div className="mb-2 text-gray-700 mt-2">
-                      <i className="mr-2 text-lg text-gray-500"></i>
-                      Credit Limit is : {this.state.limit}
+                    <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
+                      <i className="mr-2 text-xl text-gray-500">
+                        Credit Limit : <span className="underline">Rs. {this.state.limit}</span>
+                      </i>
                     </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">
@@ -222,8 +202,8 @@ export class MyProfileNew extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
+          </div>
          
         </section>
         <Footer/>

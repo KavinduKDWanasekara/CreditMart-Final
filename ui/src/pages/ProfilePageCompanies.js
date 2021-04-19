@@ -31,7 +31,7 @@ class ProfileCompany extends Component {
             id="header"
             >
                 <Link to="/explore">
-                    <button className= "bg-indigo-500 px-4 py-1 text-lg text-white rounded-lg hover:bg-indigo-300 absolute top-0 left-0 mt-3 ml-3" >
+                    <button className= "bg-blue-700 px-4 py-1 text-lg text-white rounded-lg absolute top-0 left-0 mt-3 ml-3 transform transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none" >
                     Back
                     </button>
                 </Link>
@@ -70,7 +70,7 @@ class ProfileCompany extends Component {
                     <button
                     className=" animate-bounce bg-indigo-500 px-10 py-3 text-lg uppercase text-white rounded-lg mt-10 hover:bg-indigo-300 "
                     >
-                    My credibility
+                        My credibility
                     </button>
                 </ScrollLink>
                 </div>
@@ -167,12 +167,12 @@ class ProfileCompany extends Component {
                         </p>
                     </div>
                 </div>
-                
+{/*                 
                 <Link to="/contract1">
                     <button className= "animate-bounce bg-blue-700 px-10 py-3 text-2xl text-white rounded-lg hover:bg-blue-300 mb-4" >
                     Start Contract &nbsp;<i class="fas fa-file-signature"></i>
                     </button>
-                </Link>
+                </Link> */}
 
            </div>
 

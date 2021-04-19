@@ -103,7 +103,7 @@ render(){
                             placeholder="Search"/>
                             
                         <div className="p-4">
-                            <button className="bg-blue-500 text-white rounded-full hover:bg-blue-400 focus:outline-none w-11 h-11 flex items-center justify-center"
+                            <button className="bg-blue-700 text-white rounded-full hover:bg-blue-500 transform transition duration-500  hover:scale-95  focus:outline-none w-11 h-11 flex items-center justify-center hover:shadow-lg"
                             type="submit">
                                 <i className="fas fa-search"></i>
                             </button>
