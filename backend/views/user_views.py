@@ -175,17 +175,18 @@ class SearchProfile(APIView):
             for comp in queryset:
                 dict = {"company_name": comp.company_name,
                         "location": comp.location,
-                        ""}
-                print(comp.company_name)
+                        "contact_number": comp.contact_number,
+                        "business_type": comp.business_type,
+                        "description": comp.description,
+                        "email": comp.user.email}
+
                 financial_det = FinancialDetails.objects.filter(company=comp).order_by("financial_year").reverse()[:1]
                 for i in financial_det:
                     dict["credit_limit"] = i.credit_limit
+                    dict["pd"] = i.pd
 
                 list.append(dict)
 
-            print(list)
-
-            company_serializer = SearchSerializer(queryset, many=True)
             return Response({
                 "search_result": {
                     "company": list
