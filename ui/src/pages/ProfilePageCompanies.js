@@ -121,7 +121,7 @@ class ProfileCompany extends Component {
                             className="transform transition duration-2000 hover:scale-105 px-20 py-3 m-4 bg-black flex justify-around text-white rounded-lg shadow-2xl"
                             onClick={(e) => {
                                 console.log("clicked")
-                                window.location = "mailto:ashfaaqahamed@hotmail.com";
+                                window.location = `mailto:${state.email}`;
                                 e.preventDefault();
                                 }}
                         >
@@ -142,11 +142,11 @@ class ProfileCompany extends Component {
                     <div className="flex-auto p-4">
                         <div className="flex flex-wrap">
                             <div className="relative w-full pr-4 max-w-full flex-grow flex-1 ml-20">
-                            <h5 className="text-blueGray-400 uppercase font-bold text-xs">
-                                name
-                            </h5>
+                            <h1 className="text-blueGray-400 uppercase font-bold text-xs">
+                                Credit Limit 
+                            </h1>
                             <span className="font-semibold text-xl text-blueGray-700">
-                                my name
+                                {state.credit_limit}
                             </span>
                             </div>
                             <div className="relative w-auto pl-4 flex-initial">
@@ -160,10 +160,9 @@ class ProfileCompany extends Component {
                         </div>
                         <p className="text-sm text-blueGray-400 mt-4">
                             <span className={" mr-2"}>
-                            
-                            6654654654
+                            Probability of The Company being bankruptcy
                             </span>
-                            <span className="whitespace-nowrap">fadfdofuhsduguasyygh</span>
+                            <span className="whitespace-nowrap">{state.pd}</span>
                         </p>
                     </div>
                 </div>
