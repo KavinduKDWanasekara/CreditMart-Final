@@ -5,8 +5,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from backend.models import Company
-from backend.serializers import UserSerializer, CompanySerializer
+from backend.models import Company, FinancialDetails
+from backend.serializers import UserSerializer, CompanySerializer, SearchSerializer
 import traceback
 
 
@@ -168,14 +168,29 @@ class SearchProfile(APIView):
         try:
             search = request.data["search"]
             filter_by_name = Company.objects.filter(company_name__contains=search)
-            print(filter_by_name)
             filter_by_type = Company.objects.filter(business_type__contains=search)
-            print(filter_by_type)
             queryset = filter_by_type.union(filter_by_name)
-            print(queryset)
-            company_serializer = CompanySerializer(queryset, many=True)
+
+            list = []
+            for comp in queryset:
+                dict = {"company_name": comp.company_name,
+                        "location": comp.location,
+                        "contact_number": comp.contact_number,
+                        "business_type": comp.business_type,
+                        "description": comp.description,
+                        "email": comp.user.email}
+
+                financial_det = FinancialDetails.objects.filter(company=comp).order_by("financial_year").reverse()[:1]
+                for i in financial_det:
+                    dict["credit_limit"] = i.credit_limit
+                    dict["pd"] = i.pd
+
+                list.append(dict)
+
             return Response({
-                "search_result": company_serializer.data
+                "search_result": {
+                    "company": list
+                }
             })
 
         except Exception as e:

@@ -62,4 +62,17 @@ class SalesSerializer(serializers.ModelSerializer):
 class CreditLimitSerializer(serializers.ModelSerializer):
     class Meta:
         model = FinancialDetails
-        fields = ["financial_year", "credit_limit"]
+        fields = ["financial_year", "credit_limit", "pd"]
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    creditLimit = CreditLimitSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Company
+        fields = ["company_name",
+                  "contact_number",
+                  "location",
+                  "business_type",
+                  "description",
+                  "creditLimit"]
