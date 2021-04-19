@@ -18,7 +18,7 @@ export class MyProfileNew extends Component {
            location:"",
            description:"",
            email:"",
-           limit:1,
+           limit:"",
           
     
         }
@@ -31,7 +31,28 @@ export class MyProfileNew extends Component {
     
       componentDidMount(){
         
-        axios.get('https://agile-stream-27533.herokuapp.com/api/profile', {
+        const requestOne = axios.get('https://credit-mart.herokuapp.com/api/profile', {
+    
+          headers : {
+    
+            'Authorization': 'Token '+localStorage.getItem('token'),
+            Accept: "application/json"
+    
+          }
+    
+        })
+        const requestTwo = axios.get('https://credit-mart.herokuapp.com/api/user', {
+    
+          headers : {
+    
+            'Authorization': 'Token '+localStorage.getItem('token'),
+            Accept: "application/json"
+    
+          }
+    
+        })
+
+        const requestThree = axios.get('https://credit-mart.herokuapp.com/api/climit', {
     
           headers : {
     
@@ -42,31 +63,40 @@ export class MyProfileNew extends Component {
     
         })
         
-        .then(response => {
-    
-          console.log( response.data )
+        axios
+        .all([requestOne, requestTwo,requestThree])
+        .then(axios.spread((...responses) => {
+          const responseOne = responses[0];
+          const responseTwo = responses[1];
+          const responseThree = responses[2];
+          console.log( responseOne.data )
+          console.log( responseTwo.data )
+          console.log( responseThree.data )
+          console.log(responseThree.data.message[0].credit_limit)
     
           this.setState ( {
     
             ...this.state,
-            company_name : response.data.company.company_name,
-            business_type : response.data.company.business_type,
-            contact_number : response.data.company.contact_number,
-            location : response.data.company.location,
-            description: response.data.company.description,
-            email : response.data.email,
-            credit_limit : response.data.credit_limit.credit_limit,
+            company_name : responseOne.data.company.company_name,
+            business_type : responseOne.data.company.business_type,
+            contact_number : responseOne.data.company.contact_number,
+            location : responseOne.data.company.location,
+            description: responseOne.data.company.description,
+            email : responseTwo.data.detail.email,
+            limit : responseThree.data.message[0].credit_limit,
     
-             } )
-    
-        })
+             } );
+
+            })
+        )
     
         .catch(error =>{
     
           console.log(error)
     
         })
-      }
+        }
+      
 
     render() {
         return (

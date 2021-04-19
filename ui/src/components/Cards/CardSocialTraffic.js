@@ -8,10 +8,10 @@ export default function CardSocialTraffic() {
   const history = useHistory();
   const sendGetRequest = async () => {
     axiosInstance
-    .get(`api/fdetailsratio`)
+    .get(`api/fdetails`)
     .then((response) => {
       console.log(response.data);
-      setData(response.data.message);
+      setData(response.data.financial_details);
 
    
     })

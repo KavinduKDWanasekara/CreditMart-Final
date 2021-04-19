@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://agile-stream-27533.herokuapp.com/';
+const baseURL = 'https://credit-mart.herokuapp.com/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,
