@@ -68,7 +68,7 @@ class ProfileCompany extends Component {
 
                 <ScrollLink to="mywork" smooth={true}>
                     <button
-                    className=" animate-bounce bg-indigo-500 px-10 py-3 text-lg uppercase text-white rounded-lg mt-10 hover:bg-indigo-300 "
+                        className=" animate-bounce bg-indigo-500 px-10 py-3 text-lg uppercase text-white rounded-lg mt-10 hover:bg-indigo-300"
                     >
                         My credibility
                     </button>

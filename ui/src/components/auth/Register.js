@@ -62,7 +62,7 @@ class Register extends Component {
         if (Object.keys(errors).length === 0) {
             console.log(data);
             axiosInstance
-			.post(`api/users/`, {
+			.post(`api/signup`, {
 				username: data.username,
 				email: data.email,
 				password: data.password
@@ -76,7 +76,7 @@ class Register extends Component {
 
                 Swal.fire({
                     icon: 'info',
-                    title: 'Enter financial data for at-least 03 years',
+                    title: 'Enter details of your company',
                 })
 
 				console.log(res);
@@ -103,17 +103,14 @@ class Register extends Component {
 
  <div className="absolute top-0 w-full h-full bg-gray-900 bg-no-repeat bg-full"
     style={{ 
-  backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
-  // backgroundRepeat: 'no-repeat',
-  // // position:"fixed",
-  // width:'100%' 
-  
-}}>
-     <Link to="/"><button className= "bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-                            <i className="fas fa-home"></i>
-                            </button></Link> 
-<div className="bg-grey-lighter min-h-screen flex flex-col"> 
-<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        backgroundImage: `url(${process.env.PUBLIC_URL + 'static/images/background1.jpg'})`,
+        }}>
+     <Link to="/">
+        <button className= "mt-3 ml-3 bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none hover:shadow-lg transform transition duration-500 hover:bg-gray-700 hover:scale-95 " >
+             <i className="fas fa-home"></i>
+        </button></Link> 
+            <div className="bg-grey-lighter min-h-screen flex flex-col"> 
+                <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <h1 className="mb-8 text-3xl text-center">Sign up</h1>
 

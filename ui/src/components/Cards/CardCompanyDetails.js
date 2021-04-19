@@ -239,13 +239,14 @@ import Swal from 'sweetalert2'
                         </table>
                     <div className= "md:flex my-4">
                         <div className= "md:w-full px-1/2 text-center">
-                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
-                            Submit
+                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
+                                Submit
                             </button>
-                            
-                            <Link to="/profile"><button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
-                            Back
-                            </button></Link>
+                            <Link to="/profile">
+                                <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none" >
+                                    Back
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </Form>

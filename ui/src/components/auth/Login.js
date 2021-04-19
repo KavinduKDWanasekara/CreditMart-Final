@@ -101,7 +101,7 @@ class Login extends Component {
                     }}>
                         
                   
-                        <Link to="/"><button className= "bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                        <Link to="/"><button className= "mt-3 ml-3 bg-blue-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none hover:shadow-lg transform transition duration-500 hover:bg-gray-700 hover:scale-95 " >
                             <i className="fas fa-home"></i>
                             </button></Link> 
                     <div className="bg-grey-lighter min-h-screen flex flex-col">
