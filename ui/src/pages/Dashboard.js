@@ -9,8 +9,6 @@ import CardPageVisits from "../components/Cards/CardPageVisits";
 import CardSocialTraffic from "../components/Cards/CardSocialTraffic";
 import Navbar from "./../components/Navbar"
 import Footer from "../components/Footer";
-import { Component } from "react";
-
 
 class Dashboard extends React.Component{
   
