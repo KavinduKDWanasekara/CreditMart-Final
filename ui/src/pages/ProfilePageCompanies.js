@@ -5,6 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
+import CurrencyFormat from 'react-currency-format';
 
 class ProfileCompany extends Component {
 
@@ -14,12 +15,19 @@ class ProfileCompany extends Component {
         
       }
 
+
+
     render(){
         
-        const { state } = this.props.location
-        
+        const { state } = this.props.location      
 
         console.log(state)
+        
+        var CurrencyFormat = require('react-currency-format');
+ 
+        <CurrencyFormat value={state.credit_limit} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <div>{value}</div>} />
+
+
   
         return (
            <> 
