@@ -5,8 +5,8 @@ import React from "react";
 
 import CardLineChart from "../components/Cards/CardLineChart";
 import CardBarChart from "../components/Cards/CardBarChart";
-import CardPageVisits from "../components/Cards/CardPageVisits";
-import CardSocialTraffic from "../components/Cards/CardSocialTraffic";
+import CardFinancialValues from "../components/Cards/CardFinancialValues";
+import CardFinancialDetails from "../components/Cards/CardFinancialDetails";
 import Navbar from "./../components/Navbar"
 import Footer from "../components/Footer";
 
@@ -28,12 +28,12 @@ class Dashboard extends React.Component{
       </div>
       <div className="flex flex-wrap m-4">
         <div className="w-100 xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardPageVisits />
+          <CardFinancialValues />
         </div>
        
       </div>
       <div className="w-100 xl:w-4/12 px-4">
-          <CardSocialTraffic />
+          <CardFinancialDetails />
         </div>
       </div>
       <Footer/>
