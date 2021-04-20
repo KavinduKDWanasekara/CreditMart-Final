@@ -88,7 +88,13 @@ export class EditProfilePopUp extends Component{
                             />
                         </Form.Group>
 
-                        
+                        <Form.Group>
+                            <Button
+                            variant='primary'
+                            >
+                                Submit
+                            </Button>
+                        </Form.Group>
 
                     </Form>
                 </Col>
@@ -96,7 +102,11 @@ export class EditProfilePopUp extends Component{
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={this.props.onHide}>Close</Button>
+        <Button
+         onClick={this.props.onHide}
+         variant='danger'
+        >Close
+        </Button>
       </Modal.Footer>
     </Modal>
 

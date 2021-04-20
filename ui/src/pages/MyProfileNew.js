@@ -6,6 +6,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import {EditProfilePopUp} from '../components/Cards/EditProfilePopUp';
+import {FinancialDataPopUp} from '../components/Cards/FinancialDataPopUp';
 
 
 export class MyProfileNew extends Component {
@@ -17,6 +18,7 @@ export class MyProfileNew extends Component {
         this.state = {
           
            addModalShow : false,
+           addFinancialData : false,
            company_name:"",
            business_type:"",
            contact_number:"",
@@ -116,6 +118,7 @@ export class MyProfileNew extends Component {
     render() {
 
       let  addModalClose = () => this.setState({addModalShow : false})
+      let  addFinancialClose = () => this.setState({addFinancialData : false})
       
         return (
             <>
@@ -183,7 +186,18 @@ export class MyProfileNew extends Component {
                             onHide = {addModalClose}
                           />
                           
+                          <Button
+                          // varient='primary'
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addFinancialData : true})}
+                        >Add Financial Data</Button>
+                          <FinancialDataPopUp
+                            show = {this.state.addFinancialData}
+                            onHide = {addFinancialClose}
+                          />
                         </ButtonToolbar>
+
+                        
 
                       <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
