@@ -1,4 +1,4 @@
-import './Footer.css'
+
 
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import React, { Component } from "react";

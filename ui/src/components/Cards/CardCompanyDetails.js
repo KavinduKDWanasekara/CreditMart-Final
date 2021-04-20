@@ -76,6 +76,7 @@ import Swal from 'sweetalert2'
                 Swal.fire({
                     icon: 'success',
                     title: 'Data saved successfully',
+                    text: 'Add financial data for atleast 03 years!'
                 })
                 this.props.history.push('/profile');
                 console.log(res);

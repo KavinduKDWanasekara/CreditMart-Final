@@ -79,8 +79,7 @@ class Register extends Component {
                     title: 'Enter details of your company',
                 })
 
-				console.log(res);
-				console.log(res.data);
+				
 			}).catch(err => console.log("api Erorr: ", err.response )+
               Swal.fire({
                 icon: 'error',
