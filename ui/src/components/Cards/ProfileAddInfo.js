@@ -279,7 +279,6 @@ export class ProfileAddInfo extends Component {
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
                                         type="integer" 
-                                        minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.ebitda}</p>                                   
@@ -500,10 +499,11 @@ export class ProfileAddInfo extends Component {
                         </table>
                     <div className= "md:flex my-4">
                         <div className= "md:w-full px-1/2 text-center">
-                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
+                            <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                             Submit
                             </button>
-                            <Link to="/profile"><button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full" >
+                            <Link to="/profile">
+                                <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none" >
                             Back
                             </button></Link>
                         </div>

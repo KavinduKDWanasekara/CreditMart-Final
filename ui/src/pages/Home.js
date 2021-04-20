@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { send } from 'emailjs-com';
 import NavbarWelcomePage from './../components/NavbarWelcomePage';
 import Footer from './../components/Footer';
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   const [toSend, setToSend] = useState({
@@ -22,9 +24,17 @@ export default function Home() {
       'user_UYjlSRpxsOdzE2aLGyb5d'
     )
       .then((response) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Thank you for your response. We will contact you soon!!',
+      })
         console.log('SUCCESS!', response.status, response.text);
       })
       .catch((err) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Oopsi. Can you try again!!',
+      })
         console.log('FAILED...', err);
       });
   };
@@ -302,24 +312,30 @@ export default function Home() {
                     &#10062;<strong>Leader</strong>  &#10062;
                     </p>
                     <div className="mt-6">
+
+                    <Link to={{ pathname: "https://www.linkedin.com/in/safraznazar/" }} target="_blank"  >
                       <button
                         className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter"></i>
-                      </button>
+                        <i className="fab fa-linkedin"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.linkedin.com/in/safraznazar/" }} target="_blank"  >
                       <button
                         className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-facebook-f"></i>
-                      </button>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.instagram.com/safraznazar_/" }} target="_blank"  >
                       <button
                         className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
+                        <i className="fab fa-instagram"></i>
+                      </button></Link>
                     </div>
                   </div>
                 </div>
@@ -337,24 +353,30 @@ export default function Home() {
                       Web Developer
                     </p>
                     <div className="mt-6">
+                    <Link to={{ pathname: "https://www.linkedin.com/in/shiyam-baasith-4666241a6/" }} target="_blank"  >
                       <button
                         className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter"></i>
-                      </button>
+                        <i className="fab fa-linkedin"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.facebook.com/baasith.cool.1" }} target="_blank"  >
                       <button
                         className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-facebook-f"></i>
-                      </button>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.instagram.com/_baasith._/" }} target="_blank"  >
                       <button
                         className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
+                        <i className="fab fa-instagram"></i>
+                      </button></Link>
+                      
                     </div>
                   </div>
                 </div>
@@ -372,24 +394,30 @@ export default function Home() {
                       Web Developer
                     </p>
                     <div className="mt-6">
+                    <Link to={{ pathname: "https://www.linkedin.com/in/ashfaaq-ahamed-b25bbb18a/" }} target="_blank"  >
                       <button
                         className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter"></i>
-                      </button>
+                        <i className="fab fa-linkedin"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.facebook.com/ashfaaq.ahamed" }} target="_blank"  >
                       <button
                         className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-facebook-f"></i>
-                      </button>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.instagram.com/ashfxxq_ahxmed/?hl=en" }} target="_blank"  >
                       <button
                         className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
+                        <i className="fab fa-instagram"></i>
+                      </button></Link>
+
                     </div>
                   </div>
                 </div>
@@ -407,18 +435,29 @@ export default function Home() {
                       Marketing Specialist
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    <Link to={{ pathname: "https://www.linkedin.com/in/kavinduwanasekara/" }} target="_blank"  >
+                    <button
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-google"></i>
-                      </button>
+                        <i className="fab fa-linkedin"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.facebook.com/kavindu.kavishka/" }} target="_blank"  >
                       <button
                         className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-facebook-f"></i>
+                      </button></Link>
+                      <Link to={{ pathname: "https://www.instagram.com/kavindukavishka/" }} target="_blank"  >
+                      <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-instagram"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -436,24 +475,30 @@ export default function Home() {
                       Scientist
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-google"></i>
-                      </button>
-                      <button
+
+                    <Link to={{ pathname: "https://www.linkedin.com/in/oshan-devinda/" }} target="_blank"  >
+                    <button
                         className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-twitter"></i>
+                        <i className="fab fa-linkedin"></i>
                       </button>
+</Link>
+                      <Link to={{ pathname: "https://www.facebook.com/oshan.nettasingha/" }} target="_blank"  >
                       <button
-                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.instagram.com/_oshan_devinda_/" }} target="_blank"  >
+                      <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-instagram"></i>
-                      </button>
+                      </button></Link>
                     </div>
                   </div>
                 </div>
@@ -471,30 +516,29 @@ export default function Home() {
                     Web Developer
                     </p>
                     <div className="mt-6">
-                      <button
-                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-dribbble"></i>
-                      </button>
-                      <button
-                        className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                        type="button"
-                      >
-                        <i className="fab fa-google"></i>
-                      </button>
-                      <button
+
+                    <Link to={{ pathname: "https://www.linkedin.com/in/navindu-wijeratna/" }} target="_blank"  ><button
                         className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
+                       
                       >
-                        <i className="fab fa-twitter"></i>
-                      </button>
-                      <button
-                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        <i className="fab fa-linkedin"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.linkedin.com/in/navindu-wijeratna/" }} target="_blank"  ><button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-facebook-f"></i>
+                      </button></Link>
+
+                      <Link to={{ pathname: "https://www.linkedin.com/in/navindu-wijeratna/" }} target="_blank"  > <button
+                        className="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
                         <i className="fab fa-instagram"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

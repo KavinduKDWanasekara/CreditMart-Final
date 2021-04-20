@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 import axios from 'axios'
 
+import Swal from 'sweetalert2'
 export class MyProfileNew extends Component {
 
     constructor(props) {
@@ -92,7 +93,16 @@ export class MyProfileNew extends Component {
     
         .catch(error =>{
     
-          console.log(error)
+          console.log(error.request.responseText);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.request.response,
+            footer: '<a>Login </a>'
+          });
+          if (error.request.status == 401) {
+            this.props.history.push('/login')
+          }
     
         })
         }
