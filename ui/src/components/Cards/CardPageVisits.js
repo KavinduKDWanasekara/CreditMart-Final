@@ -24,7 +24,7 @@ export default function CardPageVisits() {
         text: error.request.response,
         footer: '<a>card page visit</a>'
       });
-      if (error.request.status == 401) {
+      if (error.request.status === 401) {
         history.push('/login')
       }
     });

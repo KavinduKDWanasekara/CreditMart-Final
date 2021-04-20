@@ -1,8 +1,8 @@
 
-import { data } from 'autoprefixer';
+
 import React, { Component } from 'react'
-import { Form, Input, Label, FormGroup, Feedback, FormFeedback, Button } from 'reactstrap';
-import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import { Form, Input,  FormGroup } from 'reactstrap';
+
 import axiosInstance from '../../axios';
 
 import { Link } from 'react-router-dom';
