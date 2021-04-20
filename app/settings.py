@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'CreditMartDB', #CreditMart
-        'USER': 'admin', #Admin
-        'PASSWORD': '12345678', #12345678
-        'PORT': '24110', #28213
-        'HOST': 'mysql-24110-0.cloudclusters.net' #mysql-28213-0.cloudclusters.net
+        'NAME': 'CreditMart',
+        'USER': 'Admin',
+        'PASSWORD': '12345678',
+        'PORT': '28213',
+        'HOST': 'mysql-28213-0.cloudclusters.net'
     }
 }
 

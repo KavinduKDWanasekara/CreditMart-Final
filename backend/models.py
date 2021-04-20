@@ -48,6 +48,7 @@ class FinancialDetails(models.Model):
     total_liabilities = models.FloatField(max_length=255)
     pd = models.FloatField(max_length=255)
     credit_limit = models.FloatField(max_length=255)
+
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
     def __str__(self):
