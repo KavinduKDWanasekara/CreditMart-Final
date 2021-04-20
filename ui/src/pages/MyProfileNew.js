@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 import axios from 'axios'
-
 import Swal from 'sweetalert2'
+import {Button, ButtonToolbar} from 'react-bootstrap';
+import {EditProfilePopUp} from '../components/Cards/EditProfilePopUp';
+
+
 export class MyProfileNew extends Component {
 
     constructor(props) {
@@ -12,7 +15,8 @@ export class MyProfileNew extends Component {
         super(props)
       
         this.state = {
-    
+          
+           addModalShow : false,
            company_name:"",
            business_type:"",
            contact_number:"",
@@ -20,6 +24,7 @@ export class MyProfileNew extends Component {
            description:"",
            email:"",
            limit:"",
+           
           
     
         }
@@ -109,6 +114,9 @@ export class MyProfileNew extends Component {
       
 
     render() {
+
+      let  addModalClose = () => this.setState({addModalShow : false})
+      
         return (
             <>
       <main className="relative block h-100-px">
@@ -161,7 +169,22 @@ export class MyProfileNew extends Component {
                           
                           Edit Profile
                         </button>
+                        
                       </Link>
+
+                      <ButtonToolbar>
+                        <Button
+                          // varient='primary'
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addModalShow : true})}
+                        >Edit profile</Button>
+                          <EditProfilePopUp
+                            show = {this.state.addModalShow}
+                            onHide = {addModalClose}
+                          />
+                          
+                        </ButtonToolbar>
+
                       <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           Add Financial Data
