@@ -18,16 +18,82 @@ export class EditProfilePopUp extends Component{
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+          Edit Your Profile Details !!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <div className='Container'>
+            <Row>
+                <Col sm={6}>
+                    <Form
+                        onSubmit={this.handleSubmit}
+                    >
+                        <Form.Group controlId="CompanyName">
+                            <Form.Label>
+                                Company Name
+                            </Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='CompanyName'
+                                required
+                                placeholder='Enter Your Company Name'
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="ContactNumber">
+                            <Form.Label>
+                                Contact Number
+                            </Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='ContactNumber'
+                                required
+                                placeholder='Enter Your Contact Number'
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="Location">
+                            <Form.Label>
+                                Location
+                            </Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='Location'
+                                required
+                                placeholder='Enter Your Location'
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="BusinessType">
+                            <Form.Label>
+                                Business Type
+                            </Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='BusinessType'
+                                required
+                                placeholder='Enter Your Business Type'
+                            />
+                        </Form.Group>
+
+                        <Form.Group controlId="Description">
+                            <Form.Label>
+                                Description
+                            </Form.Label>
+                            <Form.Control
+                                type='text'
+                                name='DepartmentName'
+                                required
+                                placeholder='Enter Your Description Here'
+                            />
+                        </Form.Group>
+
+                        
+
+                    </Form>
+                </Col>
+            </Row>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={this.props.onHide}>Close</Button>
