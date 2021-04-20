@@ -132,20 +132,13 @@ export class MyProfileNew extends Component {
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-10 shadow-xl rounded-lg -mt-56">
             
               <div className="px-6">
-              {/* <div className="py-6 px-3 mt-32 sm:mt-0">
-                      
-                        <Link to="editinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Edit Profile</button></Link>
-                      
-                        <Link  to="/profileaddinfo"><button className="h-10 px-5 text-coolGray-700 transition-colors duration-150 border border-coolGray-500 rounded-lg focus:shadow-outline hover:bg-gray-300 hover:text-coolGray-100">Add Financial Data</button></Link>
-                        
-                </div> */}
+    
 
                       
                     <div className="flex flex-wrap justify-center -mt-24">
                         <img
                               alt="..."
-                              // src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
-                              // src={("https://scontent.fcmb2-1.fna.fbcdn.net/v/t1.0-9/16998754_217016665439934_8147080226351143645_n.jpg?_nc_cat=103&ccb=1-3&_nc_sid=174925&_nc_ohc=82cUc6mLSroAX-WpPjx&_nc_ht=scontent.fcmb2-1.fna&oh=06a02ec30ac75a1e23912957e669b3d6&oe=607D52A9")}
+                             
                               src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
                               className="inline object-cover w-44 h-44 -mr- 6 rounded-full"
                             />
@@ -165,7 +158,7 @@ export class MyProfileNew extends Component {
                     <div className="md:w-full px-1/2 text-center">
                       <Link to="/editinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
-                          {/* //transform h-64 bg-blue-400 w-1/5 hover:bg-blue-600 transition duration-500 hover:scale-125" */}
+                          
                           Edit Profile
                         </button>
                       </Link>
@@ -218,7 +211,7 @@ export class MyProfileNew extends Component {
         </section>
         <Footer/>
       </main>
-      {/* <Footer /> */}
+
     </>
         )
     }

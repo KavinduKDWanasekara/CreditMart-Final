@@ -1,10 +1,8 @@
-import "./ContractPage.css";
+
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+
 import React, { Component } from 'react'
-import { Form, FormGroup, FormFeedback } from 'reactstrap'
-import axiosInstance from '../axios';
-import Error404 from './404Error';
+
 
 class ContractPage extends Component {
     render(){

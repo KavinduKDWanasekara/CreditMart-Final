@@ -56,7 +56,7 @@ class Login extends Component {
         const errors = this.validate();
 
         if (Object.keys(errors).length === 0) {
-            console.log("sent data intial : ",data)
+            
             axiosInstance
 			.post(`auth/`, {
 				username: data.username,
@@ -68,8 +68,7 @@ class Login extends Component {
 				axiosInstance.defaults.headers['Authorization'] =
 					'Token ' + localStorage.getItem('token');
                 this.props.history.push('/dashboard');
-				console.log(res);
-				console.log(res.data);
+			
 			})
            
             .catch((error) => {

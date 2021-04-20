@@ -3,7 +3,7 @@
 import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
 import ProfileCompany from './pages/ProfilePageCompanies';
 import ContractPage from './pages/ContractPage';
-// import ContractPage1 from './pages/ContractPage-1';
+
 import MyProfileNew from './pages/MyProfileNew';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
