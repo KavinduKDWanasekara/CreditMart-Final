@@ -6,6 +6,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 
+
 class ProfileCompany extends Component {
 
     constructor(props) {
@@ -14,12 +15,17 @@ class ProfileCompany extends Component {
         
       }
 
+
+
     render(){
         
-        const { state } = this.props.location
-        
+        const { state } = this.props.location      
 
         console.log(state)
+        
+       
+
+
   
         return (
            <> 
