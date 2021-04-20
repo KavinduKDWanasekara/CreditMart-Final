@@ -91,8 +91,23 @@ class Profile(APIView):
         try:
             company = Company.objects.get(user=user)
             company_serializer = CompanySerializer(company)
+            result = {
+                "company_name": company.company_name,
+                "location": company.location,
+                "contact_number": company.contact_number,
+                "business_type": company.business_type,
+                "description": company.description,
+                "email": company.user.email,
+                "credit_limit": 0,
+                "pd": 0
+            }
+            financial_det = FinancialDetails.objects.filter(company=company).order_by("financial_year").reverse()[:1]
+            for i in financial_det:
+                result["credit_limit"] = i.credit_limit
+                result["pd"] = i.pd
+
             return Response({
-                "company": company_serializer.data,
+                "company": result,
             })
 
         except Company.DoesNotExist as e:
