@@ -197,7 +197,7 @@ export class ProfileAddInfo extends Component {
 
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
-                                <label htmlFor=" total_assets" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
+                                <label htmlFor="total_assets" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
                                 total assets<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
