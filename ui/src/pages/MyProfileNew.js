@@ -169,14 +169,15 @@ export class MyProfileNew extends Component {
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
                       {this.state.email}
                     </div>
-                    <div className="mb-2 text-gray-700 mt-2">
-                      <i className="mr-2 text-xl text-gray-900">
-                     Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
-                     </i>
-                    </div>
-                    <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
-                      <i className="mr-2 text-xl text-gray-500">
+                    {/* <div className="mb-2 text-gray-700 mt-2">
+                   
+                    </div> */}
+                    <div className="mb-2 text-gray-700 border-4 border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
+                      <i className="mr-2 text-2xl leading-10 text-gray-500">
                         Credit Limit : <span className="underline">Rs. {Math.round(this.state.limit* 100) /100}</span>
+                      </i><br/>
+                      <i className="mr-2 text-xl leading-10 text-gray-900">
+                        Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
                       </i>
                     </div>
                 </div>

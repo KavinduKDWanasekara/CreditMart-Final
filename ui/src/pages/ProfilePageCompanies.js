@@ -12,7 +12,6 @@ class ProfileCompany extends Component {
     constructor(props) {
         super(props);
         
-        
       }
 
 
@@ -21,12 +20,6 @@ class ProfileCompany extends Component {
         
         const { state } = this.props.location      
 
-        console.log(state)
-        
-       
-
-
-  
         return (
            <> 
             <div
