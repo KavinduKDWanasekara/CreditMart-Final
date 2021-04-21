@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
-import { Form, FormGroup } from 'reactstrap'
+import React, {component} from 'react';
+import { Component } from 'react';
+import {Modal, Button, Row, Col} from 'react-bootstrap';
+import { Form, FormGroup } from 'reactstrap';
 import axiosInstance from '../../axios';
-
-import { Link } from 'react-router-dom';
-
-import Navbar from "../Navbar"
 import Swal from 'sweetalert2'
 
 
+export class EditProfilePopUp extends Component{
 
- class CardCompanyDetails extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
 
         this.state = this.getInitialState();
@@ -93,14 +91,29 @@ import Swal from 'sweetalert2'
             this.setState({ errors });
         }
     }
-    
-    render() {
+
+
+    render(){
         const {  data, errors } = this.state;
-        return (
-            <div>
-                <Navbar/>
-                <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2 text-center md:mb-0">
-                    <p className="text-4xl font-bold py-9 capitalize">Edit Profile!</p>
+        return(
+
+            <Modal
+      {...this.props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Edit Your Profile Details 
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className='Container'>
+            <Row>
+                <Col sm={12}>
+                <Form onSubmit={this.handleSubmit} >
+                    {/* <p className="text-4xl font-bold py-9 capitalize">Edit Profile!</p> */}
                         <table className=" text-center mb-2 flex justify-center">
                             <tbody>
                             <tr className="md:w-full px-1/2 text-left md:mb-0">
@@ -221,14 +234,12 @@ import Swal from 'sweetalert2'
                                 <td>
                                 <FormGroup>
                                         <textarea name="description" 
-                                        maxLength="225"
                                         value={data.description} 
                                         onChange={this.changeHandler} 
                                         invalid={errors.description ? 1 : 0} 
                                         className="w-96 h-32 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" 
                                         id="description"  
                                         placeholder="Enter Company Description"/>
-                                        
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.description}</p>
                                 </FormGroup>
                                 </td>
@@ -245,18 +256,27 @@ import Swal from 'sweetalert2'
                             <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                                 Submit
                             </button>
-                            <Link to="/profile">
+                            {/* <Link to="/profile">
                                 <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none" >
                                     Back
                                 </button>
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                 </Form>
-            </div>
-        )
+                </Col>
+            </Row>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+         onClick={this.props.onHide}
+         variant='danger'
+        >Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
+        );
     }
-
 }
-
-export default CardCompanyDetails

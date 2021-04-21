@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 import axios from 'axios'
-
 import Swal from 'sweetalert2'
+import { BsPencilSquare } from "react-icons/bs";
+import {Button, ButtonToolbar} from 'react-bootstrap';
+import {EditProfilePopUp} from '../components/Cards/EditProfilePopUp';
+import {FinancialDataPopUp} from '../components/Cards/FinancialDataPopUp';
+
+
+
 export class MyProfileNew extends Component {
 
     constructor(props) {
@@ -12,7 +18,9 @@ export class MyProfileNew extends Component {
         super(props)
       
         this.state = {
-    
+          
+           addModalShow : false,
+           addFinancialData : false,
            company_name:"",
            business_type:"",
            contact_number:"",
@@ -20,7 +28,10 @@ export class MyProfileNew extends Component {
            description:"",
            email:"",
            limit:"",
+
+        
            pd:""
+
           
     
         }
@@ -88,6 +99,10 @@ export class MyProfileNew extends Component {
       
 
     render() {
+
+      let  addModalClose = () => this.setState({addModalShow : false})
+      let  addFinancialClose = () => this.setState({addFinancialData : false})
+      
         return (
             <>
       <main className="relative block h-100-px">
@@ -121,11 +136,15 @@ export class MyProfileNew extends Component {
                               src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
                               className="inline object-cover w-44 h-44 -mr- 6 rounded-full"
                             />
-                         
-                              <button  className="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
-                                    &#128640;
+                            
+                                
+                              <button onClick = {() => this.setState({addModalShow : true})}  className="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
                                     
+                                    <BsPencilSquare/>
                               </button>
+
+                              
+                              
                               
                               
                               
@@ -140,7 +159,33 @@ export class MyProfileNew extends Component {
                           
                           Edit Profile
                         </button>
+                        
                       </Link>
+
+                      <ButtonToolbar>
+                        <Button
+                          
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addModalShow : true})}
+                        >Edit profile</Button>
+                          <EditProfilePopUp
+                            show = {this.state.addModalShow}
+                            onHide = {addModalClose}
+                          />
+                          
+                          <Button
+                          
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addFinancialData : true})}
+                        >Add Financial Data</Button>
+                          <FinancialDataPopUp
+                            show = {this.state.addFinancialData}
+                            onHide = {addFinancialClose}
+                          />
+                        </ButtonToolbar>
+
+                        
+
                       <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           Add Financial Data
