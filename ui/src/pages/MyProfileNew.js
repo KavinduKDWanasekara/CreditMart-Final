@@ -173,13 +173,13 @@ export class MyProfileNew extends Component {
                 </div>
                   <div className="md:flex my-4">
                     <div className="md:w-full px-1/2 text-center">
-                      {/* <Link to="/editinfo">
+                      <Link to="/editinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           
                           Edit Profile
                         </button>
                         
-                      </Link> */}
+                      </Link>
 
                       <ButtonToolbar>
                         <Button
@@ -205,11 +205,11 @@ export class MyProfileNew extends Component {
 
                         
 
-                      {/* <Link to="/profileaddinfo">
+                      <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           Add Financial Data
                         </button>
-                      </Link> */}
+                      </Link>
                     </div>              
                   </div>
                 

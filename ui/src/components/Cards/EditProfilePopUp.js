@@ -105,7 +105,7 @@ export class EditProfilePopUp extends Component{
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Edit Your Profile Details !!
+          Edit Your Profile Details 
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
