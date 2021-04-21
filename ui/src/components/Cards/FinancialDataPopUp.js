@@ -1,6 +1,7 @@
 import React, {component} from 'react';
 import { Component } from 'react';
 import {Modal, Button, Row, Col, Form} from 'react-bootstrap';
+import axiosInstance from '../../axios';
 
 export class FinancialDataPopUp extends Component{
     constructor(props){
