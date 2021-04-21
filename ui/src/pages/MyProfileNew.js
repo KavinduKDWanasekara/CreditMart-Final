@@ -154,18 +154,20 @@ export class MyProfileNew extends Component {
                 </div>
                   <div className="md:flex my-4">
                     <div className="md:w-full px-1/2 text-center">
-                      <Link to="/editinfo">
+                      {/* <Link to="/editinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           
                           Edit Profile
                         </button>
                         
-                      </Link>
+                      </Link> */}
 
-                      <ButtonToolbar>
+                      <ButtonToolbar
+                        className='flex flex-wrap justify-center -mt-24 mt-2'
+                      >
                         <Button
                           
-                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4   transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
                           onClick = {() => this.setState({addModalShow : true})}
                         >Edit profile</Button>
                           <EditProfilePopUp
@@ -186,15 +188,15 @@ export class MyProfileNew extends Component {
 
                         
 
-                      <Link to="/profileaddinfo">
+                      {/* <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           Add Financial Data
                         </button>
-                      </Link>
+                      </Link> */}
                     </div>              
                   </div>
                 
-                  <div className="text-center mt-12">
+                  <div className="text-center mt-2">
                     <h3 className="text-4xl font-semibold leading-normal  text-gray-800 mb-2">
                     {this.state.company_name}
                     </h3>
@@ -219,7 +221,7 @@ export class MyProfileNew extends Component {
                      Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
                      </i>
                     </div>
-                    <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
+                    <div className=" mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
                       <i className="mr-2 text-xl text-gray-500">
                         Credit Limit : <span className="underline">Rs. {Math.round(this.state.limit* 100) /100}</span>
                       </i>
