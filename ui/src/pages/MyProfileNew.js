@@ -28,7 +28,10 @@ export class MyProfileNew extends Component {
            description:"",
            email:"",
            limit:"",
-           
+
+        
+           pd:""
+
           
     
         }
@@ -51,38 +54,15 @@ export class MyProfileNew extends Component {
           }
     
         })
-        const requestTwo = axios.get('https://credit-mart.herokuapp.com/api/user', {
-    
-          headers : {
-    
-            'Authorization': 'Token '+localStorage.getItem('token'),
-            Accept: "application/json"
-    
-          }
-    
-        })
-
-        const requestThree = axios.get('https://credit-mart.herokuapp.com/api/climit', {
-    
-          headers : {
-    
-            'Authorization': 'Token '+localStorage.getItem('token'),
-            Accept: "application/json"
-    
-          }
-    
-        })
-        
+     
         axios
-        .all([requestOne, requestTwo,requestThree])
+        .all([requestOne])
         .then(axios.spread((...responses) => {
           const responseOne = responses[0];
-          const responseTwo = responses[1];
-          const responseThree = responses[2];
+       
           console.log( responseOne.data )
-          console.log( responseTwo.data )
-          console.log( responseThree.data )
-          console.log(responseThree.data.message[0].credit_limit)
+      
+          
     
           this.setState ( {
     
@@ -92,8 +72,9 @@ export class MyProfileNew extends Component {
             contact_number : responseOne.data.company.contact_number,
             location : responseOne.data.company.location,
             description: responseOne.data.company.description,
-            email : responseTwo.data.detail.email,
-            limit : responseThree.data.message[0].credit_limit,
+            email : responseOne.data.company.email,
+            limit : responseOne.data.company.credit_limit,
+            pd :responseOne.data.company.pd,
     
              } );
 
@@ -233,9 +214,14 @@ export class MyProfileNew extends Component {
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
                       {this.state.email}
                     </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="mr-2 text-xl text-gray-900">
+                     Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
+                     </i>
+                    </div>
                     <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
                       <i className="mr-2 text-xl text-gray-500">
-                        Credit Limit : <span className="underline">Rs. {this.state.limit}</span>
+                        Credit Limit : <span className="underline">Rs. {Math.round(this.state.limit* 100) /100}</span>
                       </i>
                     </div>
                 </div>

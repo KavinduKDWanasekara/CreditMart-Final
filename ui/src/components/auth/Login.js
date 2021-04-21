@@ -1,7 +1,7 @@
   
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
-import { isEmail } from 'validator';
+import { Form, Input, Label, FormGroup, FormFeedback } from 'reactstrap';
+
 import axiosInstance from '../../axios';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';

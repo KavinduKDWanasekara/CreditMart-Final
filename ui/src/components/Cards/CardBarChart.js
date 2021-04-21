@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Chart from "chart.js";
 import axiosInstance from '../../axios';
 import { useHistory } from 'react-router-dom';
@@ -6,10 +6,7 @@ import Swal from 'sweetalert2'
 
 export default function CardBarChart() {
 
-   //sleep fun
-   const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
+ 
 
   let yearArray = [];
   let salesArray = [];
@@ -42,7 +39,7 @@ export default function CardBarChart() {
         text: error.request.response,
         footer: '<a>Login </a>'
       });
-      if (error.request.status == 401) {
+      if (error.request.status === 401) {
         history.push('/login')
       }
     });

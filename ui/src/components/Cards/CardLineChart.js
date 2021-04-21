@@ -8,10 +8,7 @@ export default function CardLineChart() {
   let yearArray = ["2","3"];
   let pdArray = [1,2];
  
-  //sleep
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
+
 
   const sendGetRequest = async () => {
     yearArray = [];
