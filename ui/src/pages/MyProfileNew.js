@@ -221,7 +221,7 @@ export class MyProfileNew extends Component {
                      Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
                      </i>
                     </div>
-                    <div className=" mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
+                    <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
                       <i className="mr-2 text-xl text-gray-500">
                         Credit Limit : <span className="underline">Rs. {Math.round(this.state.limit* 100) /100}</span>
                       </i>
