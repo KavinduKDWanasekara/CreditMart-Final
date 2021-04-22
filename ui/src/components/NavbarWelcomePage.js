@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline, MDBBtn,
-MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse, MDBFormInline, MDBBtn
+
 } from "mdbreact";
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router } from 'react-router-dom';
+
 
 class Navbar extends Component {
 state = {

@@ -1,8 +1,8 @@
 
-import { data } from 'autoprefixer';
+
 import React, { Component } from 'react'
-import { Form, Input, Label, FormGroup, Feedback, FormFeedback, Button } from 'reactstrap';
-import { MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import { Form, Input,  FormGroup } from 'reactstrap';
+
 import axiosInstance from '../../axios';
 
 import { Link } from 'react-router-dom';
@@ -64,45 +64,45 @@ export class ProfileAddInfo extends Component {
         else if (!/^[0-9]+$/.test(data.financial_year)) errors.financial_year="This field should be number";
         
         if (data.total_assets === '') errors.total_assets = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.total_assets)) errors.total_assets="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.total_assets)) errors.total_assets="This field should be number";
         
         if (data.profit_on_sales === '') errors.profit_on_sales = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.profit_on_sales)) errors.profit_on_sales="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.profit_on_sales)) errors.profit_on_sales="This field should be number";
         
         if (data.interest_expenses === '') errors.interest_expenses = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.interest_expenses)) errors.interest_expenses="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.interest_expenses)) errors.interest_expenses="This field should be number";
 
         if (data.ebitda === '') errors.ebitda = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.ebitda)) errors.ebitda="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.ebitda)) errors.ebitda="This field should be number";
         
         if (data.ebit === '') errors.ebit = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.ebit)) errors.ebit="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.ebit)) errors.ebit="This field should be number";
         
         if (data.cost_of_products_sold === '') errors.cost_of_products_sold = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.cost_of_products_sold)) errors.cost_of_products_sold="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.cost_of_products_sold)) errors.cost_of_products_sold="This field should be number";
 
 
         if (data.sales === '') errors.sales = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.sales)) errors.sales="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.sales)) errors.sales="This field should be number";
 
         if (data.depreciation === '') errors.depreciation = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.depreciation)) errors.depreciation="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.depreciation)) errors.depreciation="This field should be number";
 
 
         if (data.profit_on_operating_activities === '') errors.profit_on_operating_activities = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.profit_on_operating_activities)) errors.profit_on_operating_activities="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.profit_on_operating_activities)) errors.profit_on_operating_activities="This field should be number";
 
         if (data.extraordinary_items === '') errors.extraordinary_items = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.extraordinary_items)) errors.extraordinary_items="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.extraordinary_items)) errors.extraordinary_items="This field should be number";
 
         if (data.total_expenses === '') errors.total_expenses = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.total_expenses)) errors.total_expenses="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.total_expenses)) errors.total_expenses="This field should be number";
 
         if (data.short_term_liabilities === '') errors.short_term_liabilities = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.short_term_liabilities)) errors.short_term_liabilities="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.short_term_liabilities)) errors.short_term_liabilities="This field should be number";
       
         if (data.total_liabilities === '') errors.total_liabilities = 'This field can not be blank.';
-        else if (!/^[0-9.]+$/.test(data.total_liabilities)) errors.total_liabilities="This field should be number";
+        else if (!/^[0-9.-]+$/.test(data.total_liabilities)) errors.total_liabilities="This field should be number";
 
         return errors;
     }
@@ -197,7 +197,7 @@ export class ProfileAddInfo extends Component {
 
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
-                                <label htmlFor=" total_assets" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
+                                <label htmlFor="total_assets" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
                                 total assets<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
@@ -209,8 +209,8 @@ export class ProfileAddInfo extends Component {
                                         name="total_assets" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.total_assets}</p>                                   
@@ -232,8 +232,8 @@ export class ProfileAddInfo extends Component {
                                         name="profit_on_sales" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.profit_on_sales}</p>                                   
@@ -255,8 +255,8 @@ export class ProfileAddInfo extends Component {
                                         name="interest_expenses" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.interest_expenses}</p>                                   
@@ -278,7 +278,7 @@ export class ProfileAddInfo extends Component {
                                         name="ebitda" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
+                                        type="double" 
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.ebitda}</p>                                   
@@ -300,8 +300,8 @@ export class ProfileAddInfo extends Component {
                                         name="ebit" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.ebit}</p>                                   
@@ -323,8 +323,8 @@ export class ProfileAddInfo extends Component {
                                         name="cost_of_products_sold" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.cost_of_products_sold}</p>                                   
@@ -346,8 +346,8 @@ export class ProfileAddInfo extends Component {
                                         name="sales" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.sales}</p>                                   
@@ -369,8 +369,8 @@ export class ProfileAddInfo extends Component {
                                         name="depreciation" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.depreciation}</p>                                   
@@ -392,8 +392,8 @@ export class ProfileAddInfo extends Component {
                                         name="profit_on_operating_activities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.profit_on_operating_activities}</p>                                   
@@ -415,8 +415,8 @@ export class ProfileAddInfo extends Component {
                                         name="extraordinary_items" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.extraordinary_items}</p>                                   
@@ -438,8 +438,8 @@ export class ProfileAddInfo extends Component {
                                         name="total_expenses" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.total_expenses}</p>                                   
@@ -461,8 +461,8 @@ export class ProfileAddInfo extends Component {
                                         name="short_term_liabilities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.short_term_liabilities}</p>                                   
@@ -484,8 +484,8 @@ export class ProfileAddInfo extends Component {
                                         name="total_liabilities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
-                                        type="integer" 
-                                        minLength="4"
+                                        type="double" 
+                                        // minLength="4"
                                         className="w-96 h-14 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3"   
                                     />
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.total_liabilities}</p>                                   

@@ -385,7 +385,7 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={("static/images/ashfaq.jpeg")}
+                    src={("static/images/ashfaq.jpg")}
                     className="shadow-lg rounded-full mx-auto max-w-120-px"
                   />
                   <div className="pt-6 text-center">

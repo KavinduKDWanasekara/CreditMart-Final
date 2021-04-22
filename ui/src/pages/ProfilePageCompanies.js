@@ -6,21 +6,20 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 
+
 class ProfileCompany extends Component {
 
     constructor(props) {
         super(props);
         
-        
       }
+
+
 
     render(){
         
-        const { state } = this.props.location
-        
+        const { state } = this.props.location      
 
-        console.log(state)
-  
         return (
            <> 
             <div
@@ -93,7 +92,7 @@ class ProfileCompany extends Component {
                <LazyLoadImage
                  effect="blur"
                  placeholderSrc={"Image wall"}
-                 src={("static/images/credit.jpg")}
+                 src={("static/images/sideimg.jpg")}
                  alt="img"
                  className="transform transition duration-1000 hover:scale-110 md:w-3/5 ml-20 h-max rounded-3xl shadow-lg"
                />
@@ -124,7 +123,7 @@ class ProfileCompany extends Component {
                                 }}
                         >
                             <img
-                                src={("static/images/email.png")}
+                                src={("static/images/rocket.png")}
                                 alt="rocket"
                                 className="h-7"
                             />
@@ -155,7 +154,7 @@ class ProfileCompany extends Component {
                                         Credit Limit 
                                     </h1>
                                     <span className="font-semibold text-xl">
-                                        Rs. {state.credit_limit}
+                                        Rs. {Math.round(state.credit_limit* 100) /100}
                                     </span>
                                 </div>
                             </div>
@@ -166,7 +165,7 @@ class ProfileCompany extends Component {
                                 Probability of The Company being bankruptcy : 
                             </span>
                             <span className="text-red-500 font-semibold">
-                                {state.pd * 100} %
+                            {(Math.round(state.pd* 100) /100) * 100 } %
                             </span>
                         </p>
                     </div>

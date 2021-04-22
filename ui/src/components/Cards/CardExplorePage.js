@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import companyPage from '../../pages/ProfilePageCompanies';
-import { Link, useHistory } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 export class CardExplorePage extends Component {
 
@@ -34,7 +34,7 @@ export class CardExplorePage extends Component {
             <div  onClick={() =>{this.onEdit(this.props)}} >
                 <div className="rounded-xl shadow bg-blue-100  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 cursor-pointer ">
                     <div className="flex justify-center -mt-8 rounded-t-xl  h-32">
-                        <img  src={('static/images/prof.png')} className="rounded-full  border-white border-2 my-2 h-32 bg-gray-200"/>		
+                        <img  src={('static/images/prof.png')} className="rounded-full  border-white border-2 my-2 h-32 bg-gray-200" alt="img"/>		
                     </div>
                     <div className="text-center px-3 pb-6 pt-4  ">
                         <h3 className="text-black text-3xl font-bold font-sans">{this.props.company.company_name}</h3>

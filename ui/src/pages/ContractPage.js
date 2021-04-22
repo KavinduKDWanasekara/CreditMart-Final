@@ -12,9 +12,7 @@ class ContractPage extends Component {
                 <div className="flex justify-center ">
                         <img  src={('static/images/coming-soon-4.gif')} className=""/>		
                     </div>
-                {/* <Footer/> */}
-
-                {/* <Error404/> */}
+             
             </div>
         )
     }

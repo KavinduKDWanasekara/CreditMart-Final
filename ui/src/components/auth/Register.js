@@ -1,7 +1,7 @@
 
   
 import React, { Component } from 'react';
-import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap';
+import { Form, Input, Label, FormGroup, FormFeedback } from 'reactstrap';
 import { isEmail } from 'validator';
 import axiosInstance from '../../axios';
 import Swal from 'sweetalert2'
@@ -72,7 +72,7 @@ class Register extends Component {
                 localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
 					'Token ' + localStorage.getItem('token');
-				this.props.history.push('/editinfo');
+				this.props.history.push('/profile');
 
                 Swal.fire({
                     icon: 'info',

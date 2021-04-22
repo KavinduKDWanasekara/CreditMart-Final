@@ -1,6 +1,6 @@
 
 
-import { Switch, Route, Redirect, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import ProfileCompany from './pages/ProfilePageCompanies';
 import ContractPage from './pages/ContractPage';
 
@@ -15,6 +15,7 @@ import Logout from "./components/auth/logout";
 import Register from "./components/auth/Register";
 import './index.css';
 import CardCompanyDetails from "./components/Cards/CardCompanyDetails";
+
 
 function App() {
 

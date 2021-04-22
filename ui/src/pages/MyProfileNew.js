@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 import axios from 'axios'
-
 import Swal from 'sweetalert2'
+import { BsPencilSquare } from "react-icons/bs";
+import {Button, ButtonToolbar} from 'react-bootstrap';
+import {EditProfilePopUp} from '../components/Cards/EditProfilePopUp';
+import {FinancialDataPopUp} from '../components/Cards/FinancialDataPopUp';
+
+
+
 export class MyProfileNew extends Component {
 
     constructor(props) {
@@ -12,7 +18,9 @@ export class MyProfileNew extends Component {
         super(props)
       
         this.state = {
-    
+          
+           addModalShow : false,
+           addFinancialData : false,
            company_name:"",
            business_type:"",
            contact_number:"",
@@ -20,6 +28,10 @@ export class MyProfileNew extends Component {
            description:"",
            email:"",
            limit:"",
+
+        
+           pd:""
+
           
     
         }
@@ -42,38 +54,15 @@ export class MyProfileNew extends Component {
           }
     
         })
-        const requestTwo = axios.get('https://credit-mart.herokuapp.com/api/user', {
-    
-          headers : {
-    
-            'Authorization': 'Token '+localStorage.getItem('token'),
-            Accept: "application/json"
-    
-          }
-    
-        })
-
-        const requestThree = axios.get('https://credit-mart.herokuapp.com/api/climit', {
-    
-          headers : {
-    
-            'Authorization': 'Token '+localStorage.getItem('token'),
-            Accept: "application/json"
-    
-          }
-    
-        })
-        
+     
         axios
-        .all([requestOne, requestTwo,requestThree])
+        .all([requestOne])
         .then(axios.spread((...responses) => {
           const responseOne = responses[0];
-          const responseTwo = responses[1];
-          const responseThree = responses[2];
+       
           console.log( responseOne.data )
-          console.log( responseTwo.data )
-          console.log( responseThree.data )
-          console.log(responseThree.data.message[0].credit_limit)
+      
+          
     
           this.setState ( {
     
@@ -83,8 +72,9 @@ export class MyProfileNew extends Component {
             contact_number : responseOne.data.company.contact_number,
             location : responseOne.data.company.location,
             description: responseOne.data.company.description,
-            email : responseTwo.data.detail.email,
-            limit : responseThree.data.message[0].credit_limit,
+            email : responseOne.data.company.email,
+            limit : responseOne.data.company.credit_limit,
+            pd :responseOne.data.company.pd,
     
              } );
 
@@ -109,6 +99,10 @@ export class MyProfileNew extends Component {
       
 
     render() {
+
+      let  addModalClose = () => this.setState({addModalShow : false})
+      let  addFinancialClose = () => this.setState({addFinancialData : false})
+      
         return (
             <>
       <main className="relative block h-100-px">
@@ -142,11 +136,15 @@ export class MyProfileNew extends Component {
                               src={("https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg")}
                               className="inline object-cover w-44 h-44 -mr- 6 rounded-full"
                             />
-                         
-                              <button  className="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
-                                    &#128640;
+                            
+                                
+                              <button onClick = {() => this.setState({addModalShow : true})}  className="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200" >
                                     
+                                    <BsPencilSquare/>
                               </button>
+
+                              
+                              
                               
                               
                               
@@ -156,21 +154,49 @@ export class MyProfileNew extends Component {
                 </div>
                   <div className="md:flex my-4">
                     <div className="md:w-full px-1/2 text-center">
-                      <Link to="/editinfo">
+                      {/* <Link to="/editinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           
                           Edit Profile
                         </button>
-                      </Link>
-                      <Link to="/profileaddinfo">
+                        
+                      </Link> */}
+
+                      <ButtonToolbar
+                        className='flex flex-wrap justify-center -mt-24 mt-2'
+                      >
+                        <Button
+                          
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4   transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addModalShow : true})}
+                        >Edit profile</Button>
+                          <EditProfilePopUp
+                            show = {this.state.addModalShow}
+                            onHide = {addModalClose}
+                          />
+                          
+                          <Button
+                          
+                          className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
+                          onClick = {() => this.setState({addFinancialData : true})}
+                        >Add Financial Data</Button>
+                          <FinancialDataPopUp
+                            show = {this.state.addFinancialData}
+                            onHide = {addFinancialClose}
+                          />
+                        </ButtonToolbar>
+
+                        
+
+                      {/* <Link to="/profileaddinfo">
                         <button className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                           Add Financial Data
                         </button>
-                      </Link>
+                      </Link> */}
                     </div>              
                   </div>
                 
-                  <div className="text-center mt-12">
+                  <div className="text-center mt-2">
                     <h3 className="text-4xl font-semibold leading-normal  text-gray-800 mb-2">
                     {this.state.company_name}
                     </h3>
@@ -190,9 +216,14 @@ export class MyProfileNew extends Component {
                       <i className="fas fa-envelope mr-2 text-lg text-gray-500"></i>
                       {this.state.email}
                     </div>
+                    <div className="mb-2 text-gray-700 mt-2">
+                      <i className="mr-2 text-xl text-gray-900">
+                     Your Current PD is :  {(Math.round(this.state.pd* 100) /100) * 100 } %
+                     </i>
+                    </div>
                     <div className="mb-2 text-gray-700 border border-solid border-gray-200 w-max mx-auto mt-4 px-5 py-3 rounded-xl font-semibold bg-blue-100">
                       <i className="mr-2 text-xl text-gray-500">
-                        Credit Limit : <span className="underline">Rs. {this.state.limit}</span>
+                        Credit Limit : <span className="underline">Rs. {Math.round(this.state.limit* 100) /100}</span>
                       </i>
                     </div>
                 </div>

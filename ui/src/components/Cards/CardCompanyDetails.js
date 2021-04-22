@@ -221,12 +221,14 @@ import Swal from 'sweetalert2'
                                 <td>
                                 <FormGroup>
                                         <textarea name="description" 
+                                        maxLength="225"
                                         value={data.description} 
                                         onChange={this.changeHandler} 
                                         invalid={errors.description ? 1 : 0} 
                                         className="w-96 h-32 bg-gray-200 text-black border border-gray-200 rounded py-3 mx-4 px-4 mb-3" 
                                         id="description"  
                                         placeholder="Enter Company Description"/>
+                                        
                                     <p className="text-red-500 text-xs font-semibold ml-4">{errors.description}</p>
                                 </FormGroup>
                                 </td>
