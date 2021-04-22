@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from backend.models import Company, FinancialDetails
-from backend.serializers import UserSerializer, CompanySerializer, SearchSerializer
+from backend.serializers import UserSerializer, CompanySerializer
 import traceback
 
 
@@ -90,7 +90,6 @@ class Profile(APIView):
 
         try:
             company = Company.objects.get(user=user)
-            company_serializer = CompanySerializer(company)
             result = {
                 "company_name": company.company_name,
                 "location": company.location,
@@ -182,29 +181,29 @@ class SearchProfile(APIView):
     def post(self, request):
         try:
             search = request.data["search"]
-            filter_by_name = Company.objects.filter(company_name__contains=search)
-            filter_by_type = Company.objects.filter(business_type__contains=search)
+            filter_by_name = Company.objects.filter(company_name__icontains=search)
+            filter_by_type = Company.objects.filter(business_type__icontains=search)
             queryset = filter_by_type.union(filter_by_name)
 
-            list = []
+            result_list = []
             for comp in queryset:
-                dict = {"company_name": comp.company_name,
-                        "location": comp.location,
-                        "contact_number": comp.contact_number,
-                        "business_type": comp.business_type,
-                        "description": comp.description,
-                        "email": comp.user.email}
+                result_dict = {"company_name": comp.company_name,
+                               "location": comp.location,
+                               "contact_number": comp.contact_number,
+                               "business_type": comp.business_type,
+                               "description": comp.description,
+                               "email": comp.user.email}
 
                 financial_det = FinancialDetails.objects.filter(company=comp).order_by("financial_year").reverse()[:1]
                 for i in financial_det:
-                    dict["credit_limit"] = i.credit_limit
-                    dict["pd"] = i.pd
+                    result_dict["credit_limit"] = i.credit_limit
+                    result_dict["pd"] = i.pd
 
-                list.append(dict)
+                result_list.append(result_dict)
 
             return Response({
                 "search_result": {
-                    "company": list
+                    "company": result_list
                 }
             })
 

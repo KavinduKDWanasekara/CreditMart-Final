@@ -85,7 +85,6 @@ class FinancialDetail(APIView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
-        global company_obj, financial_year, total_assets, profit_on_sales, interest_expenses, ebitda, ebit, cost_of_products_sold, sales, depreciation, profit_on_operating_activities, extraordinary_items, total_expenses, short_term_liabilities, total_liabilities, pd_val, credit_limit
         token = request.headers.get('Authorization')
         token_obj = Token.objects.get(key=token[6:])
         user_obj = token_obj.user

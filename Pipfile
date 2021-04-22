@@ -13,6 +13,7 @@ django-cors-headers = "*"
 gunicorn = "*"
 whitenoise = "*"
 imblearn = "*"
+pytest-django = "*"
 
 [dev-packages]
 
