@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { BsPencilSquare } from "react-icons/bs";
 import {Button, ButtonToolbar} from 'react-bootstrap';
 import {EditProfilePopUp} from '../components/Cards/EditProfilePopUp';
-import {FinancialDataPopUp} from '../components/Cards/FinancialDataPopUp';
+import {ProfileAddInfo} from '../components/Cards/ProfileAddInfo';
 
 
 
@@ -87,7 +87,7 @@ export class MyProfileNew extends Component {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: error.request.response,
+            text: error.request,
             footer: '<a>Login </a>'
           });
           if (error.request.status == 401) {
@@ -180,7 +180,7 @@ export class MyProfileNew extends Component {
                           className="md:w-48 bg-blue-700 text-white font-bold py-2 px-4  transform w-44 transition duration-500 hover:bg-blue-500 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none"
                           onClick = {() => this.setState({addFinancialData : true})}
                         >Add Financial Data</Button>
-                          <FinancialDataPopUp
+                          <ProfileAddInfo
                             show = {this.state.addFinancialData}
                             onHide = {addFinancialClose}
                           />

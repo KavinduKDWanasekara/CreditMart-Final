@@ -60,7 +60,7 @@ class Register extends Component {
         const errors = this.validate();
 
         if (Object.keys(errors).length === 0) {
-            console.log(data);
+            
             axiosInstance
 			.post(`api/signup`, {
 				username: data.username,
