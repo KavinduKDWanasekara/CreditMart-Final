@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import ExplorePage from "./pages/ExplorePage";
 import ProfileAddInfo from "./components/Cards/ProfileAddInfo";
+
 import Error from "./pages/404Error";
 import Login from "./components/auth/Login";
 import Logout from "./components/auth/logout";

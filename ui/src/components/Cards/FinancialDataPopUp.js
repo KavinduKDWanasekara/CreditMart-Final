@@ -4,7 +4,7 @@ import {Modal, Button, Row, Col} from 'react-bootstrap';
 import { Form, FormGroup } from 'reactstrap';
 import axiosInstance from '../../axios';
 import Swal from 'sweetalert2'
-import { browserHistory } from 'react-router';
+
 
 export class FinancialDataPopUp extends Component{
     constructor(props){
@@ -156,7 +156,7 @@ export class FinancialDataPopUp extends Component{
       {...this.props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
+      danimation={false}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

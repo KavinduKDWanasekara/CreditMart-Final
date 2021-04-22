@@ -1,13 +1,10 @@
 
 
-import React, { Component } from 'react'
-import { Form, Input,  FormGroup } from 'reactstrap';
-
+import React, {component} from 'react';
+import { Component } from 'react';
+import {Modal, Button, Row, Col} from 'react-bootstrap';
+import { Form, FormGroup } from 'reactstrap';
 import axiosInstance from '../../axios';
-
-import { Link } from 'react-router-dom';
-
-import Navbar from "../../components/Navbar"
 import Swal from 'sweetalert2'
 
 
@@ -138,11 +135,12 @@ export class ProfileAddInfo extends Component {
 			.then((res) => {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Data saved successfully',
+                    title: 'Data saved successfully, Check your dashboard.',
                 })
-                this.props.history.push('/dashboard');
+                // this.props.history.push('/dashboard');
 				console.log(res);
 				console.log(res.data);
+                window.location.reload();
                
 			}).catch(err => console.log("api Erorr: ", err.response)+
             Swal.fire({
@@ -159,16 +157,25 @@ export class ProfileAddInfo extends Component {
         const { data, errors } = this.state;
         return (
 
-            <>
-            <Navbar/>
-
-            <div>
-                
+            
+            <Modal
+            {...this.props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            animation={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Add Your Financial Data 
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className='Container'>
+                  <Row>
+                      <Col sm={12}>        
 
                 <Form onSubmit={this.handleSubmit} className="md:w-full px-1/2 text-center  md:mb-0 ">
-                <p className="text-4xl font-bold py-9 capitalize">
-                    Enter Financial Data
-                </p>
+                
                 <table className=" text-center mb-2 flex justify-center">
                     <tbody> 
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
@@ -180,9 +187,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                <Input id="financial_year" 
+                                <input id="financial_year" 
                                     value={data.financial_year} 
-                                    invalid={errors.financial_year ? true : false} 
+                                    invalid={errors.financial_year ? 1 : 0} 
                                     name="financial_year" 
                                     maxLength="4"
                                     minLength="4"
@@ -203,9 +210,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="total_assets" 
+                                    <input id="total_assets" 
                                         value={data.total_assets} 
-                                        invalid={errors.total_assets ? true : false} 
+                                        invalid={errors.total_assets ? 1 : 0} 
                                         name="total_assets" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -226,9 +233,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="profit_on_sales" 
+                                    <input id="profit_on_sales" 
                                         value={data.profit_on_sales} 
-                                        invalid={errors.profit_on_sales ? true : false} 
+                                        invalid={errors.profit_on_sales ? 1 : 0} 
                                         name="profit_on_sales" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -249,9 +256,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="interest_expenses" 
+                                    <input id="interest_expenses" 
                                         value={data.interest_expenses} 
-                                        invalid={errors.interest_expenses ? true : false} 
+                                        invalid={errors.interest_expenses ? 1 : 0} 
                                         name="interest_expenses" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -272,9 +279,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="ebitda" 
+                                    <input id="ebitda" 
                                         value={data.ebitda} 
-                                        invalid={errors.ebitda ? true : false} 
+                                        invalid={errors.ebitda ? 1 : 0} 
                                         name="ebitda" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -294,9 +301,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="ebit" 
+                                    <input id="ebit" 
                                         value={data.ebit} 
-                                        invalid={errors.ebit ? true : false} 
+                                        invalid={errors.ebit ? 1 : 0} 
                                         name="ebit" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -317,9 +324,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="cost_of_products_sold" 
+                                    <input id="cost_of_products_sold" 
                                         value={data.cost_of_products_sold} 
-                                        invalid={errors.cost_of_products_sold ? true : false} 
+                                        invalid={errors.cost_of_products_sold ? 1 : 0} 
                                         name="cost_of_products_sold" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -340,9 +347,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="sales" 
+                                    <input id="sales" 
                                         value={data.sales} 
-                                        invalid={errors.sales ? true : false} 
+                                        invalid={errors.sales ? 1 : 0} 
                                         name="sales" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -363,9 +370,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="depreciation" 
+                                    <input id="depreciation" 
                                         value={data.depreciation} 
-                                        invalid={errors.depreciation ? true : false} 
+                                        invalid={errors.depreciation ? 1 : 0} 
                                         name="depreciation" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -386,9 +393,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="profit_on_operating_activities" 
+                                    <input id="profit_on_operating_activities" 
                                         value={data.profit_on_operating_activities} 
-                                        invalid={errors.profit_on_operating_activities ? true : false} 
+                                        invalid={errors.profit_on_operating_activities ? 1 : 0} 
                                         name="profit_on_operating_activities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -409,9 +416,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="extraordinary_items" 
+                                    <input id="extraordinary_items" 
                                         value={data.extraordinary_items} 
-                                        invalid={errors.saextraordinary_itemsles ? true : false} 
+                                        invalid={errors.saextraordinary_itemsles ? 1 : 0} 
                                         name="extraordinary_items" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -427,14 +434,14 @@ export class ProfileAddInfo extends Component {
                         <tr className="md:w-full px-1/2 text-left md:mb-0"> 
                             <td>
                                 <label htmlFor="total_expenses" className="uppercase tracking-wide text-black text-xs font-bold mb-2">
-                                total expenses<span className="text-red-500 text-base"> *</span>
+                                Financial expenses<span className="text-red-500 text-base"> *</span>
                                 </label>
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="total_expenses" 
+                                    <input id="total_expenses" 
                                         value={data.total_expenses} 
-                                        invalid={errors.total_expenses ? true : false} 
+                                        invalid={errors.total_expenses ? 1 : 0} 
                                         name="total_expenses" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -455,9 +462,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="short_term_liabilities" 
+                                    <input id="short_term_liabilities" 
                                         value={data.short_term_liabilities} 
-                                        invalid={errors.short_term_liabilities ? true : false} 
+                                        invalid={errors.short_term_liabilities ? 1 : 0} 
                                         name="short_term_liabilities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -478,9 +485,9 @@ export class ProfileAddInfo extends Component {
                             </td>
                             <td>
                                 <FormGroup>
-                                    <Input id="total_liabilities" 
+                                    <input id="total_liabilities" 
                                         value={data.total_liabilities} 
-                                        invalid={errors.total_liabilities ? true : false} 
+                                        invalid={errors.total_liabilities ? 1 : 0} 
                                         name="total_liabilities" 
                                         onChange={this.handleChange} 
                                         placeholder="RS XXXX.XX"
@@ -502,16 +509,23 @@ export class ProfileAddInfo extends Component {
                             <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none">
                             Submit
                             </button>
-                            <Link to="/profile">
-                                <button className= "md:w-48 bg-gray-900 text-white font-bold py-2 px-4 mx-4 transform w-44 transition duration-500 hover:bg-gray-700 hover:scale-95 rounded-xl hover:shadow-lg focus:outline-none" >
-                            Back
-                            </button></Link>
+                            
                         </div>
                     </div>
                 </Form>
-            </div>
-            </>
-        )
+                </Col>
+            </Row>
+            </div></Modal.Body>
+      <Modal.Footer>
+        <Button
+         onClick={this.props.onHide}
+         variant='danger'
+        >Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+
+        );
     }
 }
 
