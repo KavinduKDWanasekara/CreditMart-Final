@@ -83,7 +83,7 @@ export class MyProfileNew extends Component {
     
         .catch(error =>{
     
-          console.log(error.request.responseText);
+          console.log(error);
           Swal.fire({
             icon: 'error',
             title: 'Oops...',

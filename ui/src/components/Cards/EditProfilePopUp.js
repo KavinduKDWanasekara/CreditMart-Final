@@ -80,7 +80,7 @@ export class EditProfilePopUp extends Component{
                 console.log(res);
                 console.log(res.data);
                 window.location.reload();
-			}).catch(err => console.log("api Erorr: ", err.response)+
+			}).catch(err => console.log("api Erorr: ", err)+
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -101,6 +101,7 @@ export class EditProfilePopUp extends Component{
       {...this.props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
+      animation={false}
       centered
     >
       <Modal.Header closeButton>

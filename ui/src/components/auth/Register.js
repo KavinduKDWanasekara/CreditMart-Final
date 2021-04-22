@@ -72,7 +72,7 @@ class Register extends Component {
                 localStorage.setItem('token', res.data.token);
 				axiosInstance.defaults.headers['Authorization'] =
 					'Token ' + localStorage.getItem('token');
-				this.props.history.push('/profile');
+				this.props.history.push('/editinfo');
 
                 Swal.fire({
                     icon: 'info',
