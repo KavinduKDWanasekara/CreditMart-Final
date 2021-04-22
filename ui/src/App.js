@@ -16,6 +16,7 @@ import Register from "./components/auth/Register";
 import './index.css';
 import CardCompanyDetails from "./components/Cards/CardCompanyDetails";
 
+
 function App() {
 
   return (

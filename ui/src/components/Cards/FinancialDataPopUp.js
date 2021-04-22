@@ -4,6 +4,7 @@ import {Modal, Button, Row, Col} from 'react-bootstrap';
 import { Form, FormGroup } from 'reactstrap';
 import axiosInstance from '../../axios';
 import Swal from 'sweetalert2'
+import { browserHistory } from 'react-router';
 
 export class FinancialDataPopUp extends Component{
     constructor(props){
@@ -123,13 +124,16 @@ export class FinancialDataPopUp extends Component{
                 total_liabilities: data.total_liabilities,
 			})
 			.then((res) => {
+                
                 Swal.fire({
                     icon: 'success',
-                    title: 'Data saved successfully',
+                    title: 'Data saved successfully, Check your dashboard.',
                 })
-                this.props.history.push('/dashboard');
+                // this.props.history.push('/dashboard');
+                
 				console.log(res);
 				console.log(res.data);
+                window.location.reload();
                
 			}).catch(err => console.log("api Erorr: ", err.response)+
             Swal.fire({
@@ -141,6 +145,7 @@ export class FinancialDataPopUp extends Component{
         } else {
             this.setState({ errors });
         }
+        
     }
 
 

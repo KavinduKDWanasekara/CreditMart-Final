@@ -76,10 +76,10 @@ export class EditProfilePopUp extends Component{
                     title: 'Data saved successfully',
                     text: 'Add financial data for atleast 03 years!'
                 })
-                this.props.history.push('/profile');
+                // this.props.history.push('/profile');
                 console.log(res);
                 console.log(res.data);
-                // window.location.reload();
+                window.location.reload();
 			}).catch(err => console.log("api Erorr: ", err.response)+
             Swal.fire({
                 icon: 'error',
